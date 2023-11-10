@@ -74,6 +74,7 @@ function Intro() {
     <div className={styles.container}>
       <Head>
         <title>LJC Developer Blog 인트로입니다.</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <div style={mainContent}>

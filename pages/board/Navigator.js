@@ -1,5 +1,4 @@
 import React, {useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import NavigatorStyle from '../../styles/Navigator.module.css';
 import { Search01 } from '../api/Navigator_api';
 
@@ -8,6 +7,7 @@ function Navigator() {
 
   useEffect(() => {
       Search01().then((data) => {
+        debugger;
         const data2 = data.map((data2) => {
           return {
             board_type: data2.board_type,

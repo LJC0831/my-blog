@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 
-const Navigator = () => {
+function Navigator() {
   const router = useRouter();
 
   const handleNavigation = (path) => {
@@ -18,7 +18,7 @@ const Navigator = () => {
         <li style={navItemStyle} onClick={() => handleNavigation('/board/react')}>
           React.js
         </li>
-        <li style={navItemStyle} onClick={() => handleNavigation('/board/vue')}>
+        <li style={navItemStyle} onClick={() => handleNavigation('/board/VueList')}>
           Vue.js
         </li>
         <li style={navItemStyle} onClick={() => handleNavigation('/board/nodejs')}>

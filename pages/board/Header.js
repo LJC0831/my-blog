@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = () => {
+function Header() {
   return (
     <header style={headerStyle}>
       <h1>LJC Developer Blog</h1>

@@ -4,12 +4,7 @@ import NavigatorStyle from '../../styles/Navigator.module.css';
 import { Search01 } from '../api/Navigator_api';
 
 function Navigator() {
-  const router = useRouter();
   const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
-
-  const handleNavigation = (path) => {
-    router.push(path);
-  };
 
   useEffect(() => {
       Search01().then((data) => {

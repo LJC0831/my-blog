@@ -3,7 +3,6 @@ import {exchangeString01 } from './api';
 
 export async function login01(pwd) {
     try {
-        debugger;
         pwd = exchangeString01(pwd);
         const response = await fetch(`${api}/api/blog/login01`, {
           method: 'POST',

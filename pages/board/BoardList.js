@@ -1,6 +1,6 @@
 import React from 'react';
 
-function VueList() {
+function BoardList() {
   return (
     <div>
       {/* Your Intro component content goes here */}
@@ -9,4 +9,4 @@ function VueList() {
   );
 };
 
-export default VueList;
+export default BoardList;

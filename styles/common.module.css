@@ -1,0 +1,29 @@
+.board_content {
+    margin-top: 80px;
+    margin-left: 10%;
+    width:100%;
+    min-width:1200px;
+   }
+
+.new_post_button {
+    background-color: #007bff; /* Change to your preferred background color */
+    color: #fff; /* Change to your preferred text color */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+    width:90px;
+  }
+  .new_post_button:hover {
+    background-color: #0056b3; /* Change to your preferred hover background color */
+  }
+  .board_subject {
+    background-color: #333; /* 배경색을 원하는 색상으로 설정하세요 */
+    height: 120px;
+    text-align: center; /* 가운데 정렬 */
+    color: #fff; /* 글자색을 흰색으로 설정 */
+    padding: 10px; /* 내용과의 간격을 조절하세요 */
+    width:60vw;
+  }

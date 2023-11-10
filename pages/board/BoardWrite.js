@@ -202,6 +202,19 @@ function BoardWrite() {
             </div>
             }
         </div>
+        {/* 관련게시판 */}
+        <div className={BoardWriteStyle.relation_form}>
+            <h5>관련게시물</h5>
+            {relationData.length > 0 ? (
+            <ul>
+            {relationData.map((data, index) => (
+                <li className={BoardWriteStyle.relation_li} key={index}><a href={data.url}>{data.title}</a></li>
+            ))}
+            </ul>
+            ) : (
+            <p>관련 게시물이 없습니다.</p>
+            )}
+        </div>
       </div>
       <footer className={styles.footer}>
         <a

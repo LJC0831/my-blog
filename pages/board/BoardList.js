@@ -8,6 +8,7 @@ import Navigator from './Navigator';
 import CommonStyle from '../../styles/common.module.css';
 import BoardListStyle from '../../styles/BoardList.module.css';
 import { Search01 } from '../api/BoardList_api';
+import Link from 'next/link';
 
 
 function BoardList() {
@@ -16,11 +17,6 @@ function BoardList() {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [isLoginYn, setIsLogin] = useState(false);
-
-  const handleItemClick = (id, privew_content) => {
-  };
-  const handleInsertButton = () => {
-  };
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -61,18 +57,22 @@ function BoardList() {
         <Navigator />
         <div className={CommonStyle.board_content}>
         { isLoginYn && 
-          <button className={CommonStyle.new_post_button} onClick={handleInsertButton}>새글추가 +</button>
+          <Link href="/board/write/vue" passHref>
+          <button className={CommonStyle.new_post_button}>새글추가 +</button>
+        </Link>
         }
         <h2>Vue.js 작업 관련 게시판입니다.</h2>
         <ul className={BoardListStyle.post_list}>
           {posts.map((post) => (
-            <li key={post.id} className={BoardListStyle.post_item} onClick={() => handleItemClick(post.id, post.privew_content)}>
-              <div className={BoardListStyle.post_title}>{post.title}
-              </div>
-              <div className={BoardListStyle.post_content}>{post.privew_content}</div>
-              <div className={BoardListStyle.post_content}>
-                <span className={BoardListStyle.post_right}>입력일자 : {post.ins_ymdhms}</span>
-              </div>
+            <li key={post.id} className={BoardListStyle.post_item}>
+              <Link href={`/board/${post.id}/${post.privew_content.replace(/\s+/g, '-')}`}>
+                <div className={BoardListStyle.post_title}>{post.title}
+                </div>
+                <div className={BoardListStyle.post_content}>{post.privew_content}</div>
+                <div className={BoardListStyle.post_content}>
+                  <span className={BoardListStyle.post_right}>입력일자 : {post.ins_ymdhms}</span>
+                </div>
+              </Link>
           </li>
           ))}
         </ul>

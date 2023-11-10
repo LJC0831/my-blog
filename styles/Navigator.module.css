@@ -1,0 +1,12 @@
+.left_nav{
+  background-color: #ffffff; /* 배경색을 흰색으로 설정 */
+  color: #333; /* 글자색 설정 */
+  padding: 20px; /* 패딩 설정 */
+  width: 200px; /* 네비게이션 너비 설정 */
+  margin-top: 50px;
+}
+
+.profile_img {
+    width: 200px; /* 원하는 너비로 조절 */
+    height: 200px; /* 원하는 높이로 조절 */
+  }

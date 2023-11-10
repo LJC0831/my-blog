@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import NavigatorStyle from '../../styles/Navigator.module.css';
 
 
 function Navigator() {
@@ -10,8 +11,11 @@ function Navigator() {
   };
 
   return (
-    <nav style={navContainerStyle}>
+    <nav className={NavigatorStyle.left_nav}>
       <ul style={navListStyle}>
+        <li>
+          <img src="/profile.JPG" alt="프로필 사진" className={NavigatorStyle.profile_img} />
+        </li>
         <li style={navItemStyle} onClick={() => handleNavigation('/board/Intro')}>
           소개
         </li>
@@ -35,11 +39,7 @@ function Navigator() {
   );
 };
 
-const navContainerStyle = {
-  background: '#fff', 
-  width: '200px',
-  padding: '1rem',
-};
+
 
 const navListStyle = {
   listStyle: 'none',

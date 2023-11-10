@@ -6,6 +6,7 @@ import Header from './Header';
 import Navigator from './Navigator';
 import dynamic from 'next/dynamic';
 import CommonStyle from '../../styles/common.module.css';
+import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02 } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
 
@@ -183,6 +184,23 @@ function BoardWrite() {
               {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
             </button>
            }
+           { !isNaN(id) &&
+            <div className={BoardWriteStyle.comment_section} >
+                <h2>댓글</h2>
+                <div className={BoardWriteStyle.comment_list}>
+                {commentData.map((comment, index) => (
+                    <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span> 
+                    <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
+                    <span className={BoardWriteStyle.comment_time}>작성시간: {comment.date}</span></p>
+                ))}
+                </div>
+
+                <div className={BoardWriteStyle.comment_form}>
+                    <textarea value={commentText} onChange={handleCommentTextChange} className={BoardWriteStyle.comment_textarea} placeholder="댓글을 작성하세요"/>
+                    <button className={CommonStyle.new_post_button} onClick={handleCommenButtonClick}>댓글 작성</button>
+                </div>
+            </div>
+            }
         </div>
       </div>
       <footer className={styles.footer}>

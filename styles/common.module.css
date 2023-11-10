@@ -27,3 +27,6 @@
     padding: 10px; /* 내용과의 간격을 조절하세요 */
     width:60vw;
   }
+  .vw60 {
+    width:60vw;
+  }

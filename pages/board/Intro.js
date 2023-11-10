@@ -1,20 +1,20 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import {React, useState, useEffect } from 'react';
+import {React, useState, useEffect, Fragment } from 'react';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import Header from './Header';
 import Navigator from './Navigator';
 import dynamic from 'next/dynamic';
 import CommonStyle from '../../styles/common.module.css';
-import {  Search01 } from '../api/Intro_api';
+import {  Search01, save01, upload01, fileStatUpdate } from '../api/Intro_api';
 
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
   const withBreaks = text.split('\n').map((line, index) => (
-    <React.Fragment key={index}>
+    <Fragment key={index}>
       {line}
       <br />
-    </React.Fragment>
+    </Fragment>
   ));
   return withBreaks;
 }
@@ -50,11 +50,11 @@ function Intro() {
   // 저장처리
   const handleEditButtonClick = async () => {
     setIsEditing(!isEditing); // 편집 버튼 클릭 시 가시성 상태를 토글
-    // if (isEditing) {
-    //   await fileStatUpdate();
-    //   const html = await upload01(introText, 'intro',''); //html, board_type, board_id
-    //   save01(subject, html);
-    // }
+    if (isEditing) {
+      await fileStatUpdate();
+      const html = await upload01(introText, 'intro',''); //html, board_type, board_id
+      save01(subject, html);
+    }
   };
 
   // 처음 렌더링 시 Search01 함수 호출
@@ -87,7 +87,7 @@ function Intro() {
             />
           ) : (
             <div className={CommonStyle.board_subject}>
-              <h1>{subject}</h1>
+              <h1>{addLineBreaks(subject)}</h1>
             </div>
           )}
           {isEditing ? (

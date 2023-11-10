@@ -105,6 +105,15 @@ function Intro() {
            }
         </div>
       </div>
+      <footer className={styles.footer}>
+        <a
+          href="https://github.com/LJC0831/my-blog"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          제작자 by LJC
+        </a>
+      </footer>
     </div>
   );
 }

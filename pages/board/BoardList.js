@@ -1,16 +1,18 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import {React, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // 게시판 글번호 받기
+import { useRouter } from 'next/router';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import Header from './Header';
 import Navigator from './Navigator';
 import CommonStyle from '../../styles/common.module.css';
-import {  Search01 } from '../api/Intro_api';
+import BoardListStyle from '../../styles/BoardList.module.css';
+import { Search01 } from '../api/BoardList_api';
 
 
 function BoardList() {
-  const { board_type } = useParams(); //게시글번호
+  const router = useRouter();
+  const { board_type } = router.query;
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [isLoginYn, setIsLogin] = useState(false);
@@ -28,7 +30,7 @@ function BoardList() {
     const fetchData = async () => {
       try {
         setTimeout(() => {
-          Search01('vue').then((data) => {
+          Search01(board_type).then((data) => {
             if(data.length > 0){
               setPosts(data);
               setLoading(false);
@@ -41,7 +43,7 @@ function BoardList() {
       }
     };
     fetchData();
-  }, []);
+  }, [board_type]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -59,17 +61,17 @@ function BoardList() {
         <Navigator />
         <div className={CommonStyle.board_content}>
         { isLoginYn && 
-          <button className="new-post-button" onClick={handleInsertButton}>새글추가 +</button>
+          <button className={CommonStyle.new_post_button} onClick={handleInsertButton}>새글추가 +</button>
         }
         <h2>Vue.js 작업 관련 게시판입니다.</h2>
-        <ul className="post-list">
+        <ul className={BoardListStyle.post_list}>
           {posts.map((post) => (
-            <li key={post.id} className="post-item" onClick={() => handleItemClick(post.id, post.privew_content)}>
-              <div className="post-title">{post.title}
+            <li key={post.id} className={BoardListStyle.post_item} onClick={() => handleItemClick(post.id, post.privew_content)}>
+              <div className={BoardListStyle.post_title}>{post.title}
               </div>
-              <div className="post-content">{post.privew_content}</div>
-              <div className="post-content">
-                <span className='position-right'>입력일자 : {post.ins_ymdhms}</span>
+              <div className={BoardListStyle.post_content}>{post.privew_content}</div>
+              <div className={BoardListStyle.post_content}>
+                <span className={BoardListStyle.post_right}>입력일자 : {post.ins_ymdhms}</span>
               </div>
           </li>
           ))}

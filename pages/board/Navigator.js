@@ -1,13 +1,13 @@
 import React, {useEffect, useState } from 'react';
 import NavigatorStyle from '../../styles/Navigator.module.css';
 import { Search01 } from '../api/Navigator_api';
+import Link from 'next/link';
 
 function Navigator() {
   const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
 
   useEffect(() => {
       Search01().then((data) => {
-        debugger;
         const data2 = data.map((data2) => {
           return {
             board_type: data2.board_type,
@@ -27,7 +27,9 @@ function Navigator() {
           <img src="/profile.JPG" alt="프로필 사진" className={NavigatorStyle.profile_img} />
         </li>
         {boardList.map((data, index) => (
-            <li style={navItemStyle} key={index} ><a href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</a></li>
+            <li style={navItemStyle} key={index}>
+             <Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
+            </li>
         ))}
       </ul>
     </nav>

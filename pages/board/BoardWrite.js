@@ -63,7 +63,7 @@ function BoardWrite() {
     setcommentText(e.target.value);
   }
   const saveAfter= async() => {
-    window.location.href ='/board/'+id; // 페이지 이동
+    window.location.href ='/board/BoardList?board_type='+id; // 페이지 이동
   }
   // 저장처리
   const handleEditButtonClick = async () => {

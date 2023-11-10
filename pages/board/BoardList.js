@@ -57,11 +57,11 @@ function BoardList() {
         <Navigator />
         <div className={CommonStyle.board_content}>
         { isLoginYn && 
-          <Link href="/board/BoardWrite?id=vue" passHref>
+          <Link href={`/board/BoardWrite?id=${board_type}`}>
           <button className={CommonStyle.new_post_button}>새글추가 +</button>
         </Link>
         }
-        <h2>Vue.js 작업 관련 게시판입니다.</h2>
+        <h2>{board_type} 작업 관련 게시판입니다.</h2>
         <ul className={BoardListStyle.post_list}>
           {posts.map((post) => (
             <li key={post.id} className={BoardListStyle.post_item}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+
 const Navigator = () => {
   const router = useRouter();
 
@@ -11,7 +12,7 @@ const Navigator = () => {
   return (
     <nav style={navContainerStyle}>
       <ul style={navListStyle}>
-        <li style={navItemStyle} onClick={() => handleNavigation('/')}>
+        <li style={navItemStyle} onClick={() => handleNavigation('/board/Intro')}>
           소개
         </li>
         <li style={navItemStyle} onClick={() => handleNavigation('/board/react')}>
@@ -24,7 +25,7 @@ const Navigator = () => {
           Node.js
         </li>
         <li style={navItemStyle} onClick={() => handleNavigation('/board/mariadb')}>
-          MariaDB
+          mariadb
         </li>
         <li style={navItemStyle} onClick={() => handleNavigation('/board/etc')}>
           기타작업

@@ -40,6 +40,7 @@ function BoardWrite() {
   const [commentData, setCommentData] = useState([]); // 댓글 데이터를 배열로 관리
   const [relationData, setRelationData] = useState([]); // 관련게시판 배열
   const [isEditing, setIsEditing] = useState(false); // 에디터의 가시성 상태를 저장
+  const [isLoading, setIsLoading] = useState(false); //로딩
   
 
   //에디터 옵션
@@ -68,17 +69,22 @@ function BoardWrite() {
   }
   // 저장처리
   const handleEditButtonClick = async () => {
+    setIsLoading(true); // Set loading state to true
     setIsEditing(!isEditing); // 편집 버튼 클릭 시 가시성 상태를 토글
     if (isEditing) {
         if(!isNaN(id)){
             await fileStatUpdate(id);
             const html = await upload01(introText, '', id); //html, board_type, board_id
             update01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
+            setIsLoading(false);
           } else {
             const html = await upload01(introText, id,''); //html, board_type, board_id
             await save01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
             await saveAfter();
+            setIsLoading(false);
           }
+    } else {
+      setIsLoading(false);
     }
   };
   const handleCommenButtonClick = async() => {
@@ -180,9 +186,13 @@ function BoardWrite() {
               dangerouslySetInnerHTML={{ __html: introText }} />
           )}
            { isLoginYn && 
-            <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>
-              {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
-            </button>
+              isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>
+                  {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
+                </button>
+              )
            }
            { !isNaN(id) &&
             <div className={BoardWriteStyle.comment_section} >

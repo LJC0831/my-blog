@@ -100,6 +100,7 @@ function BoardWrite() {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
+    debugger;
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn === 'true');
     if(!isNaN(id)){ //작성된 글 읽기
@@ -137,9 +138,7 @@ function BoardWrite() {
           setCommentData(comments);
         });
       }, 300);
-    } else { // 새글작성
-      setIsEditing(true);
-    }
+    } 
   }, [id]); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
 

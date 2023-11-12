@@ -85,13 +85,9 @@ cursor: pointer;
     .header_class {
       transition: height 0.3s; /* 높이 변경에 대한 애니메이션 설정 */
     }
-    .menu_open {
-      height: 250px; /* 메뉴가 열린 상태의 헤더 높이 */
-    }
     .menu_list {
       display: none;
     }
-    
     .menu_open .menu_list {
       display: block; /* 메뉴가 열린 상태일 때 메뉴 리스트를 보여줍니다. */
     }
@@ -111,3 +107,12 @@ cursor: pointer;
       margin-right: 5px;
     }
   }
+
+  @media (min-width: 768px) {
+    .icon_small{
+      display: none;
+    }
+    .menu_list{
+      display: none;
+    }
+   }

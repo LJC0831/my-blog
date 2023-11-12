@@ -2,13 +2,15 @@ import React, {useState, useEffect} from 'react';
 import headerStyles from'../../styles/header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { login01 } from '../api/Header_api';
+import { login01, Search01 } from '../api/Header_api';
+import Link from 'next/link';
 
 function Header() {
   const [isModalOpen, setModalOpen] = useState(false); //로그인팝업
   const [password, setPassword] = useState(''); //패스워드
   const [isLoginYn, setIsLogin] = useState(false);//로그인여부
   const [isMenuOpen, setMenuOpen] = useState(false); //햄버거클릭여부
+  const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
 
   const openModal = () => {
     if (isLoginYn) {
@@ -55,13 +57,30 @@ function Header() {
   };
 
   useEffect(() => {
+    Search01().then((data) => {
+      const data2 = data.map((data2) => {
+        return {
+          board_type: data2.board_type,
+          board_api: data2.board_api,
+          order_no: data2.order_no,
+          board_nm: data2.board_nm
+        };
+      });
+      setBoardListData(data2);
+    });
+}, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
+
+  const headerClassName = isMenuOpen ? headerStyles.menu_open : headerStyles.header;
+
+
+  useEffect(() => {
     // 컴포넌트가 처음 마운트될 때 로컬 세션을 확인하여 로그인 상태 업데이트
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn === 'true');
   }, []);
 
   return (
-    <header className={headerStyles.header}>
+    <header className={headerClassName}>
       <div>
       <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
           <span className={headerStyles.logo} onClick={goToHomePage}>LJC Developer Blog</span>
@@ -77,23 +96,13 @@ function Header() {
         <li className={headerStyles.li_parent}>
             프론트엔드
               <ul className={headerStyles.li_submenu}>
-                <li className='li-sub'><a href="/board/vue">vue.js</a></li>
-                <li className='li-sub'><a href="/board/react">react.js</a></li>
+                {boardList.map((data, index) => (
+                    <li key={index}>
+                    <Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
+                    </li>
+                ))}
               </ul>
         </li>
-        <li className={headerStyles.li_parent}>
-            백엔드
-              <ul className={headerStyles.li_submenu}>
-                <li className={headerStyles.li_sub}><a href="/board/nodejs">node.js</a></li>
-              </ul>
-          </li>
-          <li className={headerStyles.li_parent} >
-            DB
-              <ul className={headerStyles.li_submenu}>
-                <li className={headerStyles.li_sub}><a href="/board/mariadb">MariaDB</a></li>
-              </ul>
-          </li>
-        <li className={headerStyles.li_parent} ><a href="/board/etc">기타작업</a></li>
         </ul>
       </div>
 

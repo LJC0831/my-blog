@@ -50,6 +50,7 @@ function BoardWrite() {
     [{ list: "ordered" }, { list: "bullet" }],
     [{ color: [] }, { background: [] }],
     [{ align: [] }],
+    ['link'],
   ];
   const modules = {
     toolbar: {

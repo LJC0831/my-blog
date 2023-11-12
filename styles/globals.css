@@ -30,3 +30,11 @@ a {
     max-width: 95vw;
   }
 }
+
+
+/* 화면 크기가 768px 이상일 때 스타일 변경 (웹)*/
+@media (min-width: 768px) {
+  img {
+    max-width: 60vw;
+  }
+ }

@@ -92,18 +92,13 @@ function Header() {
       </div>
 
       <div className={headerStyles.menu_list}>
-        <ul>
-        <li className={headerStyles.li_parent}>
-            프론트엔드
-              <ul className={headerStyles.li_submenu}>
+              <ul>
                 {boardList.map((data, index) => (
-                    <li key={index}>
+                    <li style={navItemStyle} key={index}>
                     <Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
                     </li>
                 ))}
               </ul>
-        </li>
-        </ul>
       </div>
 
       {isModalOpen && (
@@ -118,6 +113,13 @@ function Header() {
       )}
     </header>
   );
+};
+
+const navItemStyle = {
+  margin: '0.5rem 0',
+  cursor: 'pointer',
+  borderRadius: '5px',
+  transition: 'background 0.3s ease',
 };
 
 

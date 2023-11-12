@@ -24,3 +24,9 @@ a {
     background: black;
   }
 }
+
+@media (max-width: 768px) {
+  img {
+    max-width: 95vw;
+  }
+}

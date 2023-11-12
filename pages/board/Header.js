@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import headerStyles from'../../styles/header.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { login01 } from '../api/Header_api';
 
 function Header() {
   const [isModalOpen, setModalOpen] = useState(false); //로그인팝업
   const [password, setPassword] = useState(''); //패스워드
   const [isLoginYn, setIsLogin] = useState(false);//로그인여부
+  const [isMenuOpen, setMenuOpen] = useState(false); //햄버거클릭여부
 
   const openModal = () => {
     if (isLoginYn) {
@@ -35,6 +38,9 @@ function Header() {
   const goToHomePage = () => {
     window.location.href = '/'; // 페이지 이동
   };
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
 
   const handleLogin = () => {
     login01(password).then((data) => {
@@ -57,12 +63,38 @@ function Header() {
   return (
     <header className={headerStyles.header}>
       <div>
+      <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
           <span className={headerStyles.logo} onClick={goToHomePage}>LJC Developer Blog</span>
         {isLoginYn ? (
             <span className={headerStyles.account} onClick={openModal}>Admin</span>
           ) : (
             <span className={headerStyles.account} onClick={openModal}>일반용</span>
           )}
+      </div>
+
+      <div className={headerStyles.menu_list}>
+        <ul>
+        <li className={headerStyles.li_parent}>
+            프론트엔드
+              <ul className={headerStyles.li_submenu}>
+                <li className='li-sub'><a href="/board/vue">vue.js</a></li>
+                <li className='li-sub'><a href="/board/react">react.js</a></li>
+              </ul>
+        </li>
+        <li className={headerStyles.li_parent}>
+            백엔드
+              <ul className={headerStyles.li_submenu}>
+                <li className={headerStyles.li_sub}><a href="/board/nodejs">node.js</a></li>
+              </ul>
+          </li>
+          <li className={headerStyles.li_parent} >
+            DB
+              <ul className={headerStyles.li_submenu}>
+                <li className={headerStyles.li_sub}><a href="/board/mariadb">MariaDB</a></li>
+              </ul>
+          </li>
+        <li className={headerStyles.li_parent} ><a href="/board/etc">기타작업</a></li>
+        </ul>
       </div>
 
       {isModalOpen && (

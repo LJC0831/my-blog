@@ -77,3 +77,37 @@ cursor: pointer;
   .modal button:last-child:hover {
     background-color: #999;
   }
+
+  @media (max-width: 768px) {
+    .modal_content {
+      width: 80vw;
+    }
+    .header_class {
+      transition: height 0.3s; /* 높이 변경에 대한 애니메이션 설정 */
+    }
+    .menu_open {
+      height: 250px; /* 메뉴가 열린 상태의 헤더 높이 */
+    }
+    .menu_list {
+      display: none;
+    }
+    
+    .menu_open .menu_list {
+      display: block; /* 메뉴가 열린 상태일 때 메뉴 리스트를 보여줍니다. */
+    }
+    .li_parent{
+  
+      list-style:decimal;
+    }
+    .li_submenu {
+      list-style: none; /* 리스트 마커 제거 */
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 18px;
+      padding: 0;
+    }
+    .icon_small{
+      font-size: 16px; 
+      width: 15px;
+      margin-right: 5px;
+    }
+  }

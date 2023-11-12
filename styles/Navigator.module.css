@@ -10,3 +10,19 @@
     width: 200px; /* 원하는 너비로 조절 */
     height: 200px; /* 원하는 높이로 조절 */
   }
+
+
+  @media (max-width: 768px) {
+    .left_nav {
+      display: none;
+      background-color: #ffffff; /* 배경색 설정 */
+      padding: 5px; /* 패딩 설정 */
+      width:25vw;
+    }
+  
+    .profile_img {
+      width: 70px; /* 원하는 너비로 조절 */
+      height: 70px; /* 원하는 높이로 조절 */
+    }
+
+  }

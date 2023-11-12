@@ -27,7 +27,13 @@
 <url>
 <!-- 4. Quill 에디터를 이용하여 게시판 만들기 -->
   <loc>https://www.develop-blog.shop/board/BoardWrite?id=34&amp;content=4.-Quill-%EC%97%90%EB%94%94%ED%84%B0%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0</loc>
-  <lastmod>2023-11-12T03:11:42+00:00</lastmod>
+  <lastmod>2023-11-12T03:09:13+00:00</lastmod>
+</url>
+
+<url>
+<!-- 5. 이미지파일 base64 저장 시 PayloadTooLargeError: request entity too large 에러 해결 -->
+  <loc>https://www.develop-blog.shop/board/BoardWrite?id=35&amp;content=5.-%EC%9D%B4%EB%AF%B8%EC%A7%80%ED%8C%8C%EC%9D%BC-base64-%EC%A0%80%EC%9E%A5-%EC%8B%9C-PayloadTooLargeError:-request-entity-too-large-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0</loc>
+  <lastmod>2023-11-12T03:09:13+00:00</lastmod>
 </url>
 
 

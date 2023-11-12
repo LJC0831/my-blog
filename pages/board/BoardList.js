@@ -65,7 +65,7 @@ function BoardList() {
         <ul className={BoardListStyle.post_list}>
           {posts.map((post) => (
             <li key={post.id} className={BoardListStyle.post_item}>
-              <Link href={`/board/BoardWrite?id=${post.id}&content=${post.privew_content.replace(/\s+/g, '-')}`}>
+              <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
                 <div className={BoardListStyle.post_title}>{post.title}
                 </div>
                 <div className={BoardListStyle.post_content}>{post.privew_content}</div>

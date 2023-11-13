@@ -110,7 +110,6 @@ function BoardWrite() {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn === 'true');
     if(!isNaN(id)){ //작성된 글 읽기
-      setTimeout(() => {
         Search01(id, isLoggedIn).then((data) => { //게시글조회
             setSubject(data[0].title);
             setIntroText(data[0].content);
@@ -128,7 +127,6 @@ function BoardWrite() {
           // 배열로 저장한 댓글 정보를 상태 변수로 설정
           setRelationData(data2);
         });
-      }, 300);
       setTimeout(() => {
         Search02(id).then((data) => {
           // 모든 댓글 정보를 배열에 저장

@@ -152,7 +152,7 @@ function BoardWrite() {
       <Head>
         <title>{title}</title>
         <meta name="description" content={privew} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://www.develop-blog.shop/profile.JPG" />
         {/* 오픈그래프 */}
         <meta property="og:type" content="website"/> 
         <meta property="og:title" content={title}/>

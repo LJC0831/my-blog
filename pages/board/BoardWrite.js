@@ -133,6 +133,7 @@ function BoardWrite() {
         Search02(id).then((data) => {
           // 모든 댓글 정보를 배열에 저장
           const comments = data.map((comment) => {
+            debugger;
             return {
               user: comment.ins_user_id,
               content: comment.comment,
@@ -154,6 +155,11 @@ function BoardWrite() {
         <title>{title}</title>
         <meta name="description" content={privew} />
         <link rel="icon" href="/favicon.ico" />
+        {/* 오픈그래프 */}
+        <meta property="og:type" content="website"/> 
+        <meta property="og:title" content={title}/>
+        <meta property="og:description" content={privew}/>
+    
       </Head>
       <Header />
       <div style={mainContent}>

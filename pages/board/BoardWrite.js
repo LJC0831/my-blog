@@ -26,10 +26,9 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 function BoardWrite() {
   const router = useRouter();
   const { id } = router.query; //게시글번호
-  const titletHTML = ''; // 초기 HTML
+  const titletHTML = 'LJC 블로그 게시판'; // 초기 HTML
   const initialHTML = ''; // 초기 HTML
-  const subjectHTML = ''; // 초기 HTML
-  const privewtHTML = ''; // 초기 HTML
+  const privewtHTML = '게시판 내용'; // 초기 HTML
   const initComment = '';
 
   const [title, setSubject] = useState(titletHTML);

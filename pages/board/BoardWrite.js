@@ -12,26 +12,27 @@ import { useRouter } from 'next/router';
 
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
-  const withBreaks = text.split('\n').map((line, index) => (
-    <Fragment key={index}>
-      {line}
-      <br />
-    </Fragment>
-  ));
-  return withBreaks;
+  if(text !== null && text !== undefined){
+    const withBreaks = text.split('\n').map((line, index) => (
+      <Fragment key={index}>
+        {line}
+        <br />
+      </Fragment>
+    ));
+    return withBreaks;
+  }
 }
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-function BoardWrite() {
+function BoardWrite({seo_title, seo_privew}) {
   const router = useRouter();
   const { id } = router.query; //게시글번호
-  const { content } = router.query; //게시글제목
   const initialHTML = ''; // 초기 HTML
   const initComment = '';
 
-  const [title, setSubject] = useState(content);
-  const [privew, setPrivew] = useState(content);
+  const [title, setSubject] = useState('');
+  const [privew, setPrivew] = useState('');
   const [isLoginYn, setIsLogin] = useState(false);
   const [introText, setIntroText] = useState(initialHTML); // 에디터의 내용을 저장
   const [commentText, setcommentText] = useState(initComment); // 댓글입력
@@ -129,7 +130,6 @@ function BoardWrite() {
         Search02(id).then((data) => {
           // 모든 댓글 정보를 배열에 저장
           const comments = data.map((comment) => {
-            debugger;
             return {
               user: comment.ins_user_id,
               content: comment.comment,
@@ -148,13 +148,13 @@ function BoardWrite() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{title}</title>
-        <meta name="description" content={privew} />
+        <title>{seo_title}</title>
+        <meta name="description" content={seo_privew} />
         <link rel="icon" href="https://www.develop-blog.shop/profile.JPG" />
         {/* 오픈그래프 */}
         <meta property="og:type" content="website"/> 
-        <meta property="og:title" content={title}/>
-        <meta property="og:description" content={privew}/>
+        <meta property="og:title" content={seo_title}/>
+        <meta property="og:description" content={seo_privew}/>
         <meta property="og:image" content="https://www.develop-blog.shop/profile.JPG"></meta>
     
       </Head>
@@ -245,4 +245,41 @@ function BoardWrite() {
 const mainContent = {
   display: 'flex'
 };
+
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  let seo_title = 'LJC Developer Blog';
+  let seo_privew = 'LJC Developer Blog';
+  try {
+    if (!isNaN(id)) {
+      const data = await Search01(id, 'Admin'); //게시글조회
+      if (data) {
+        seo_title = data[0].title;
+        seo_privew = data[0].privew_content;
+        return {
+          props: {
+            seo_title,
+            seo_privew,
+          },
+        };
+      }
+    }
+  } catch(error){
+    return {
+      props: {
+        seo_title,
+        seo_privew,
+      },
+    };
+  }
+
+  return {
+    props: {
+      seo_title,
+      seo_privew,
+    },
+  };
+}
+
+
 export default BoardWrite;

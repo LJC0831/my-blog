@@ -159,6 +159,7 @@ function BoardWrite() {
         <meta property="og:type" content="website"/> 
         <meta property="og:title" content={title}/>
         <meta property="og:description" content={privew}/>
+        <meta property="og:image" content="https://www.develop-blog.shop/logo.JPG"></meta>
     
       </Head>
       <Header />

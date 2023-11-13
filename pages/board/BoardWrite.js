@@ -26,13 +26,12 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 function BoardWrite() {
   const router = useRouter();
   const { id } = router.query; //게시글번호
-  const titletHTML = 'LJC 블로그 게시판'; // 초기 HTML
+  const { content } = router.query; //게시글제목
   const initialHTML = ''; // 초기 HTML
-  const privewtHTML = '게시판 내용'; // 초기 HTML
   const initComment = '';
 
-  const [title, setSubject] = useState(titletHTML);
-  const [privew, setPrivew] = useState(privewtHTML);
+  const [title, setSubject] = useState(content);
+  const [privew, setPrivew] = useState(content);
   const [isLoginYn, setIsLogin] = useState(false);
   const [introText, setIntroText] = useState(initialHTML); // 에디터의 내용을 저장
   const [commentText, setcommentText] = useState(initComment); // 댓글입력

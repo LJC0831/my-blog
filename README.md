@@ -1,34 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 블로그 접속URL: https://www.develop-blog.shop/
 
-## Getting Started
+## 메인화면
 
-First, run the development server:
+![image](https://github.com/LJC0831/my-blog/assets/121738554/788bb956-1a98-425f-b12d-f2666b30e439)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## 소개글
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![image](https://github.com/LJC0831/my-blog/assets/121738554/9f33584d-b853-48a7-a040-bceaaf47b4a3)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 게시판 목록
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![image](https://github.com/LJC0831/my-blog/assets/121738554/1b80474a-d1f7-4b0c-b481-bdc4530c5d8e)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## 게시글 작성
+ - 게시판 입력, 수정, 삭제 처리
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://github.com/LJC0831/my-blog/assets/121738554/30f18d4b-bc2d-4133-a6dd-2960cde64c9b)

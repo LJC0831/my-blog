@@ -150,7 +150,7 @@ function BoardWrite({seo_title, seo_privew}) {
       <Head>
         <title>{seo_title}</title>
         <meta name="description" content={seo_privew} />
-        <link rel="icon" href="https://www.develop-blog.shop/profile.JPG" />
+        <link rel="icon" href="/favicon.ico" />
         {/* 오픈그래프 */}
         <meta property="og:type" content="website"/> 
         <meta property="og:title" content={seo_title}/>

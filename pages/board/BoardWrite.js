@@ -107,7 +107,7 @@ function BoardWrite({seo_title, seo_privew}) {
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLogin(isLoggedIn === 'true');
+    setIsLogin(isLoggedIn);
     if(!isNaN(id)){ //작성된 글 읽기
         Search01(id, isLoggedIn).then((data) => { //게시글조회
             setSubject(data[0].title);
@@ -192,9 +192,11 @@ function BoardWrite({seo_title, seo_privew}) {
               isLoading ? (
                 <p>Loading...</p>
               ) : (
+                isLoginYn && 
                 <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>
                   {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
                 </button>
+                
               )
            }
            { !isNaN(id) &&

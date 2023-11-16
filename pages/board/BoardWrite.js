@@ -164,9 +164,9 @@ function BoardWrite({seo_title, seo_privew}) {
         <div className={CommonStyle.board_content}>
           {isEditing ? (
             <textarea
+              className={BoardWriteStyle.board_textarea}
               value={title}
               onChange={(e) => setSubject(e.target.value)}
-              style={{ width: '50vw' }}
             />
           ) : (
             <div className={CommonStyle.board_subject}>
@@ -174,15 +174,17 @@ function BoardWrite({seo_title, seo_privew}) {
             </div>
           )}
           {isEditing && (
-            <p className='.vw60'><textarea value={privew} 
-            onChange={(e) => setPrivew(e.target.value)}
-            style={{ width: '50vw' }}
+            <p className='.vw60'>
+              <textarea 
+              className={BoardWriteStyle.board_textarea}
+              value={privew} 
+              onChange={(e) => setPrivew(e.target.value)}
             />
             </p>
              ) 
           }
           {isEditing ? (
-            <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} style={{ width: '50vw' }} />
+            <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} className={BoardWriteStyle.board_textarea} />
           ) : (
             <p
               className="description"

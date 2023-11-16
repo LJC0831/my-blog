@@ -9,6 +9,8 @@ import CommonStyle from '../../styles/common.module.css';
 import BoardListStyle from '../../styles/BoardList.module.css';
 import { Search01 } from '../api/BoardList_api';
 import Link from 'next/link';
+import { Card, Avatar, CardHeader, Typography } from '@mui/material';
+import { red } from '@mui/material/colors';
 
 
 function BoardList() {
@@ -62,20 +64,30 @@ function BoardList() {
         </Link>
         }
         <h2>{board_type} 작업 관련 게시판입니다.</h2>
-        <ul className={BoardListStyle.post_list}>
-          {posts.map((post) => (
-            <li key={post.id} className={BoardListStyle.post_item}>
-              <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
-                <div className={BoardListStyle.post_title}>{post.title}
-                </div>
-                <div className={BoardListStyle.post_content}>{post.privew_content}</div>
-                <div className={BoardListStyle.post_content}>
-                  <span className={BoardListStyle.post_right}>입력일자 : {post.ins_ymdhms}</span>
-                </div>
-              </Link>
-          </li>
-          ))}
-        </ul>
+        <Card>
+          <ul className={BoardListStyle.post_list}>
+            {posts.map((post) => (
+              <li key={post.id} className={BoardListStyle.post_item}>
+                <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
+                  <CardHeader
+                    avatar={
+                      <Avatar sx={{ bgcolor: red[500], width: '100%'}} aria-label="recipe">
+                        {board_type}
+                      </Avatar>
+                    }
+                    title={
+                      <Typography variant="h6" sx={{ fontWeight: 'bold' }}> {/* Title 스타일링 */}
+                        {post.title}
+                      </Typography>
+                    }
+                    subheader={post.ins_ymdhms}
+                  />
+                  <div className={BoardListStyle.post_content}>{post.privew_content}</div>
+                </Link>
+            </li>
+            ))}
+          </ul>
+        </Card>
         </div>
       </div>
       <footer className={styles.footer}>

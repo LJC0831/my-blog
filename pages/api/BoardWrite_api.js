@@ -182,3 +182,21 @@ export async function fileStatUpdate(id) {
       console.error('fileDelete 조회실패', error);
     }
 }
+//썸네일
+export async function ThumbnailUpload(formData) {
+  try {
+    const response = await fetch(`${api}/api/blog/ThumbnailUpload`, {
+      method: 'POST',
+      body: formData,
+    });
+    if (response.ok) {
+      // 성공적으로 저장됨
+      console.log('내용이 성공적으로 저장되었습니다.');
+    } else {
+      // 저장 실패
+      console.error('ThumbnailUpload 내용 저장에 실패했습니다.');
+    }
+  } catch (error) {
+    console.error('ThumbnailUpload 내용 저장에 실패했습니다.', error);
+  }
+}

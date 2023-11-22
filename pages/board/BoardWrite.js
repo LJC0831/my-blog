@@ -7,7 +7,7 @@ import Navigator from './Navigator';
 import dynamic from 'next/dynamic';
 import CommonStyle from '../../styles/common.module.css';
 import BoardWriteStyle from '../../styles/BoardWrite.module.css';
-import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02 } from '../api/BoardWrite_api';
+import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
 
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
@@ -25,7 +25,7 @@ function addLineBreaks(text) {
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-function BoardWrite({seo_title, seo_privew}) {
+function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const router = useRouter();
   const { id } = router.query; //게시글번호
   const initialHTML = ''; // 초기 HTML
@@ -65,6 +65,17 @@ function BoardWrite({seo_title, seo_privew}) {
   }
   const saveAfter= async() => {
     window.location.href ='/board/BoardList?board_type='+id; // 페이지 이동
+  }
+  //대표이미지 업로드
+  const onSelectFile = (e) =>{
+    const file = e.target.files[0];
+    const formData = new FormData();
+    const timestamp = Date.now();
+    const uniqueFileName = `${timestamp}_img_upload`;
+    formData.append('file', file);
+    formData.append('fileName', uniqueFileName);
+    formData.append('id', id);
+    ThumbnailUpload(formData);
   }
   // 저장처리
   const handleEditButtonClick = async () => {
@@ -155,7 +166,7 @@ function BoardWrite({seo_title, seo_privew}) {
         <meta property="og:type" content="website"/> 
         <meta property="og:title" content={seo_title}/>
         <meta property="og:description" content={seo_privew}/>
-        <meta property="og:image" content="https://www.develop-blog.shop/profile.JPG"></meta>
+        <meta property="og:image" content={seo_Thumbnail}></meta>
     
       </Head>
       <Header />
@@ -173,6 +184,12 @@ function BoardWrite({seo_title, seo_privew}) {
               <h1>{addLineBreaks(title)}</h1>
             </div>
           )}
+          {isEditing && (
+            <p className='.vw60'>
+              <input type='file' name='images' onChange={onSelectFile} accept='.png, .jpg,image/*'/>
+            </p>
+             ) 
+          }
           {isEditing && (
             <p className='.vw60'>
               <textarea 
@@ -254,16 +271,19 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
   let seo_title = 'LJC Developer Blog';
   let seo_privew = 'LJC Developer Blog';
+  let seo_Thumbnail = 'https://www.develop-blog.shop/profile.JPG';
   try {
     if (!isNaN(id)) {
       const data = await Search01(id, 'Admin'); //게시글조회
       if (data) {
         seo_title = data[0].title;
         seo_privew = data[0].privew_content;
+        seo_Thumbnail = data[0].thumbnail_url;
         return {
           props: {
             seo_title,
             seo_privew,
+            seo_Thumbnail,
           },
         };
       }
@@ -273,6 +293,7 @@ export async function getServerSideProps(context) {
       props: {
         seo_title,
         seo_privew,
+        seo_Thumbnail,
       },
     };
   }
@@ -281,6 +302,7 @@ export async function getServerSideProps(context) {
     props: {
       seo_title,
       seo_privew,
+      seo_Thumbnail,
     },
   };
 }

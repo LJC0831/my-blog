@@ -67,6 +67,31 @@
     .board_textarea{
       width:50vw;
     }
+    /* Popup Container */
+    .image_popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw; /* 현재 화면 너비의 80% */
+      height: 80vh; /* 현재 화면 높이의 80% */
+      background-color: white;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    /* Image within Popup */
+    .image_popup img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
     @media (max-width: 768px) {
       .relation_form {

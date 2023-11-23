@@ -40,6 +40,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const [relationData, setRelationData] = useState([]); // 관련게시판 배열
   const [isEditing, setIsEditing] = useState(false); // 에디터의 가시성 상태를 저장
   const [isLoading, setIsLoading] = useState(false); //로딩
+  const [selectedImage, setSelectedImage] = useState(''); // 선택된 이미지 URL
+  const [showImagePopup, setShowImagePopup] = useState(false); // 이미지 팝업 노출 여부
   
 
   //에디터 옵션
@@ -115,6 +117,23 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     window.location.reload();
   }; 
 
+  //이미지 팝업
+  const openImagePopup = (imageUrl) => {
+    setSelectedImage(imageUrl);
+    setShowImagePopup(true);
+  };
+
+  const closeImagePopup = () => {
+    setSelectedImage('');
+    setShowImagePopup(false);
+  };
+  const handleImageClick = (event) => {
+    const images = document.querySelectorAll('.description img');
+    images.forEach((img) => {
+      img.addEventListener('click', () => openImagePopup(img.src));
+    });
+  };
+
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -153,6 +172,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         });
       }, 300);
     } 
+    handleImageClick(); 
   }, [id]); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
 
@@ -200,12 +220,29 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             </p>
              ) 
           }
+          {/* 팝업 */}
+          {showImagePopup && (
+              <div className={BoardWriteStyle.image_popup}>
+                <img src={selectedImage} alt="Popup" onClick={closeImagePopup} />
+                <button className={CommonStyle.new_post_button} onClick={closeImagePopup}>Close</button>
+              </div>
+          )}
           {isEditing ? (
             <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} className={BoardWriteStyle.board_textarea} />
           ) : (
             <p
               className="description"
-              dangerouslySetInnerHTML={{ __html: introText }} />
+              dangerouslySetInnerHTML={{ __html: introText }}
+                ref={(el) => {
+                  if (el) {
+                    el.addEventListener('click', (event) => {
+                      if (event.target.tagName === 'IMG') {
+                        openImagePopup(event.target.src);
+                      }
+                    });
+                  }
+                }}
+              />
           )}
            { isLoginYn && 
               isLoading ? (

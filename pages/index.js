@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import Header from './board/Header'
 import Navigator from './board/Navigator'
 import { Search02 } from './api/BoardList_api';
-import BoardListStyle from '../styles/BoardList.module.css';
+import BoardListStyle from '../styles/index.module.css';
 import {React, useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -49,39 +49,40 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="/">My Blog</a>
         </h1>
-        <div><h3>최신글 목록</h3></div>
-        <Card sx={{ maxWidth: 345 }}>
-          <ul className={BoardListStyle.post_list}>
-            {posts.map((post) => (
-              <li key={post.id} className={BoardListStyle.post_item}>
-                  <CardHeader
-                    avatar={
-                      <Avatar sx={{ bgcolor: red[500], width: '100%'}} aria-label="recipe">
-                        {post.board_type}
-                      </Avatar>
-                    }
-                    title={
-                      <Typography variant="h6" sx={{ fontWeight: 'bold' }}> {/* Title 스타일링 */}
-                        {post.title}
-                      </Typography>
-                    }
-                    subheader={post.ins_ymdhms}
-                  />
-                  <CardMedia
-                      component="img"
-                      height="194"
-                      image={post.thumbnail_url}
-                      alt="Paella dish"
-                    />
-                  <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                      {post.privew_content}
+        <br></br><br></br>
+        <div><h3>많이 찾는 게시글</h3></div>
+        <div className={BoardListStyle.post_container}>
+        {posts.map((post) => (
+            <Card key={post.id} sx={{ maxWidth: 345 }} className={BoardListStyle.post_item}>
+              <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
+                <CardHeader
+                  avatar={
+                    <Avatar sx={{ bgcolor: red[500], width: '100%' }} aria-label="recipe">
+                      {post.board_type}
+                    </Avatar>
+                  }
+                  title={
+                    <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                      {post.title}
                     </Typography>
-                  </CardContent>
-            </li>
-            ))}
-          </ul>
-        </Card>
+                  }
+                  subheader={post.ins_ymdhms}
+                />
+                <CardMedia
+                  component="img"
+                  height="194"
+                  image={post.thumbnail_url}
+                  alt="Post Thumbnail"
+                />
+                <CardContent>
+                  <Typography variant="body2" color="text.secondary">
+                    {post.privew_content}
+                  </Typography>
+                </CardContent>
+              </Link>
+            </Card>
+          ))}
+        </div>
       </main>
       </div>
 

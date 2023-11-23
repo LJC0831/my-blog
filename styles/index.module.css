@@ -1,0 +1,38 @@
+/* BoardList.module.css 파일에 추가 */
+
+.post_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 각 카드 사이의 간격 조절을 위한 값 */
+  }
+  
+  .post_item {
+    flex: 1 0 calc(33.33% - 20px); /* 각 카드의 크기를 조정하여 3개씩 표시 */
+    max-width: calc(33.33% - 20px); /* 최대 너비 설정 */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* 아래 여백 설정 */
+    border: 1px solid #ccc; /* 테두리 스타일 및 색상 설정 */
+    border-radius: 5px; /* 테두리의 모서리를 둥글게 만듦 */
+  }
+  
+  @media (max-width: 992px) {
+    .post_item {
+      flex: 1 0 calc(50% - 20px); /* 화면이 작아질 때, 2개씩 표시 */
+      max-width: calc(50% - 20px); /* 최대 너비 설정 */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .post_item {
+      flex: 1 0 100%; /* 화면이 더 작아질 때, 한 줄에 1개씩 표시 */
+      max-width: 100%; /* 최대 너비 설정 */
+      margin-bottom: 20px; /* 아래 여백 설정 */
+    }
+  }
+
+  /* 웹 */
+  @media (min-width: 768px) {
+    .post_container {
+        margin-left: 50px;
+      }
+   }

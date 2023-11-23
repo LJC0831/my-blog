@@ -33,6 +33,6 @@
   /* 웹 */
   @media (min-width: 768px) {
     .post_container {
-        margin-left: 50px;
+        margin-left: 100px;
       }
    }

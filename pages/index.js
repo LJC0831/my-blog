@@ -50,7 +50,7 @@ export default function Home() {
           Welcome to <a href="/">My Blog</a>
         </h1>
         <div><h3>최신글 목록</h3></div>
-        <Card>
+        <Card sx={{ maxWidth: 345 }}>
           <ul className={BoardListStyle.post_list}>
             {posts.map((post) => (
               <li key={post.id} className={BoardListStyle.post_item}>

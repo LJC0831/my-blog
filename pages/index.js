@@ -49,6 +49,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="/">My Blog</a>
         </h1>
+        <div><h3>최신글 목록</h3></div>
         <Card>
           <ul className={BoardListStyle.post_list}>
             {posts.map((post) => (

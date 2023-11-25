@@ -4,5 +4,3 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    NETLIFY_NEXT_PLUGIN_SKIP = "true"

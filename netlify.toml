@@ -1,4 +1,5 @@
 [build]
+  commant = "npm run build"
   publish = "out"
 
 [[plugins]]

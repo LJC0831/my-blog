@@ -1,6 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
-
-module.exports = nextConfig
+module.exports = {
+  images: {
+    // 이미지 최적화 비활성화
+    loader: 'imgix',
+    path: '/',
+  },
+};

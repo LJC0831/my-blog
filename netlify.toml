@@ -1,6 +1,6 @@
 [build]
   commant = "npm run build"
-  publish = "next"
+  publish = "out"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

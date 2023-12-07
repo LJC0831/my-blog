@@ -135,7 +135,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   };
 
   // 처음 렌더링 시 Search01 함수 호출
-  useEffect(() => {
+  useEffect(() => {  
+    setIsLoading(true);  
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);
     if(!isNaN(id)){ //작성된 글 읽기
@@ -173,6 +174,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       }, 300);
     } 
     handleImageClick(); 
+    setIsLoading(false);
   }, [id]); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
 
@@ -190,6 +192,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     
       </Head>
       <Header />
+      {/* 메인내용 */}
+      {isLoading ? (<div style={mainContent}><div className={CommonStyle.board_content}>loading...</div></div>) : (
       <div style={mainContent}>
         <Navigator />
         <div className={CommonStyle.board_content}>
@@ -287,6 +291,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             )}
         </div>
       </div>
+       )}
+      {/* 메인내용 */}
       <footer className={styles.footer}>
         <a
           href="https://github.com/LJC0831/my-blog"

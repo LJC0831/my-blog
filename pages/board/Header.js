@@ -83,7 +83,7 @@ function Header() {
     <header className={headerClassName}>
       <div>
       <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
-          <span className={headerStyles.logo} onClick={goToHomePage}>LJC Developer Blog</span>
+          <span className={headerStyles.logo} onClick={goToHomePage}>LJC Developer Blog (오전 00:00 ~ 09:00 시간에는 서버Down) </span>
         {isLoginYn ? (
             <span className={headerStyles.account} onClick={openModal}>Admin</span>
           ) : (

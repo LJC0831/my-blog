@@ -25,6 +25,9 @@ export default function Home() {
     const fetchData = async () => {
       try {
         setCurrentTime(new Date());
+        if(isServerDownTime){
+          alert('서버Down 상태입니다.. 오전 9시 서버부팅 됩니다.');
+        }
         setTimeout(() => {
           Search02().then((data) => {
             if(data.length > 0){

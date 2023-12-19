@@ -142,6 +142,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
     setCurrentTime(new Date());
+    if(isServerDownTime){
+      alert('서버Down 상태입니다.. 오전 9시 서버부팅 됩니다.');
+    }
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);
     if(!isNaN(id)){ //작성된 글 읽기

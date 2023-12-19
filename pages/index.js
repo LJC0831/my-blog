@@ -15,11 +15,16 @@ import CardContent from '@mui/material/CardContent';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
+  const koreanTime = currentTime.toLocaleTimeString('en-US', { timeZone: 'Asia/Seoul' });
+  const [hours, minutes] = koreanTime.split(':').map(Number);
+  const isServerDownTime = hours >= 3 && hours < 8 && minutes >= 0 && minutes <= 30;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setCurrentTime(new Date());
         setTimeout(() => {
           Search02().then((data) => {
             if(data.length > 0){
@@ -47,7 +52,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="/">My Blog</a>
+            {isServerDownTime ? '오전 03:00 ~ 08:30 서버Down...' : (
+              <>
+                Welcome to <a href="/">My Blog</a>
+              </>
+            )}
         </h1>
         <br></br><br></br>
         <div><h3>많이 찾는 게시글</h3></div>

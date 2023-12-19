@@ -42,6 +42,11 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const [isLoading, setIsLoading] = useState(false); //로딩
   const [selectedImage, setSelectedImage] = useState(''); // 선택된 이미지 URL
   const [showImagePopup, setShowImagePopup] = useState(false); // 이미지 팝업 노출 여부
+  const [currentTime, setCurrentTime] = useState(new Date()); //서버시간
+
+  const koreanTime = currentTime.toLocaleTimeString('en-US', { timeZone: 'Asia/Seoul' });
+  const [hours, minutes] = koreanTime.split(':').map(Number);
+  const isServerDownTime = hours >= 3 && hours < 8 && minutes >= 0 && minutes <= 30;
   
 
   //에디터 옵션
@@ -136,6 +141,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
+    setCurrentTime(new Date());
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);
     if(!isNaN(id)){ //작성된 글 읽기
@@ -193,6 +199,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       <div style={mainContent}>
         <Navigator />
         <div className={CommonStyle.board_content}>
+          <h1 className={styles.title}>
+              {isServerDownTime && '오전 03:00 ~ 08:30 서버Down...'}
+          </h1>
           {isEditing ? (
             <textarea
               className={BoardWriteStyle.board_textarea}

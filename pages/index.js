@@ -16,11 +16,12 @@ import CardContent from '@mui/material/CardContent';
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [currentTime, setCurrentTime] = useState(new Date());
-
-  const koreanTime = currentTime.toLocaleTimeString('en-US', { timeZone: 'Asia/Seoul' });
-  const [hours, minutes] = koreanTime.split(':').map(Number);
-  const isServerDownTime = hours >= 3 && hours < 8 && minutes >= 0 && minutes <= 30;
-
+  
+  const options = { timeZone: 'Asia/Seoul', hour12: false, hour: 'numeric' };
+  const koreanTime = new Intl.DateTimeFormat('en-US', options).format(currentTime);
+  const hours = parseInt(koreanTime.split(':')[0], 10);
+  const isServerDownTime = hours >= 3 && hours < 9;
+  
   useEffect(() => {
     const fetchData = async () => {
       try {

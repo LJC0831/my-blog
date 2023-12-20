@@ -44,9 +44,10 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const [showImagePopup, setShowImagePopup] = useState(false); // 이미지 팝업 노출 여부
   const [currentTime, setCurrentTime] = useState(new Date()); //서버시간
 
-  const koreanTime = currentTime.toLocaleTimeString('en-US', { timeZone: 'Asia/Seoul' });
-  const [hours, minutes] = koreanTime.split(':').map(Number);
-  const isServerDownTime = hours >= 3 && hours < 8 && minutes >= 0 && minutes <= 30;
+  const options = { timeZone: 'Asia/Seoul', hour12: false, hour: 'numeric' };
+  const koreanTime = new Intl.DateTimeFormat('en-US', options).format(currentTime);
+  const hours = parseInt(koreanTime.split(':')[0], 10);
+  const isServerDownTime = hours >= 3 && hours < 9;
   
 
   //에디터 옵션

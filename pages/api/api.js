@@ -1,4 +1,4 @@
-const api = 'https://port-0-backend-nodejs-20zynm2mlk2nnlwj.sel4.cloudtype.app';
+const api = 'http://158.179.164.147:3000';
 //const api = 'http://localhost:3000';
 
 export function exchangeString01(text){ //  따옴표변환    

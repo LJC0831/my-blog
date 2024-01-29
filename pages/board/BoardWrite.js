@@ -315,6 +315,8 @@ export async function getServerSideProps(context) {
     return { props: {} };
   }
 
+  alert('');
+
   // www가 있는 도메인이면 www를 제거하여 리디렉션
   const hostWithoutWww = req.headers.host.replace(/^www\./, '');
   if (req.headers.host !== hostWithoutWww) {

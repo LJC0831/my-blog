@@ -9,7 +9,6 @@ import CommonStyle from '../../styles/common.module.css';
 import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
-import {showToast } from '../api/api';
 
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
@@ -136,7 +135,6 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
-    showToast(this, '페이지 Load...');
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);
     if(!isNaN(id)){ //작성된 글 읽기

@@ -9,6 +9,7 @@ import CommonStyle from '../../styles/common.module.css';
 import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
+import LoadingPage from '../board/LoadingPage';
 
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
@@ -27,6 +28,10 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const router = useRouter();
+
+  if (!seo_title) {
+    return <LoadingPage />;
+  }
   const { id } = router.query; //게시글번호
   const initialHTML = ''; // 초기 HTML
   const initComment = '';

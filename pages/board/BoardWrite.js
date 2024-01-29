@@ -135,6 +135,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
+    alert('');
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);
     if(!isNaN(id)){ //작성된 글 읽기
@@ -314,8 +315,6 @@ export async function getServerSideProps(context) {
     res.end();
     return { props: {} };
   }
-
-  alert('');
 
   // www가 있는 도메인이면 www를 제거하여 리디렉션
   const hostWithoutWww = req.headers.host.replace(/^www\./, '');

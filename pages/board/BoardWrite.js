@@ -136,6 +136,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
+    debugger;
     showToast(this, '페이지 Load...');
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);

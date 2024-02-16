@@ -318,6 +318,21 @@ const mainContent = {
   display: 'flex'
 };
 
+export async function getServerSideProps() {
+  // 서버 측에서 데이터를 가져오는 로직
+  const seo_title = 'This is some server-rendered data.';
+  const seo_privew = 'This is some server-rendered data.';
+  const seo_Thumbnail = 'This is some server-rendered data.';
+  
+  return {
+    props: {
+      seo_title,
+      seo_privew,
+      seo_Thumbnail,
+    },
+  };
+}
+
 // export async function getServerSideProps(context) {
 //   const { id } = context.query;
 //   let seo_title = 'LJC Developer Blog';

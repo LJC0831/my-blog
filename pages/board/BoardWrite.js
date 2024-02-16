@@ -304,26 +304,26 @@ const mainContent = {
 };
 
 export async function getServerSideProps(context) {
-  const { req, res } = context;
+  // const { req, res } = context;
 
-   // 현재 요청이 HTTPS가 아니면 HTTPS로 리디렉션
-   if (req.headers['x-forwarded-proto'] !== 'https') {
-    res.writeHead(301, {
-      Location: `https://${req.headers.host}${req.url}`,
-    });
-    res.end();
-    return { props: {} };
-  }
+  //  // 현재 요청이 HTTPS가 아니면 HTTPS로 리디렉션
+  //  if (req.headers['x-forwarded-proto'] !== 'https') {
+  //   res.writeHead(301, {
+  //     Location: `https://${req.headers.host}${req.url}`,
+  //   });
+  //   res.end();
+  //   return { props: {} };
+  // }
 
-  // www가 있는 도메인이면 www를 제거하여 리디렉션
-  const hostWithoutWww = req.headers.host.replace(/^www\./, '');
-  if (req.headers.host !== hostWithoutWww) {
-    res.writeHead(301, {
-      Location: `https://${hostWithoutWww}${req.url}`,
-    });
-    res.end();
-    return { props: {} };
-  }
+  // // www가 있는 도메인이면 www를 제거하여 리디렉션
+  // const hostWithoutWww = req.headers.host.replace(/^www\./, '');
+  // if (req.headers.host !== hostWithoutWww) {
+  //   res.writeHead(301, {
+  //     Location: `https://${hostWithoutWww}${req.url}`,
+  //   });
+  //   res.end();
+  //   return { props: {} };
+  // }
   
   const { id } = context.query;
   let seo_title = 'LJC Developer Blog';

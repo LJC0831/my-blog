@@ -10,7 +10,6 @@ import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
 
-
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
   if(text !== null && text !== undefined){
@@ -43,6 +42,12 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const [isLoading, setIsLoading] = useState(false); //로딩
   const [selectedImage, setSelectedImage] = useState(''); // 선택된 이미지 URL
   const [showImagePopup, setShowImagePopup] = useState(false); // 이미지 팝업 노출 여부
+  const [currentTime, setCurrentTime] = useState(new Date()); //서버시간
+
+  const koreanTime = currentTime.toLocaleTimeString('en-US', { timeZone: 'Asia/Seoul' });
+  const [hours, minutes] = koreanTime.split(':').map(Number);
+  const isServerDownTime = hours >= 3 && hours < 8 && minutes >= 0 && minutes <= 30;
+  
 
   //에디터 옵션
   const toolbarOptions = [
@@ -136,6 +141,10 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
+    setCurrentTime(new Date());
+    if(isServerDownTime){
+      alert('서버Down 상태입니다.. 오전 9시 서버부팅 됩니다.');
+    }
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);
     if(!isNaN(id)){ //작성된 글 읽기
@@ -193,6 +202,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       <div style={mainContent}>
         <Navigator />
         <div className={CommonStyle.board_content}>
+          <h1 className={styles.title}>
+              {isServerDownTime && '오전 03:00 ~ 08:30 서버Down...'}
+          </h1>
           {isEditing ? (
             <textarea
               className={BoardWriteStyle.board_textarea}
@@ -304,10 +316,37 @@ const mainContent = {
   display: 'flex'
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { id } = context.query;
   let seo_title = 'LJC Developer Blog';
   let seo_privew = 'LJC Developer Blog';
   let seo_Thumbnail = 'https://www.develop-blog.shop/profile.JPG';
+  try {
+    if (!isNaN(id)) {
+      const data = await Search01(id, 'Admin'); //게시글조회
+      if (data) {
+        seo_title = data[0].title;
+        seo_privew = data[0].privew_content;
+        seo_Thumbnail = data[0].thumbnail_url;
+        return {
+          props: {
+            seo_title,
+            seo_privew,
+            seo_Thumbnail,
+          },
+        };
+      }
+    }
+  } catch(error){
+    return {
+      props: {
+        seo_title,
+        seo_privew,
+        seo_Thumbnail,
+      },
+    };
+  }
+
   return {
     props: {
       seo_title,

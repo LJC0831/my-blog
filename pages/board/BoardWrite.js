@@ -10,6 +10,7 @@ import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
 
+
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
   if(text !== null && text !== undefined){
@@ -309,32 +310,32 @@ export async function getServerSideProps(context) {
   let seo_title = 'LJC Developer Blog';
   let seo_privew = 'LJC Developer Blog';
   let seo_Thumbnail = 'https://www.develop-blog.shop/profile.JPG';
-  try {
-    if (!isNaN(id)) {
-      const data = await Search01(id, 'Admin'); //게시글조회
-      if (data) {
-        seo_title = data[0].title;
-        seo_privew = data[0].privew_content;
-        seo_Thumbnail = data[0].thumbnail_url;
-        return {
-          props: {
-            seo_title,
-            seo_privew,
-            seo_Thumbnail,
-          },
-        };
-      }
-    }
-  } catch(error){
-    console.log('getServerSideProps 에러발생');
-    return {
-      props: {
-        seo_title,
-        seo_privew,
-        seo_Thumbnail,
-      },
-    };
-  }
+  // try {
+  //   if (!isNaN(id)) {
+  //     const data = await Search01(id, 'Admin'); //게시글조회
+  //     if (data) {
+  //       seo_title = data[0].title;
+  //       seo_privew = data[0].privew_content;
+  //       seo_Thumbnail = data[0].thumbnail_url;
+  //       return {
+  //         props: {
+  //           seo_title,
+  //           seo_privew,
+  //           seo_Thumbnail,
+  //         },
+  //       };
+  //     }
+  //   }
+  // } catch(error){
+  //   console.log('getServerSideProps 에러발생');
+  //   return {
+  //     props: {
+  //       seo_title,
+  //       seo_privew,
+  //       seo_Thumbnail,
+  //     },
+  //   };
+  // }
 
   return {
     props: {

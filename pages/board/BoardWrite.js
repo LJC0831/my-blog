@@ -304,10 +304,11 @@ const mainContent = {
 };
 
 export async function getServerSideProps(context) {
+
   const { id } = context.query;
   let seo_title = 'LJC Developer Blog';
   let seo_privew = 'LJC Developer Blog';
-  let seo_Thumbnail = 'https://develop-blog.shop/profile.JPG';
+  let seo_Thumbnail = 'https://www.develop-blog.shop/profile.JPG';
   try {
     if (!isNaN(id)) {
       const data = await Search01(id, 'Admin'); //게시글조회

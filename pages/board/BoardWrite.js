@@ -319,9 +319,6 @@ const mainContent = {
 };
 
 export async function getServerSideProps(context) {
-  const Search01 = dynamic(() => import("../api/BoardWrite_api"), {
-    ssr: false
-  });
   const { id } = context.query;
   let seo_title = 'LJC Developer Blog';
   let seo_privew = 'LJC Developer Blog';

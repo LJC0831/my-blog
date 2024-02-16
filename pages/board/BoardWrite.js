@@ -10,6 +10,8 @@ import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
 
+
+
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
   if(text !== null && text !== undefined){
@@ -317,6 +319,9 @@ const mainContent = {
 };
 
 export async function getServerSideProps(context) {
+  const Search01 = dynamic(() => import("../api/BoardWrite_api"), {
+    ssr: false
+  });
   const { id } = context.query;
   let seo_title = 'LJC Developer Blog';
   let seo_privew = 'LJC Developer Blog';

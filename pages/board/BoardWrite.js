@@ -303,4 +303,45 @@ const mainContent = {
   display: 'flex'
 };
 
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  let seo_title = 'LJC Developer Blog';
+  let seo_privew = 'LJC Developer Blog';
+  let seo_Thumbnail = 'https://develop-blog.shop/profile.JPG';
+  try {
+    if (!isNaN(id)) {
+      const data = await Search01(id, 'Admin'); //게시글조회
+      if (data) {
+        seo_title = data[0].title;
+        seo_privew = data[0].privew_content;
+        seo_Thumbnail = data[0].thumbnail_url;
+        return {
+          props: {
+            seo_title,
+            seo_privew,
+            seo_Thumbnail,
+          },
+        };
+      }
+    }
+  } catch(error){
+    return {
+      props: {
+        seo_title,
+        seo_privew,
+        seo_Thumbnail,
+      },
+    };
+  }
+
+  return {
+    props: {
+      seo_title,
+      seo_privew,
+      seo_Thumbnail,
+    },
+  };
+}
+
+
 export default BoardWrite;

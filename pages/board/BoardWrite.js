@@ -27,7 +27,7 @@ function addLineBreaks(text) {
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
+function BoardWrite() {
   const router = useRouter();
   const { id } = router.query; //게시글번호
   const initialHTML = ''; // 초기 HTML
@@ -189,17 +189,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>{seo_title}</title>
-        <meta name="description" content={seo_privew} />
-        <link rel="icon" href="/favicon.ico" />
-        {/* 오픈그래프 */}
-        <meta property="og:type" content="website"/> 
-        <meta property="og:title" content={seo_title}/>
-        <meta property="og:description" content={seo_privew}/>
-        <meta property="og:image" content={seo_Thumbnail}></meta>
     
-      </Head>
       <Header />
       <div style={mainContent}>
         <Navigator />

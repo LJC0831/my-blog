@@ -1,6 +1,6 @@
+import {React, useState, useEffect, Fragment } from 'react';
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import {React, useState, useEffect, Fragment } from 'react';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import Header from './Header';
 import Navigator from './Navigator';
@@ -27,7 +27,7 @@ function addLineBreaks(text) {
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-function BoardWrite() {
+function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const router = useRouter();
   const { id } = router.query; //게시글번호
   const initialHTML = ''; // 초기 HTML
@@ -189,7 +189,17 @@ function BoardWrite() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>{seo_title}</title>
+        <meta name="description" content={seo_privew} />
+        <link rel="icon" href="/favicon.ico" />
+        {/* 오픈그래프 */}
+        <meta property="og:type" content="website"/> 
+        <meta property="og:title" content={seo_title}/>
+        <meta property="og:description" content={seo_privew}/>
+        <meta property="og:image" content={seo_Thumbnail}></meta>
     
+      </Head>
       <Header />
       <div style={mainContent}>
         <Navigator />
@@ -307,21 +317,6 @@ function BoardWrite() {
 const mainContent = {
   display: 'flex'
 };
-
-export async function getServerSideProps() {
-  // 서버 측에서 데이터를 가져오는 로직
-  const seo_title = 'This is some server-rendered data.';
-  const seo_privew = 'This is some server-rendered data.';
-  const seo_Thumbnail = 'This is some server-rendered data.';
-  
-  return {
-    props: {
-      seo_title,
-      seo_privew,
-      seo_Thumbnail,
-    },
-  };
-}
 
 // export async function getServerSideProps(context) {
 //   const { id } = context.query;

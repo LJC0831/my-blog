@@ -320,7 +320,7 @@ const mainContent = {
 
 export async function getServerSideProps() {
   return {
-    props: {},
+    props: null,
   };
 }
 

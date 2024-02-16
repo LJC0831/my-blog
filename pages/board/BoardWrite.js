@@ -318,6 +318,12 @@ const mainContent = {
   display: 'flex'
 };
 
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
 // export async function getServerSideProps(context) {
 //   const { id } = context.query;
 //   let seo_title = 'LJC Developer Blog';

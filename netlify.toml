@@ -1,6 +1,7 @@
 [build]
   commant = "npm run build"
   publish = ".next"
+  runtime = "nextjs@4.41.3"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

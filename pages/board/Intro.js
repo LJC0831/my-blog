@@ -122,11 +122,4 @@ const mainContent = {
   display: 'flex'
 };
 
-export async function getServerSideProps(context) {
-  // 빈 객체 반환
-  return {
-    props: {}
-  };
-}
-
 export default Intro;

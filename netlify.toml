@@ -1,5 +1,5 @@
 [build]
-  commant = "npm run build"
+  command = "npm install && npm install -g node@14.x && npm run build"
   publish = ".next"
 
 [[plugins]]

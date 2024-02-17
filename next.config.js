@@ -10,7 +10,6 @@ module.exports = {
     const pagesToExport = { 
       '/': { page: '/' }, 
       // 다른 페이지들...
-      '/board/BoardWrite': { page: '/board/BoardWrite' },
       // '/board/BoardWrite': { page: '/board/BoardWrite' }, // 이 부분을 주석 처리하여 제외
     };
 

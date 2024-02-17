@@ -1,6 +1,6 @@
-import { React, useState, useEffect, Fragment } from 'react';
-import Head from 'next/head';
-import styles from '../../styles/Home.module.css';
+import {React, useState, useEffect, Fragment } from 'react';
+import Head from 'next/head'
+import styles from '../../styles/Home.module.css'
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import Header from './Header';
 import Navigator from './Navigator';
@@ -10,9 +10,11 @@ import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
 
+
+
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
-  if (text !== null && text !== undefined) {
+  if(text !== null && text !== undefined){
     const withBreaks = text.split('\n').map((line, index) => (
       <Fragment key={index}>
         {line}
@@ -25,7 +27,7 @@ function addLineBreaks(text) {
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
+function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const router = useRouter();
   const { id } = router.query; //게시글번호
   const initialHTML = ''; // 초기 HTML
@@ -47,7 +49,7 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
   const koreanTime = currentTime.toLocaleTimeString('en-US', { timeZone: 'Asia/Seoul' });
   const [hours, minutes] = koreanTime.split(':').map(Number);
   const isServerDownTime = hours >= 3 && hours < 8 && minutes >= 0 && minutes <= 30;
-
+  
 
   //에디터 옵션
   const toolbarOptions = [
@@ -67,14 +69,14 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
   const handleIntroTextChange = (value) => {
     setIntroText(value);
   };
-  const handleCommentTextChange = (e) => {
+  const handleCommentTextChange = (e) =>{
     setcommentText(e.target.value);
   }
-  const saveAfter = async () => {
-    window.location.href = '/board/BoardList?board_type=' + id; // 페이지 이동
+  const saveAfter= async() => {
+    window.location.href ='/board/BoardList?board_type='+id; // 페이지 이동
   }
   //대표이미지 업로드
-  const onSelectFile = (e) => {
+  const onSelectFile = (e) =>{
     const file = e.target.files[0];
     const formData = new FormData();
     const timestamp = Date.now();
@@ -89,38 +91,38 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
     setIsLoading(true); // Set loading state to true
     setIsEditing(!isEditing); // 편집 버튼 클릭 시 가시성 상태를 토글
     if (isEditing) {
-      if (!isNaN(id)) {
-        await fileStatUpdate(id);
-        const html = await upload01(introText, '', id); //html, board_type, board_id
-        update01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
-        setIsLoading(false);
-      } else {
-        const html = await upload01(introText, id, ''); //html, board_type, board_id
-        await save01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
-        await saveAfter();
-        setIsLoading(false);
-      }
+        if(!isNaN(id)){
+            await fileStatUpdate(id);
+            const html = await upload01(introText, '', id); //html, board_type, board_id
+            update01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
+            setIsLoading(false);
+          } else {
+            const html = await upload01(introText, id,''); //html, board_type, board_id
+            await save01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
+            await saveAfter();
+            setIsLoading(false);
+          }
     } else {
       setIsLoading(false);
     }
   };
-  const handleCommenButtonClick = async () => {
-    if (isLoginYn) {
-      const result = await save02(id, commentText, '관리자');
-      if (!result) {
+  const handleCommenButtonClick = async() => {
+    if(isLoginYn){
+      const result = await save02(id, commentText, '관리자');  
+      if(!result){
         alert('작성가능한 댓글이 초과하였습니다. 추후 작업예정');
         return;
       }
     } else {
       const result = await save02(id, commentText, '손님');
-      if (!result) {
+      if(!result){
         alert('작성가능한 댓글이 초과하였습니다. 추후 작업예정');
         return;
       }
     }
     setcommentText('');
     window.location.reload();
-  };
+  }; 
 
   //이미지 팝업
   const openImagePopup = (imageUrl) => {
@@ -142,17 +144,29 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
     setCurrentTime(new Date());
-    if (isServerDownTime) {
+    if(isServerDownTime){
       alert('서버Down 상태입니다.. 오전 9시 서버부팅 됩니다.');
     }
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     setIsLogin(isLoggedIn);
-    if (!isNaN(id)) { //작성된 글 읽기
-      Search01(id, isLoggedIn).then((data) => { //게시글조회
-        setSubject(data[0].title);
-        setIntroText(data[0].content);
-        setPrivew(data[0].privew_content);
-      });
+    if(!isNaN(id)){ //작성된 글 읽기
+        Search01(id, isLoggedIn).then((data) => { //게시글조회
+            setSubject(data[0].title);
+            setIntroText(data[0].content);
+            setPrivew(data[0].privew_content);
+        });
+        Search03(id).then((data) => {
+          // 관련게시판
+          const data2 = data.map((data2) => {
+            return {
+              title: data2.title,
+              url: data2.url
+            };
+          });
+          
+          // 배열로 저장한 댓글 정보를 상태 변수로 설정
+          setRelationData(data2);
+        });
       setTimeout(() => {
         Search02(id).then((data) => {
           // 모든 댓글 정보를 배열에 저장
@@ -163,25 +177,13 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
               date: comment.ins_ymdhms,
             };
           });
-
+          
           // 배열로 저장한 댓글 정보를 상태 변수로 설정
           setCommentData(comments);
         });
       }, 300);
-      Search03(id).then((data) => {
-        // 관련게시판
-        const data2 = data.map((data2) => {
-          return {
-            title: data2.title,
-            url: data2.url
-          };
-        });
-
-        // 배열로 저장한 댓글 정보를 상태 변수로 설정
-        setRelationData(data2);
-      });
-    }
-    handleImageClick();
+    } 
+    handleImageClick(); 
   }, [id]); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
 
@@ -192,18 +194,18 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
         <meta name="description" content={seo_privew} />
         <link rel="icon" href="/favicon.ico" />
         {/* 오픈그래프 */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={seo_title} />
-        <meta property="og:description" content={seo_privew} />
+        <meta property="og:type" content="website"/> 
+        <meta property="og:title" content={seo_title}/>
+        <meta property="og:description" content={seo_privew}/>
         <meta property="og:image" content={seo_Thumbnail}></meta>
-
+    
       </Head>
       <Header />
       <div style={mainContent}>
         <Navigator />
         <div className={CommonStyle.board_content}>
           <h1 className={styles.title}>
-            {isServerDownTime && '오전 03:00 ~ 08:30 서버Down...'}
+              {isServerDownTime && '오전 03:00 ~ 08:30 서버Down...'}
           </h1>
           {isEditing ? (
             <textarea
@@ -218,26 +220,26 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
           )}
           {isEditing && (
             <p className='.vw60'>
-              <input type='file' name='images' onChange={onSelectFile} accept='.png, .jpg,image/*' />
+              <input type='file' name='images' onChange={onSelectFile} accept='.png, .jpg,image/*'/>
             </p>
-          )
+             ) 
           }
           {isEditing && (
             <p className='.vw60'>
-              <textarea
-                className={BoardWriteStyle.board_textarea}
-                value={privew}
-                onChange={(e) => setPrivew(e.target.value)}
-              />
+              <textarea 
+              className={BoardWriteStyle.board_textarea}
+              value={privew} 
+              onChange={(e) => setPrivew(e.target.value)}
+            />
             </p>
-          )
+             ) 
           }
           {/* 팝업 */}
           {showImagePopup && (
-            <div className={BoardWriteStyle.image_popup}>
-              <img src={selectedImage} alt="Popup" onClick={closeImagePopup} />
-              <button className={CommonStyle.new_post_button} onClick={closeImagePopup}>Close</button>
-            </div>
+              <div className={BoardWriteStyle.image_popup}>
+                <img src={selectedImage} alt="Popup" onClick={closeImagePopup} />
+                <button className={CommonStyle.new_post_button} onClick={closeImagePopup}>Close</button>
+              </div>
           )}
           {isEditing ? (
             <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} className={BoardWriteStyle.board_textarea} />
@@ -245,58 +247,58 @@ function BoardWrite({ seo_title, seo_privew, seo_Thumbnail }) {
             <p
               className="description"
               dangerouslySetInnerHTML={{ __html: introText }}
-              ref={(el) => {
-                if (el) {
-                  el.addEventListener('click', (event) => {
-                    if (event.target.tagName === 'IMG') {
-                      openImagePopup(event.target.src);
-                    }
-                  });
-                }
-              }}
-            />
+                ref={(el) => {
+                  if (el) {
+                    el.addEventListener('click', (event) => {
+                      if (event.target.tagName === 'IMG') {
+                        openImagePopup(event.target.src);
+                      }
+                    });
+                  }
+                }}
+              />
           )}
-          {isLoginYn &&
-            isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              isLoginYn &&
-              <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>
-                {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
-              </button>
-
-            )
-          }
-          {!isNaN(id) &&
+           { isLoginYn && 
+              isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                isLoginYn && 
+                <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>
+                  {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
+                </button>
+                
+              )
+           }
+           { !isNaN(id) &&
             <div className={BoardWriteStyle.comment_section} >
-              <h2>댓글</h2>
-              <div className={BoardWriteStyle.comment_list}>
+                <h2>댓글</h2>
+                <div className={BoardWriteStyle.comment_list}>
                 {commentData.map((comment, index) => (
-                  <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span>
+                    <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span> 
                     <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
                     <span className={BoardWriteStyle.comment_time}>작성시간: {comment.date}</span></p>
                 ))}
-              </div>
+                </div>
 
-              <div className={BoardWriteStyle.comment_form}>
-                <textarea value={commentText} onChange={handleCommentTextChange} className={BoardWriteStyle.comment_textarea} placeholder="댓글을 작성하세요" />
-                <button className={CommonStyle.new_post_button} onClick={handleCommenButtonClick}>댓글 작성</button>
-              </div>
+                <div className={BoardWriteStyle.comment_form}>
+                    <textarea value={commentText} onChange={handleCommentTextChange} className={BoardWriteStyle.comment_textarea} placeholder="댓글을 작성하세요"/>
+                    <button className={CommonStyle.new_post_button} onClick={handleCommenButtonClick}>댓글 작성</button>
+                </div>
             </div>
-          }
+            }
         </div>
         {/* 관련게시판 */}
         <div className={BoardWriteStyle.relation_form}>
-          <h5>관련게시물</h5>
-          {relationData.length > 0 ? (
+            <h5>관련게시물</h5>
+            {relationData.length > 0 ? (
             <ul>
-              {relationData.map((data, index) => (
+            {relationData.map((data, index) => (
                 <li className={BoardWriteStyle.relation_li} key={index}><a href={data.url}>{data.title}</a></li>
-              ))}
+            ))}
             </ul>
-          ) : (
+            ) : (
             <p>관련 게시물이 없습니다.</p>
-          )}
+            )}
         </div>
       </div>
       <footer className={styles.footer}>
@@ -316,19 +318,62 @@ const mainContent = {
   display: 'flex'
 };
 
-export async function getServerSideProps() {
-  // 서버 측에서 데이터를 가져오는 비동기 작업 수행
-  const seo_title = 'This data is from server';
-  const seo_privew = 'This data is from server';
-  const seo_Thumbnail = 'This data is from server';
-
+export async function getStaticProps() {
+  // 여기서는 간단한 데이터를 반환하지만, 실제로는 외부 API 호출 등으로 데이터를 가져올 수 있습니다.
+  const seo_title = "Math.random()"; // 랜덤한 데이터 생성 예시
+  const seo_privew = "Math.random()"; // 랜덤한 데이터 생성 예시
+  const seo_Thumbnail = "Math.random()"; // 랜덤한 데이터 생성 예시
+  
   return {
     props: {
       seo_title,
       seo_privew,
       seo_Thumbnail,
     },
+    revalidate: 60, // 페이지를 다시 생성하는 주기 (초 단위). 60초마다 재생성됩니다.
   };
 }
+
+// export async function getServerSideProps(context) {
+//   const { id } = context.query;
+//   let seo_title = 'LJC Developer Blog';
+//   let seo_privew = 'LJC Developer Blog';
+//   let seo_Thumbnail = 'https://develop-blog.shop/profile.JPG';
+//   try {
+//     if (!isNaN(id)) {
+//       const data = await Search01(id, 'Admin'); //게시글조회
+//       if (data) {
+//         seo_title = data[0].title;
+//         seo_privew = data[0].privew_content;
+//         seo_Thumbnail = data[0].thumbnail_url;
+//         return {
+//           props: {
+//             seo_title,
+//             seo_privew,
+//             seo_Thumbnail,
+//           },
+//         };
+//       }
+//     }
+//   } catch(error){
+//     console.error("Error fetching data:");
+//     return {
+//       props: {
+//         seo_title,
+//         seo_privew,
+//         seo_Thumbnail,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {
+//       seo_title,
+//       seo_privew,
+//       seo_Thumbnail,
+//     },
+//   };
+// }
+
 
 export default BoardWrite;

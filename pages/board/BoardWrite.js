@@ -318,20 +318,18 @@ const mainContent = {
   display: 'flex'
 };
 
-export async function getStaticPaths() {
-  // 동적 경로를 생성하기 위한 paths 설정
-}
-
-export async function getStaticProps({ params }) {
-  // 페이지의 초기 데이터를 가져오는 비동기 함수 호출
-  // 필요한 데이터를 반환합니다.
-  const initialData = {}; // 예시에 맞게 데이터를 가져오는 비동기 로직을 구현하세요.
+export async function getServerSideProps() {
+  // 서버 측에서 데이터를 가져오는 비동기 작업 수행
+  const seo_title = 'This data is from server';
+  const seo_privew = 'This data is from server';
+  const seo_Thumbnail = 'This data is from server';
 
   return {
     props: {
-      initialData,
+      seo_title,
+      seo_privew,
+      seo_Thumbnail,
     },
-    revalidate: 60, // 60초마다 페이지를 재생성합니다.
   };
 }
 

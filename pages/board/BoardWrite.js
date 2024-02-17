@@ -318,62 +318,46 @@ const mainContent = {
   display: 'flex'
 };
 
-export async function getStaticProps() {
-  // 여기서는 간단한 데이터를 반환하지만, 실제로는 외부 API 호출 등으로 데이터를 가져올 수 있습니다.
-  const seo_title = "Math.random()"; // 랜덤한 데이터 생성 예시
-  const seo_privew = "Math.random()"; // 랜덤한 데이터 생성 예시
-  const seo_Thumbnail = "Math.random()"; // 랜덤한 데이터 생성 예시
-  
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  let seo_title = 'LJC Developer Blog';
+  let seo_privew = 'LJC Developer Blog';
+  let seo_Thumbnail = 'https://develop-blog.shop/profile.JPG';
+  try {
+    if (!isNaN(id)) {
+      const data = await Search01(id, 'Admin'); //게시글조회
+      if (data) {
+        seo_title = data[0].title;
+        seo_privew = data[0].privew_content;
+        seo_Thumbnail = data[0].thumbnail_url;
+        return {
+          props: {
+            seo_title,
+            seo_privew,
+            seo_Thumbnail,
+          },
+        };
+      }
+    }
+  } catch(error){
+    console.error("Error fetching data:");
+    return {
+      props: {
+        seo_title,
+        seo_privew,
+        seo_Thumbnail,
+      },
+    };
+  }
+
   return {
     props: {
       seo_title,
       seo_privew,
       seo_Thumbnail,
     },
-    revalidate: 60, // 페이지를 다시 생성하는 주기 (초 단위). 60초마다 재생성됩니다.
   };
 }
-
-// export async function getServerSideProps(context) {
-//   const { id } = context.query;
-//   let seo_title = 'LJC Developer Blog';
-//   let seo_privew = 'LJC Developer Blog';
-//   let seo_Thumbnail = 'https://develop-blog.shop/profile.JPG';
-//   try {
-//     if (!isNaN(id)) {
-//       const data = await Search01(id, 'Admin'); //게시글조회
-//       if (data) {
-//         seo_title = data[0].title;
-//         seo_privew = data[0].privew_content;
-//         seo_Thumbnail = data[0].thumbnail_url;
-//         return {
-//           props: {
-//             seo_title,
-//             seo_privew,
-//             seo_Thumbnail,
-//           },
-//         };
-//       }
-//     }
-//   } catch(error){
-//     console.error("Error fetching data:");
-//     return {
-//       props: {
-//         seo_title,
-//         seo_privew,
-//         seo_Thumbnail,
-//       },
-//     };
-//   }
-
-//   return {
-//     props: {
-//       seo_title,
-//       seo_privew,
-//       seo_Thumbnail,
-//     },
-//   };
-// }
 
 
 export default BoardWrite;

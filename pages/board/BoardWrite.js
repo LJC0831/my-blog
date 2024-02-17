@@ -342,6 +342,7 @@ export async function getServerSideProps(context) {
       }
     }
   } catch(error){
+    console.error("Error fetching data:");
     return {
       props: {
         seo_title,

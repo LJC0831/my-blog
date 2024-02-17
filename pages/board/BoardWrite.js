@@ -318,48 +318,63 @@ const mainContent = {
   display: 'flex'
 };
 
+export async function getStaticPaths() {
+  // 동적 경로를 생성하기 위한 paths 설정
+}
 
-
-export async function getServerSideProps(context) {
-  const { id } = context.query;
-  let seo_title = 'LJC Developer Blog';
-  let seo_privew = 'LJC Developer Blog';
-  let seo_Thumbnail = 'https://develop-blog.shop/profile.JPG';
-  try {
-    if (!isNaN(id)) {
-      const data = await Search01(id, 'Admin'); //게시글조회
-      if (data) {
-        seo_title = data[0].title;
-        seo_privew = data[0].privew_content;
-        seo_Thumbnail = data[0].thumbnail_url;
-        return {
-          props: {
-            seo_title,
-            seo_privew,
-            seo_Thumbnail,
-          },
-        };
-      }
-    }
-  } catch(error){
-    console.error("Error fetching data:");
-    return {
-      props: {
-        seo_title,
-        seo_privew,
-        seo_Thumbnail,
-      },
-    };
-  }
+export async function getStaticProps({ params }) {
+  // 페이지의 초기 데이터를 가져오는 비동기 함수 호출
+  // 필요한 데이터를 반환합니다.
+  const initialData = {}; // 예시에 맞게 데이터를 가져오는 비동기 로직을 구현하세요.
 
   return {
     props: {
-      seo_title,
-      seo_privew,
-      seo_Thumbnail,
+      initialData,
     },
+    revalidate: 60, // 60초마다 페이지를 재생성합니다.
   };
 }
+
+// export async function getServerSideProps(context) {
+//   const { id } = context.query;
+//   let seo_title = 'LJC Developer Blog';
+//   let seo_privew = 'LJC Developer Blog';
+//   let seo_Thumbnail = 'https://develop-blog.shop/profile.JPG';
+//   try {
+//     if (!isNaN(id)) {
+//       const data = await Search01(id, 'Admin'); //게시글조회
+//       if (data) {
+//         seo_title = data[0].title;
+//         seo_privew = data[0].privew_content;
+//         seo_Thumbnail = data[0].thumbnail_url;
+//         return {
+//           props: {
+//             seo_title,
+//             seo_privew,
+//             seo_Thumbnail,
+//           },
+//         };
+//       }
+//     }
+//   } catch(error){
+//     console.error("Error fetching data:");
+//     return {
+//       props: {
+//         seo_title,
+//         seo_privew,
+//         seo_Thumbnail,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {
+//       seo_title,
+//       seo_privew,
+//       seo_Thumbnail,
+//     },
+//   };
+// }
 
 
 export default BoardWrite;

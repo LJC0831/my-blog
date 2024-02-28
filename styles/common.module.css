@@ -24,7 +24,7 @@
   /* 화면 크기가 768px 이하일 때 스타일 변경 */
 @media (max-width: 768px) {
   .board_content {
-    margin-top: 80px;
+    margin-top: 150px;
     margin-left: 10px;
     width: 100vw;
    } 
@@ -39,13 +39,14 @@
     color: #fff; /* 글자색을 흰색으로 설정 */
     padding: 10px; /* 내용과의 간격을 조절하세요 */
     width:95vw;
+    font-size: 0.8rem;
   }
 }
 
 /* 화면 크기가 768px 이상일 때 스타일 변경 (웹)*/
 @media (min-width: 768px) {
   .board_content {
-    margin-top: 80px;
+    margin-top: 150px;
     margin-left: 10%;
     max-width: 80vw;
    }

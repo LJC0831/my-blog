@@ -1,3 +1,4 @@
+
 .header {
     position: fixed; /* 헤더를 화면 상단에 고정시킴 */
     top: 0; /* 화면 위쪽에 고정시킴 */
@@ -12,6 +13,27 @@
 .logo:hover{
 cursor: pointer;
 }
+
+.logo h1 {
+  text-align: center;
+      font-size:30px; font-weight:300; color:#222; letter-spacing:1px;
+      text-transform: uppercase;
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      grid-template-rows: 27px 0;
+      grid-gap: 20px;
+      align-items: center;
+  }
+
+.logo h1:after,.logo h1:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #222;
+    border-top: 1px solid #222;
+    height: 5px;
+  background-color:#f8f8f8;
+}
+
 
 .account { 
     float: right;

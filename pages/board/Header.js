@@ -83,13 +83,13 @@ function Header() {
     <header className={headerClassName}>
       <div>
       <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
-          <span className={headerStyles.logo} onClick={goToHomePage}>LJC Developer Blog</span>
-        {isLoginYn ? (
-            <span className={headerStyles.account} onClick={openModal}>Admin</span>
-          ) : (
-            <span className={headerStyles.account} onClick={openModal}>일반용</span>
-          )}
+          <span className={headerStyles.logo} onClick={goToHomePage}><h1>LJC Developer Blog</h1></span>
       </div>
+      {isLoginYn ? (
+        <span className={headerStyles.account} onClick={openModal}>Admin</span>
+      ) : (
+        <span className={headerStyles.account} onClick={openModal}>일반용</span>
+      )}
 
       <div className={headerStyles.menu_list}>
               <ul>

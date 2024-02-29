@@ -21,6 +21,7 @@ function Navigator() {
   }, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
   return (
+    <section className={NavigatorStyle.sidebar}>
     <nav className={NavigatorStyle.left_nav}>
       <ul style={navListStyle}>
         <li>
@@ -33,6 +34,7 @@ function Navigator() {
         ))}
       </ul>
     </nav>
+    </section>
   );
 };
 

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 html,
 body {
   padding: 0;
@@ -13,6 +14,10 @@ a {
 
 * {
   box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  --color-hover: rgba(32, 59, 232);
+  --transition: all 0.2s ease;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
 .left_nav{
   background-color: #ffffff; /* 배경색을 흰색으로 설정 */
   color: #333; /* 글자색 설정 */
   padding: 20px; /* 패딩 설정 */
   width: 200px; /* 네비게이션 너비 설정 */
   margin-top: 100px;
+  font-family: 'Poppins';
+  font-weight: 400;
 }
 
 .profile_img {

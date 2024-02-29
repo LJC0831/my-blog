@@ -1,143 +1,125 @@
 
 .header {
-    position: fixed; /* 헤더를 화면 상단에 고정시킴 */
-    top: 0; /* 화면 위쪽에 고정시킴 */
-    width: 100%; /* 화면 너비에 맞춤 */
-    background-color: #ffffff; /* 헤더 배경색 지정 */
-    color: #070707; /* 헤더 글자색 지정 */
-    padding: 10px; /* 헤더 패딩 설정 (선택사항) */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 (선택사항) */
-    z-index: 1000; /* 다른 요소 위에 헤더를 배치 (선택사항) */
-  }
+  position: fixed; /* 헤더를 화면 상단에 고정시킴 */
+  top: 0; /* 화면 위쪽에 고정시킴 */
+  width: 100%; /* 화면 너비에 맞춤 */
+  background-color: #ffffff; /* 헤더 배경색 지정 */
+  color: #070707; /* 헤더 글자색 지정 */
+  padding: 10px; /* 헤더 패딩 설정 (선택사항) */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 (선택사항) */
+  z-index: 1000; /* 다른 요소 위에 헤더를 배치 (선택사항) */
+}
 
 .logo:hover{
 cursor: pointer;
 }
 
 .logo h1 {
-  text-align: center;
-      font-size:30px; font-weight:300; color:#222; letter-spacing:1px;
-      text-transform: uppercase;
-      display: grid;
-      grid-template-columns: 1fr max-content 1fr;
-      grid-template-rows: 27px 0;
-      grid-gap: 20px;
-      align-items: center;
+  font-size:15px; font-weight:500; color:#222; letter-spacing:1px;
+}
+.account { 
+  float: right;
+  cursor: pointer;
+  border: 1px solid #fff;
+  transition: background-color 0.3s;
   }
-
-.logo h1:after,.logo h1:before {
-    content: " ";
-    display: block;
-    border-bottom: 1px solid #222;
-    border-top: 1px solid #222;
-    height: 5px;
-  background-color:#f8f8f8;
+.account:hover {
+  background-color: #333;
+  color: #fff;
 }
 
-
-.account { 
-    float: right;
-    cursor: pointer;
-    border: 1px solid #fff;
-    transition: background-color 0.3s;
-    }
-.account:hover {
-    background-color: #333;
-    color: #fff;
-  }
-
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.modal_content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width:30%;
+}
+
+.modal h2 {
+  margin: 0;
+}
+
+.modal input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.modal button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.modal button:hover {
+  background-color: #0056b3;
+}
+
+.modal button:last-child {
+  background-color: #ccc;
+  color: #333;
+}
+
+.modal button:last-child:hover {
+  background-color: #999;
+}
+
+@media (max-width: 768px) {
   .modal_content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width:30%;
+    width: 80vw;
   }
+  .header_class {
+    transition: height 0.3s; /* 높이 변경에 대한 애니메이션 설정 */
+  }
+  .menu_list {
+    display: none;
+  }
+  .menu_open .menu_list {
+    display: block; /* 메뉴가 열린 상태일 때 메뉴 리스트를 보여줍니다. */
+  }
+  .li_parent{
 
-  .modal h2 {
-    margin: 0;
+    list-style:decimal;
   }
-  
-  .modal input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+  .li_submenu {
+    list-style: none; /* 리스트 마커 제거 */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    padding: 0;
   }
-  
-  .modal button {
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 5px;
+  .icon_small{
+    font-size: 16px; 
+    width: 15px;
+    margin-right: 5px;
   }
-  
-  .modal button:hover {
-    background-color: #0056b3;
+  .header{
+    width: 100vw;
   }
-  
-  .modal button:last-child {
-    background-color: #ccc;
-    color: #333;
-  }
-  
-  .modal button:last-child:hover {
-    background-color: #999;
-  }
+}
 
-  @media (max-width: 768px) {
-    .modal_content {
-      width: 80vw;
-    }
-    .header_class {
-      transition: height 0.3s; /* 높이 변경에 대한 애니메이션 설정 */
-    }
-    .menu_list {
-      display: none;
-    }
-    .menu_open .menu_list {
-      display: block; /* 메뉴가 열린 상태일 때 메뉴 리스트를 보여줍니다. */
-    }
-    .li_parent{
-  
-      list-style:decimal;
-    }
-    .li_submenu {
-      list-style: none; /* 리스트 마커 제거 */
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      font-size: 18px;
-      padding: 0;
-    }
-    .icon_small{
-      font-size: 16px; 
-      width: 15px;
-      margin-right: 5px;
-    }
-    .header{
-      width: 100vw;
-    }
+@media (min-width: 768px) {
+  .icon_small{
+    display: none;
   }
-
-  @media (min-width: 768px) {
-    .icon_small{
-      display: none;
-    }
-    .menu_list{
-      display: none;
-    }
-   }
+  .menu_list{
+    display: none;
+  }
+ }

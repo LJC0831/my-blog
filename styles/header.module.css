@@ -8,6 +8,10 @@
   padding: 10px; /* 헤더 패딩 설정 (선택사항) */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 (선택사항) */
   z-index: 1000; /* 다른 요소 위에 헤더를 배치 (선택사항) */
+  background-image: url("../public/image/main.jpg");
+  background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
 }
 
 .logo:hover{
@@ -20,7 +24,6 @@ cursor: pointer;
 .account { 
   float: right;
   cursor: pointer;
-  border: 1px solid #fff;
   transition: background-color 0.3s;
   }
 .account:hover {

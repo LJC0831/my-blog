@@ -7,9 +7,9 @@ import Navigator from './Navigator';
 import dynamic from 'next/dynamic';
 import CommonStyle from '../../styles/common.module.css';
 import BoardWriteStyle from '../../styles/BoardWrite.module.css';
+import Link from 'next/link';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
-import CardMedia from '@mui/material/CardMedia';
 
 
 
@@ -152,9 +152,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           // 관련게시판
           const data2 = data.map((data2) => {
             return {
+              id: data2.id,
               title: data2.title,
-              url: data2.url,
-              thumbnail_url: data2.thumbnail_url
+              board_Type: data2.board_type
             };
           });
           
@@ -260,6 +260,24 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                 
               )
            }
+            {
+              <div className={BoardWriteStyle.comment_section} >
+                <h4>카테고리의 다른 글</h4>
+                {relationData.length > 0 ? (
+                  <ul style={{ border: '1px solid #ccc', padding: '10px', listStyleType: 'none' }}>
+                  {relationData.map((data, index) => (
+                      <li key={index}>
+                        <Link href={`/board/BoardWrite?id=${data.id}&content=${data.title.replace(/\s+/g, '-')}`}>
+                          <span style={{ color: 'gray', letterSpacing: '1px', display: 'block', marginTop: '5px', marginBottom: '5px' }}>{data.title}</span>
+                        </Link>
+                      </li>
+                  ))}
+                  </ul>
+                  ) : (
+                  <p>관련 게시물이 없습니다.</p>
+                  )}
+              </div>
+            }
            { !isNaN(id) &&
             <div className={BoardWriteStyle.comment_section} >
                 <h2>댓글</h2>
@@ -277,17 +295,17 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                 </div>
             </div>
             }
+
         </div>
         {/* 관련게시판 */}
         <div className={BoardWriteStyle.relation_form}>
-            <h5>관련게시물</h5>
+            <h5>미구현 기능</h5>
             {relationData.length > 0 ? (
             <ul>
             {relationData.map((data, index) => (
                 <li className={BoardWriteStyle.relation_li} key={index}>
                   <a href={data.url}>
                     {data.title}
-                    <CardMedia component="img" height="194" image={data.thumbnail_url} alt="Post Thumbnail" />
                   </a>
                 </li>
             ))}

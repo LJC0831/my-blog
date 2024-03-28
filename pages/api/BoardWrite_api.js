@@ -127,10 +127,10 @@ export async function Search03(board_id) {
         return data; // 데이터 반환
       } else {
         // 저장 실패
-        console.error('Search02 조회실패');
+        console.error('Search03 조회실패');
       }
     } catch (error) {
-      console.error('Search02 조회실패', error);
+      console.error('Search03 조회실패', error);
     }
 }
 export async function upload01(html, board_type, board_id) {

@@ -285,8 +285,10 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <ul>
             {relationData.map((data, index) => (
                 <li className={BoardWriteStyle.relation_li} key={index}>
-                  <a href={data.url}>{data.title}</a>
-                  <CardMedia component="img" height="194" image={data.thumbnail_url} alt="Post Thumbnail" />
+                  <a href={data.url}>
+                    {data.title}
+                    <CardMedia component="img" height="194" image={data.thumbnail_url} alt="Post Thumbnail" />
+                  </a>
                 </li>
             ))}
             </ul>

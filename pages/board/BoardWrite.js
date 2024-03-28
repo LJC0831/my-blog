@@ -9,6 +9,7 @@ import CommonStyle from '../../styles/common.module.css';
 import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
+import CardMedia from '@mui/material/CardMedia';
 
 
 
@@ -152,7 +153,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           const data2 = data.map((data2) => {
             return {
               title: data2.title,
-              url: data2.url
+              url: data2.url,
+              thumbnail_url: data2.thumbnail_url
             };
           });
           
@@ -282,7 +284,10 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             {relationData.length > 0 ? (
             <ul>
             {relationData.map((data, index) => (
-                <li className={BoardWriteStyle.relation_li} key={index}><a href={data.url}>{data.title}</a></li>
+                <li className={BoardWriteStyle.relation_li} key={index}>
+                  <a href={data.url}>{data.title}</a>
+                  <CardMedia component="img" height="194" image={data.thumbnail_url} alt="Post Thumbnail" />
+                </li>
             ))}
             </ul>
             ) : (

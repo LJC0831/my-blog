@@ -142,4 +142,10 @@
 <loc>https://develop-blog.shop/board/BoardWrite?id=49&amp;content=%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-AI%EC%A7%81%EC%9B%90-%EB%A7%8C%EB%93%A4%EA%B8%B0</loc>
 <lastmod>2024-01-15T00:42:13+00:00</lastmod>
 </url>
+
+<!-- 24. The import java.sql.Connection cannot be resolved 오류 해결 -->
+<url>
+<loc>https://develop-blog.shop/board/BoardWrite?id=55&amp;content=The-import-java.sql.Connection-cannot-be-resolved-%EC%98%A4%EB%A5%98-%ED%95%B4%EA%B2%B0</loc>
+<lastmod>2024-03-29T16:16:08+00:00</lastmod>
+</url>
 </urlset>

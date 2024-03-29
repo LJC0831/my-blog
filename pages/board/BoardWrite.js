@@ -25,6 +25,14 @@ function addLineBreaks(text) {
     return withBreaks;
   }
 }
+// <index1> 변환 >> <span id="textContent1">
+function addLineIndex(text) {
+  if(text !== null && text !== undefined){
+     const replacedValue = text.replace(/&lt;index([1-8])&gt;/g, (_, index) => `<span id="textContent${index}">`)
+                              .replace(/&lt;\/index[1-8]&gt;/g, '</span>');
+    return replacedValue;
+  }
+}
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
@@ -65,6 +73,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     },
   };
   const handleIntroTextChange = (value) => {
+    // const replacedValue = value.replace(/&lt;index([1-8])&gt;/g, (_, index) => `<span id="textContent${index}">`)
+    //                          .replace(/&lt;\/index[1-8]&gt;/g, '</span>');
     setIntroText(value);
   };
   const handleCommentTextChange = (e) =>{
@@ -91,11 +101,11 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     if (isEditing) {
         if(!isNaN(id)){
             await fileStatUpdate(id);
-            const html = await upload01(introText, '', id); //html, board_type, board_id
+            const html = await upload01(addLineIndex(introText), '', id); //html, board_type, board_id
             update01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
             setIsLoading(false);
           } else {
-            const html = await upload01(introText, id,''); //html, board_type, board_id
+            const html = await upload01(addLineIndex(introText), id,''); //html, board_type, board_id
             await save01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
             await saveAfter();
             setIsLoading(false);

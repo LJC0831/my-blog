@@ -1,3 +1,8 @@
+.index_txt{
+  color: gray;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 .comment_section {
     margin-top: 50px;
     width:60vw;
@@ -25,7 +30,7 @@
     width:200px;
     padding:10px;
   }
-
+  
   .comment_time{
     float: right;
     font-size: 12px;
@@ -94,7 +99,7 @@
     }
 
     @media (max-width: 768px) {
-      .relation_form {
+      .relation_form, .comment_time{
         display: none;
       }
       .comment_section {
@@ -116,5 +121,10 @@
       .comment_textarea{
         width:80vw;
        }
+       .index_txt{
+        color: gray;
+        font-size: 11px;
+
+      }
     }
     

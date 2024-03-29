@@ -282,7 +282,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                   {relationData.map((data, index) => (
                       <li key={index}>
                         <Link href={`/board/BoardWrite?id=${data.id}&content=${data.title.replace(/\s+/g, '-')}`}>
-                            <span style={{ color: 'gray', letterSpacing: '1px',  marginTop: '5px', marginBottom: '5px' }}>{data.title}</span>
+                            <span className={BoardWriteStyle.index_txt}>{data.title}</span>
                             <span className={BoardWriteStyle.comment_time} style={{color: 'gray'}}>{data.date}</span>
                         </Link>
                       </li>

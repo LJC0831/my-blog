@@ -154,7 +154,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             return {
               id: data2.id,
               title: data2.title,
-              board_Type: data2.board_type
+              board_Type: data2.board_type,
+              date: data2.ins_ymdhms
             };
           });
           
@@ -268,7 +269,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                   {relationData.map((data, index) => (
                       <li key={index}>
                         <Link href={`/board/BoardWrite?id=${data.id}&content=${data.title.replace(/\s+/g, '-')}`}>
-                          <span style={{ color: 'gray', letterSpacing: '1px', display: 'block', marginTop: '5px', marginBottom: '5px' }}>{data.title}</span>
+                            <span style={{ color: 'gray', letterSpacing: '1px',  marginTop: '5px', marginBottom: '5px' }}>{data.title}</span>
+                            <span className={BoardWriteStyle.comment_time} style={{color: 'gray'}}>{data.date}</span>
                         </Link>
                       </li>
                   ))}
@@ -284,8 +286,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                 <div className={BoardWriteStyle.comment_list}>
                 {commentData.map((comment, index) => (
                     <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span> 
-                    <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
-                    <span className={BoardWriteStyle.comment_time}>작성시간: {comment.date}</span></p>
+                      <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
+                      <span className={BoardWriteStyle.comment_time}>작성시간: {comment.date}</span>
+                    </p>
                 ))}
                 </div>
 

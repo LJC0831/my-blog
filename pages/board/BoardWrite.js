@@ -167,7 +167,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           // 관련게시판
           const data2 = data.map((data2) => {
             return {
-              content: data2.h2_content
+              content: data2.h2_content,
+              rownum: data2.rownum
             };
           });
           
@@ -319,8 +320,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <ul>
             {indexData.map((data, index) => (
                 <li className={BoardWriteStyle.relation_li} key={index}>
-                  <a href="">
-                    {data.content}
+                  <a href={"#textContent" + data.rownum}>
+                      {data.content}
                   </a>
                 </li>
             ))}

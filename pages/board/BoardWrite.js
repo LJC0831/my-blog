@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 import CommonStyle from '../../styles/common.module.css';
 import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import Link from 'next/link';
-import { save01, Search01, Search02, Search03, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
+import { save01, Search01, Search02, Search03, Search04, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
 
 
@@ -41,6 +41,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const [commentText, setcommentText] = useState(initComment); // 댓글입력
   const [commentData, setCommentData] = useState([]); // 댓글 데이터를 배열로 관리
   const [relationData, setRelationData] = useState([]); // 관련게시판 배열
+  const [indexData, setIndexData] = useState([]); // 목차 배열
   const [isEditing, setIsEditing] = useState(false); // 에디터의 가시성 상태를 저장
   const [isLoading, setIsLoading] = useState(false); //로딩
   const [selectedImage, setSelectedImage] = useState(''); // 선택된 이미지 URL
@@ -161,6 +162,17 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           
           // 배열로 저장한 댓글 정보를 상태 변수로 설정
           setRelationData(data2);
+        });
+        Search04(id).then((data) => {
+          // 관련게시판
+          const data2 = data.map((data2) => {
+            return {
+              content: data2.h2_content
+            };
+          });
+          
+          // 배열로 저장한 댓글 정보를 상태 변수로 설정
+          setIndexData(data2);
         });
       setTimeout(() => {
         Search02(id).then((data) => {
@@ -302,13 +314,13 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         </div>
         {/* 관련게시판 */}
         <div className={BoardWriteStyle.relation_form}>
-            <h5>미구현 기능</h5>
-            {relationData.length > 0 ? (
+            <h5>목차</h5>
+            {indexData.length > 0 ? (
             <ul>
-            {relationData.map((data, index) => (
+            {indexData.map((data, index) => (
                 <li className={BoardWriteStyle.relation_li} key={index}>
-                  <a href={data.url}>
-                    {data.title}
+                  <a href="">
+                    {data.content}
                   </a>
                 </li>
             ))}

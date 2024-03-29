@@ -133,6 +133,27 @@ export async function Search03(board_id) {
       console.error('Search03 조회실패', error);
     }
 }
+export async function Search04(board_id) {
+  try {
+      const response = await fetch(`${api}/api/blog/BoardSearch4`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({board_id}),
+      });
+      if (response.ok) {
+        // 성공적으로 저장됨
+        const data = await response.json(); // JSON 데이터를 파싱
+        return data; // 데이터 반환
+      } else {
+        // 저장 실패
+        console.error('Search04 조회실패');
+      }
+    } catch (error) {
+      console.error('Search04 조회실패', error);
+    }
+}
 export async function upload01(html, board_type, board_id) {
   try {
       const chunkSize = 1024 * 50; // 각 덩어리의 크기 (예: 1KB * 50)

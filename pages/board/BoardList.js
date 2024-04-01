@@ -91,13 +91,15 @@ function BoardList() {
         </div>
       </div>
       <footer className={styles.footer}>
-        <a
-          href="https://github.com/LJC0831/my-blog"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          제작자 by LJC
-        </a>
+          <p>
+            <a href="https://github.com/LJC0831/my-blog"
+                target="_blank"
+                rel="noopener noreferrer">
+              <span>저자 : LJC</span><br/>
+              <span>이메일 : leejc831@naver.com</span><br/>
+              <span>Copyright 2024. cocoder. All Rights Reserved.</span>
+            </a>
+          </p>
       </footer>
     </div>
   );

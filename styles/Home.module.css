@@ -18,11 +18,9 @@
   align-items: center;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+.footer p {
+  color: #808080;
+  font-size: 13px;
 }
 
 .title a {

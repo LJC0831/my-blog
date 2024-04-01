@@ -84,16 +84,15 @@ export default function Home() {
       </div>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+          <p>
+            <a href="https://github.com/LJC0831/my-blog"
+                target="_blank"
+                rel="noopener noreferrer">
+              <span>저자 : LJC</span><br/>
+              <span>이메일 : leejc831@naver.com</span><br/>
+              <span>Copyright 2024. cocoder. All Rights Reserved.</span>
+            </a>
+          </p>
       </footer>
     </div>
   )

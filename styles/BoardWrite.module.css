@@ -5,7 +5,6 @@
 }
 .comment_section {
     margin-top: 50px;
-    width:60vw;
   }
 
   /* 댓글 제목 스타일 */
@@ -16,27 +15,30 @@
   .comment_list {
     border: 1px solid #ddd;
     padding: 10px;
-    max-height: 200px;
     margin-bottom: 50px;
-    overflow-y: auto;
-    max-width: 80vw;
   }
 
   .comment_list p {
-    margin: 10px 0;
+    margin: 5px 0;
   }
   .comment_user{
-    font-size: 18px;
-    width:200px;
-    padding:10px;
+    font-size: 16px;
+    margin-right: 20px;
+    color: gray;
+    display: inline-block; 
   }
-  
-  .comment_time{
-    float: right;
-    font-size: 12px;
-  }
+
   .comment_txt{
-    max-width:10vw;
+    font-size: 14px;
+    display: inline-block; 
+    margin-right: 10px;
+  }
+
+    
+  .comment_time{
+    font-size: 12px;
+    color: gray;
+    display: inline-block; 
   }
   .comment_form{
     display: flex;

@@ -312,7 +312,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                 {commentData.map((comment, index) => (
                     <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span> 
                       <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
-                      <span className={BoardWriteStyle.comment_time}>작성시간: {comment.date}</span>
+                      <span className={BoardWriteStyle.comment_time}>{comment.date}</span>
                     </p>
                 ))}
                 </div>

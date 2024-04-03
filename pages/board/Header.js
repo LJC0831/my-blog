@@ -87,7 +87,7 @@ function Header() {
         <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
         <div className={headerStyles.search}>
           <input type="text" placeholder='검색어 입력' className={headerStyles.input}></input>
-          <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" className={headerStyles.img}></img>
+          <FontAwesomeIcon icon={faSearch}  className={headerStyles.img}/>
         </div>
         <div>
           {isLoginYn ? (

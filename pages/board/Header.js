@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import headerStyles from'../../styles/header.module.css';
+import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; // 돋보기 아이콘 추가
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,8 @@ function Header() {
   const [isLoginYn, setIsLogin] = useState(false);//로그인여부
   const [isMenuOpen, setMenuOpen] = useState(false); //햄버거클릭여부
   const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
+  const [keyword, setKeyword] = useState(''); //검색키워드
+  const router = useRouter();
 
   const openModal = () => {
     if (isLoginYn) {
@@ -23,7 +26,16 @@ function Header() {
       setModalOpen(true);
     }
   };
+  const KeywordSearch = () => {
+    router.push(`/?keyword=${keyword}`);e
+  };
 
+  const handleEnterKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      router.push(`/?keyword=${keyword}`);
+    }
+  };
+  
   const LoginProc = () => {
     setIsLogin(true);
     closeModal();
@@ -37,6 +49,11 @@ function Header() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  const handleKeywordChange = (e) => {
+    setKeyword(e.target.value);
+  };
+
 
   const goToHomePage = () => {
     window.location.href = '/'; // 페이지 이동
@@ -86,8 +103,8 @@ function Header() {
         <span className={headerStyles.logo} onClick={goToHomePage}><h1>LJC Developer Blog</h1></span>
         <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
         <div className={headerStyles.search}>
-          <input type="text" placeholder='검색어 입력' className={headerStyles.input}></input>
-          <FontAwesomeIcon icon={faSearch}  className={headerStyles.img}/>
+          <input type="text" placeholder='검색어 입력' className={headerStyles.input} value={keyword} onChange={handleKeywordChange} onKeyPress={handleEnterKeyPress}></input>
+          <FontAwesomeIcon icon={faSearch}  className={headerStyles.img} onClick={KeywordSearch}/>
         </div>
         <div>
           {isLoginYn ? (
@@ -112,7 +129,7 @@ function Header() {
         <div className={headerStyles.modal}>
           <div className={headerStyles.modal_content}>
             <h2>관리자 로그인</h2>
-            <input type="password" placeholder="비밀번호를 입력해주세요." value={password} onChange={handlePasswordChange} />
+            <input type="password" placeholder="비밀번호를 입력해주세요." value={password} onChange={handlePasswordChange}/>
             <button onClick={handleLogin}>로그인</button>
             <button onClick={closeModal}>닫기</button>
           </div>

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import headerStyles from'../../styles/header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'; // 돋보기 아이콘 추가
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { login01, Search01 } from '../api/Header_api';
 import Link from 'next/link';
@@ -81,15 +82,22 @@ function Header() {
 
   return (
     <header className={headerClassName}>
-      <div>
-      <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
-      {isLoginYn ? (
-        <span className={headerStyles.account} onClick={openModal}>Admin</span>
-      ) : (
-        <span className={headerStyles.account} onClick={openModal}>일반용</span>
-      )}
-      <span className={headerStyles.logo} onClick={goToHomePage}><h1>LJC Developer Blog</h1></span>
-      </div> 
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <span className={headerStyles.logo} onClick={goToHomePage}><h1>LJC Developer Blog</h1></span>
+        <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
+        <div className={headerStyles.search}>
+          <input type="text" placeholder='검색어 입력' className={headerStyles.input}></input>
+          <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" className={headerStyles.img}></img>
+        </div>
+        <div>
+          {isLoginYn ? (
+            <span className={headerStyles.account} onClick={openModal}>Admin</span>
+          ) : (
+            <span className={headerStyles.account} onClick={openModal}>일반용</span>
+          )}
+        </div>
+      </div>
+
       <div className={headerStyles.menu_list}>
               <ul>
                 {boardList.map((data, index) => (

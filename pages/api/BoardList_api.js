@@ -23,14 +23,14 @@ export async function Search01(board_type) {
       }
 }
 
-export async function Search02() {
+export async function Search02(keyword) {
   try {
       const response = await fetch(`${api}/api/blog/BoardListSearch02`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(),
+        body: JSON.stringify({keyword}),
       });
       if (response.ok) {
         // 성공적으로 저장됨
@@ -38,9 +38,9 @@ export async function Search02() {
         return data; // 데이터 반환
       } else {
         // 저장 실패
-        console.error('Search01 조회실패');
+        console.error('Search02 조회실패');
       }
     } catch (error) {
-      console.error('Search01 조회실패', error);
+      console.error('Search02 조회실패', error);
     }
 }

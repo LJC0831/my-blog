@@ -15,6 +15,7 @@ function Header() {
   const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
   const [keyword, setKeyword] = useState(''); //검색키워드
   const router = useRouter();
+  const currentPath = router.pathname;
 
   const openModal = () => {
     if (isLoginYn) {
@@ -27,12 +28,16 @@ function Header() {
     }
   };
   const KeywordSearch = () => {
-    router.push(`/?keyword=${keyword}`);e
+    router.push(`/?keyword=${keyword}`);
   };
 
   const handleEnterKeyPress = (e) => {
     if (e.key === 'Enter') {
-      router.push(`/?keyword=${keyword}`);
+      if(currentPath === '/board/searchList'){
+        router.replace(`/board/searchList2?keyword=${keyword}`);
+      } else {
+        router.replace(`/board/searchList?keyword=${keyword}`);
+      }
     }
   };
   

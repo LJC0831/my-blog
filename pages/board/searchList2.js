@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Header from './board/Header'
-import Navigator from './board/Navigator'
-import { Search02 } from './api/BoardList_api';
-import BoardListStyle from '../styles/index.module.css';
+import { useRouter } from 'next/router';
+import styles from '../../styles/Home.module.css'
+import Header from '../board/Header'
+import Navigator from '../board/Navigator'
+import { Search02 } from '../api/BoardList_api';
+import BoardListStyle from '../../styles/index.module.css';
 import {React, useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -13,14 +14,15 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 
 export default function Home() {
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
-  
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setTimeout(() => {
-          Search02().then((data) => {
+          const { keyword } = router.query;
+          Search02(keyword).then((data) => {
             if(data.length > 0){
               setPosts(data);
             }
@@ -48,7 +50,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <br></br><br></br>
-        <div><h3>많이 찾는 게시글</h3></div>
+        <div><h3>검색결과</h3></div>
         <div className={BoardListStyle.post_container}>
         {posts.map((post) => (
             <Card key={post.id} sx={{ maxWidth: 345 }} className={BoardListStyle.post_item}>

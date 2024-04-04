@@ -263,6 +263,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           ) : (
             <p
               className="description"
+              style={{maxWidth:'60vw'}}
               dangerouslySetInnerHTML={{ __html: introText }}
                 ref={(el) => {
                   if (el) {

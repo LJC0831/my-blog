@@ -105,7 +105,7 @@ function Header() {
   return (
     <header className={headerClassName}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <span className={headerStyles.logo} onClick={goToHomePage}><h1>LJC Developer Blog</h1></span>
+        <span className={headerStyles.logo} onClick={goToHomePage}>LJC Developer Blog</span>
         <FontAwesomeIcon icon={faBars} onClick={toggleMenu} className={headerStyles.icon_small}/>
         <div className={headerStyles.search}>
           <input type="text" placeholder='검색어 입력' className={headerStyles.input} value={keyword} onChange={handleKeywordChange} onKeyPress={handleEnterKeyPress}></input>

@@ -262,8 +262,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} className={BoardWriteStyle.board_textarea} />
           ) : (
             <p
-              className="description"
-              style={{maxWidth:'60vw'}}
+              className={BoardWriteStyle.board_content}
               dangerouslySetInnerHTML={{ __html: introText }}
                 ref={(el) => {
                   if (el) {

@@ -75,6 +75,9 @@
     .board_textarea{
       width:50vw;
     }
+    .board_content{
+      max-width: 60vw;
+    }
     /* Popup Container */
     .image_popup {
       position: fixed;
@@ -128,6 +131,9 @@
         color: gray;
         font-size: 11px;
 
+      }
+      .board_content{
+        max-width: 95vw;
       }
     }
     

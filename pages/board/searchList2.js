@@ -50,7 +50,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <br></br><br></br>
+         {posts.length > 0 ? ( 
         <div><h3>검색결과</h3></div>
+         ) : (
+          <div><h3>검색결과 0건</h3></div>
+          )}
         <div className={BoardListStyle.post_container}>
         {posts.map((post) => (
             <Card key={post.id} sx={{ maxWidth: 345 }} className={BoardListStyle.post_item}>

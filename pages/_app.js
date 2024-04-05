@@ -28,15 +28,19 @@ function MyApp({ Component, pageProps }) {
       Router.events.off("routeChangeError", end);
     };
   }, []);
-  <Head>
-    {/* 초기title */}
-      <title>LJC 개발 블로그</title>
-  </Head>
-
-  return loading ? (
-    <FullScreenLoading />
-  ) : (
-    <Component {...pageProps} />
+ 
+  return (
+    <>
+      <Head>
+        {/* 초기 title */}
+        <title>LJC 개발 블로그</title>
+      </Head>
+      {loading ? (
+        <FullScreenLoading />
+      ) : (
+        <Component {...pageProps} />
+      )}
+    </>
   );
 }
 

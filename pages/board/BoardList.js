@@ -77,7 +77,7 @@ function BoardList() {
                       </Avatar>
                     }
                     title={
-                      <Typography variant="h6" sx={{ fontWeight: 'bold' }}> {/* Title 스타일링 */}
+                      <Typography variant="h6" sx={{ fontWeight: 'bold' , fontFamily: "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif"}}> {/* Title 스타일링 */}
                         {post.title}
                       </Typography>
                     }

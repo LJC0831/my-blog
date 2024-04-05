@@ -1,5 +1,7 @@
 .index_txt{
-  color: gray;
+  color: #0090f9;
+  font-weight: 500;
+  font-size: .875rem;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 15px;
@@ -65,6 +67,7 @@
     }
     .relation_li{
         max-width:20vw;
+        font-weight: 500;
         overflow-wrap: break-word;
         list-style: none; /* 리스트 마커 제거 */
         margin-left: -40px;
@@ -110,7 +113,7 @@
       }
       .comment_section {
         margin-top: 20px;
-        width:100vw;
+        width:95vw;
       }
       .comment_list {
         border: 1px solid #ddd;
@@ -119,17 +122,17 @@
         margin-bottom: 50px;
         overflow-y: auto;
         max-width: 100vw;
-        width: 98vw;
+        width: 95vw;
       }
       .board_textarea{
-        width:100vw;
+        width:95;
       }
       .comment_textarea{
         width:80vw;
        }
        .index_txt{
-        color: gray;
-        font-size: 11px;
+        font-weight: 500;
+        font-size: .800rem;
 
       }
       .board_content{

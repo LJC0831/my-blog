@@ -8,6 +8,7 @@ function Navigator() {
 
   useEffect(() => {
       Search01().then((data) => {
+        try{
         const data2 = data.map((data2) => {
           return {
             board_type: data2.board_type,
@@ -17,6 +18,9 @@ function Navigator() {
           };
         });
         setBoardListData(data2);
+        } catch{
+          console.log("Navigator Search01 오류발생")
+        }
       });
   }, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 

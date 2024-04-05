@@ -14,19 +14,23 @@ import CardContent from '@mui/material/CardContent';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
   
   
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         setTimeout(() => {
           Search02().then((data) => {
             if(data.length > 0){
               setPosts(data);
+              setLoading(false);
             }
           });
         }, 100);
       } catch (error) {
+        setLoading(false);
         console.error('데이터를 가져오는 중 오류가 발생했습니다.', error);
       }
     };
@@ -49,38 +53,44 @@ export default function Home() {
       <main className={styles.main}>
         <br></br><br></br>
         <div><h3>많이 찾는 게시글</h3></div>
-        <div className={BoardListStyle.post_container}>
-        {posts.map((post) => (
-            <Card key={post.id} sx={{ maxWidth: 345 }} className={BoardListStyle.post_item}>
-              <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
-                <CardHeader
-                  avatar={
-                    <Avatar sx={{ bgcolor: red[500], width: '100%' }} aria-label="recipe">
-                      {post.board_type}
-                    </Avatar>
-                  }
-                  title={
-                    <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                      {post.title}
+        {loading ? (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <img src="/image/loading.gif" alt="Loading" />
+          </div>
+        ) : (
+          <div className={BoardListStyle.post_container}>
+          {posts.map((post) => (
+              <Card key={post.id} sx={{ maxWidth: 345 }} className={BoardListStyle.post_item}>
+                <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
+                  <CardHeader
+                    avatar={
+                      <Avatar sx={{ bgcolor: red[500], width: '100%' }} aria-label="recipe">
+                        {post.board_type}
+                      </Avatar>
+                    }
+                    title={
+                      <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                        {post.title}
+                      </Typography>
+                    }
+                    subheader={post.ins_ymdhms}
+                  />
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image={post.thumbnail_url}
+                    alt="Post Thumbnail"
+                  />
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                      {post.privew_content}
                     </Typography>
-                  }
-                  subheader={post.ins_ymdhms}
-                />
-                <CardMedia
-                  component="img"
-                  height="194"
-                  image={post.thumbnail_url}
-                  alt="Post Thumbnail"
-                />
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
-                    {post.privew_content}
-                  </Typography>
-                </CardContent>
-              </Link>
-            </Card>
-          ))}
-        </div>
+                  </CardContent>
+                </Link>
+              </Card>
+            ))}
+          </div>
+        )}
       </main>
       </div>
 

@@ -144,7 +144,6 @@ cursor: pointer;
   }
   .li_submenu {
     list-style: none; /* 리스트 마커 제거 */
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
     padding: 0;
   }

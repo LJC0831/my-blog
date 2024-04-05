@@ -1,17 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Router from "next/router";
-import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import '../styles/globals.css'
 import Head from 'next/head'
+import FullScreenLoading from "../pages/loading.js";
 
 function MyApp({ Component, pageProps }) {
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const start = () => {
-      NProgress.start();
+      //NProgress.start();
+      setLoading(true);
     };
     const end = () => {
-      NProgress.done();
+      //NProgress.done();
+      setLoading(false);
     };
 
     Router.events.on("routeChangeStart", start);
@@ -28,7 +32,12 @@ function MyApp({ Component, pageProps }) {
     {/* 초기title */}
       <title>LJC 개발 블로그</title>
   </Head>
-  return <Component {...pageProps} />
+
+  return loading ? (
+    <FullScreenLoading />
+  ) : (
+    <Component {...pageProps} />
+  );
 }
 
 export default MyApp

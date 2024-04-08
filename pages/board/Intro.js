@@ -59,8 +59,8 @@ function Intro() {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLogin(isLoggedIn === 'true');
+    const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
+    setIsLogin(loginYn === 'true');
     setTimeout(() => {
       Search01().then((data) => {
         setSubject(data[0].subject);

@@ -151,10 +151,10 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLogin(isLoggedIn);
+    const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
+    setIsLogin(loginYn);
     if(!isNaN(id)){ //작성된 글 읽기
-        Search01(id, isLoggedIn).then((data) => { //게시글조회
+        Search01(id, loginYn).then((data) => { //게시글조회
             setSubject(data[0].title);
             setIntroText(data[0].content);
             setPrivew(data[0].privew_content);

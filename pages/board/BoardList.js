@@ -21,8 +21,8 @@ function BoardList() {
   const [isLoginYn, setIsLogin] = useState(false);
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLogin(isLoggedIn === 'true');
+    const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
+    setIsLogin(loginYn === 'true');
     // 여기에서 게시글 데이터를 가져오는 API 호출 또는 데이터 로딩 로직을 작성
     // 이 예제에서는 더미 데이터를 사용
     const fetchData = async () => {

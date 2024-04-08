@@ -277,7 +277,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           )}
            { isLoginYn && 
               isLoading ? (
-                <p>Loading...</p>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                  <img src="/image/loading.gif" alt="Loading" />
+                </div>
               ) : (
                 isLoginYn && 
                 <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>

@@ -59,8 +59,8 @@ function Intro() {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLogin(isLoggedIn === 'true');
+    const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
+    setIsLogin(loginYn === 'true');
     setTimeout(() => {
       Search01().then((data) => {
         setSubject(data[0].subject);
@@ -75,8 +75,6 @@ function Intro() {
       <Head>
         <title>LJC Developer Blog 인트로입니다.</title>
         <link rel="icon" href="/favicon.ico" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
-     crossorigin="anonymous"></script>
       </Head>
       <Header />
       <div style={mainContent}>

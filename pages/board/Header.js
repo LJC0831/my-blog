@@ -20,7 +20,7 @@ function Header() {
   const openModal = () => {
     if (isLoginYn) {
       // 이미 로그인한 경우, 로그아웃 처리
-      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
       setIsLogin(false);
       window.location.reload();
     } else {
@@ -70,7 +70,7 @@ function Header() {
   const handleLogin = () => {
     login01(password).then((data) => {
       if (data.length > 0) {
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN, 'true');
         alert('로그인 성공');
         LoginProc();
       } else {
@@ -98,8 +98,8 @@ function Header() {
 
   useEffect(() => {
     // 컴포넌트가 처음 마운트될 때 로컬 세션을 확인하여 로그인 상태 업데이트
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLogin(isLoggedIn === 'true');
+    const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
+    setIsLogin(loginYn === 'true');
   }, []);
 
   return (

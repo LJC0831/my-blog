@@ -151,10 +151,10 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLogin(isLoggedIn);
+    const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
+    setIsLogin(loginYn);
     if(!isNaN(id)){ //작성된 글 읽기
-        Search01(id, isLoggedIn).then((data) => { //게시글조회
+        Search01(id, loginYn).then((data) => { //게시글조회
             setSubject(data[0].title);
             setIntroText(data[0].content);
             setPrivew(data[0].privew_content);
@@ -216,9 +216,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         <meta property="og:title" content={seo_title}/>
         <meta property="og:description" content={seo_privew}/>
         <meta property="og:image" content={seo_Thumbnail}></meta>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
-        crossorigin="anonymous"></script>
-    
+        
       </Head>
       <Header />
       <div style={mainContent}>
@@ -277,7 +275,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           )}
            { isLoginYn && 
               isLoading ? (
-                <p>Loading...</p>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                  <img src="/image/loading.gif" alt="Loading" />
+                </div>
               ) : (
                 isLoginYn && 
                 <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>

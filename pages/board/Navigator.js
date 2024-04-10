@@ -29,7 +29,7 @@ function Navigator() {
     <nav className={NavigatorStyle.left_nav}>
       <ul style={navListStyle}>
         <li>
-          <img src="https://develop-blog.shop/profile.JPG" alt="프로필 사진" className={NavigatorStyle.profile_img} />
+          <img src="https://develop-blog.pe.kr/profile.JPG" alt="프로필 사진" className={NavigatorStyle.profile_img} />
         </li>
         {boardList.map((data, index) => (
             <li style={navItemStyle} key={index}>

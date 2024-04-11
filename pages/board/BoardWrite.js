@@ -10,7 +10,6 @@ import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import Link from 'next/link';
 import { save01, Search01, Search02, Search03, Search04, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
-import Image from 'next/image'
 
 
 
@@ -33,26 +32,6 @@ function addLineIndex(text) {
                               .replace(/&lt;\/index[1-8]&gt;/g, '</span>');
     return replacedValue;
   }
-}
-// 정규식을 사용하여 introText에서 이미지 태그를 찾습니다.
-function convertToNextImage(introText) {
-  const imgRegex = /<img.*?src="(.*?)".*?alt="(.*?)".*?>/g;
-  // introText에서 이미지 태그를 모두 찾아 배열로 반환
-  const imgTags = introText.match(imgRegex);
-
-  if (imgTags) {
-      imgTags.forEach((imgTag) => {
-          const srcRegex = /src="(.*?)"/;
-          const altRegex = /alt="(.*?)"/;
-          const src = srcRegex.exec(imgTag)[1];
-          const alt = altRegex.exec(imgTag)[1];
-          const nextImageTag = `<Image src="${src}" width={500} height={500} placeholder="blur" alt="${alt}" />`;
-          introText = introText.replace(imgTag, nextImageTag);
-      });
-  }
-
-  // 변경된 introText를 반환합니다.
-  return introText;
 }
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
@@ -94,6 +73,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     },
   };
   const handleIntroTextChange = (value) => {
+    // const replacedValue = value.replace(/&lt;index([1-8])&gt;/g, (_, index) => `<span id="textContent${index}">`)
+    //                          .replace(/&lt;\/index[1-8]&gt;/g, '</span>');
     setIntroText(value);
   };
   const handleCommentTextChange = (e) =>{
@@ -175,7 +156,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     if(!isNaN(id)){ //작성된 글 읽기
         Search01(id, loginYn).then((data) => { //게시글조회
             setSubject(data[0].title);
-            setIntroText(convertToNextImage(data[0].content));
+            setIntroText(data[0].content);
             setPrivew(data[0].privew_content);
         });
         Search03(id).then((data) => {

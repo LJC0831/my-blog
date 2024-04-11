@@ -1,3 +1,3 @@
 User-agent: *
 Allow:/
-Sitemap: https://develop-blog.pe.kr/sitemap.xml
+Sitemap: https://www.develop-blog.pe.kr/sitemap2.xml

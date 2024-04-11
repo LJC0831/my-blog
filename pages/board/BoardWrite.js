@@ -176,7 +176,6 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         Search01(id, loginYn).then((data) => { //게시글조회
             setSubject(data[0].title);
             setIntroText(convertToNextImage(data[0].content));
-            console.log(convertToNextImage(data[0].content));
             setPrivew(data[0].privew_content);
         });
         Search03(id).then((data) => {

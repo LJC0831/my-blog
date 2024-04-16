@@ -1,4 +1,4 @@
-# 블로그 접속URL: https://www.develop-blog.shop/
+# 블로그 접속URL: https://www.develop-blog.pe.kr/
 
 ## 메인화면
 

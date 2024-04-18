@@ -88,7 +88,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     const file = e.target.files[0];
     const formData = new FormData();
     const timestamp = Date.now();
-    const uniqueFileName = `$blog_{timestamp}_img_upload`;
+    const uniqueFileName = `blog_${timestamp}_img_upload`;
     formData.append('file', file);
     formData.append('fileName', uniqueFileName);
     formData.append('id', id);

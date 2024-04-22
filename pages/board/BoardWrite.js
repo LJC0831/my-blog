@@ -59,13 +59,14 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   //에디터 옵션
   const toolbarOptions = [
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    [{ header: [1, 2, 3, 4, 5, 6, 7, false] }],
     ["bold", "italic", "underline", "strike"],
     ["blockquote"],
     [{ list: "ordered" }, { list: "bullet" }],
     [{ color: [] }, { background: [] }],
     [{ align: [] }],
     ['link'],
+    ['image', 'gif'],
   ];
   const modules = {
     toolbar: {
@@ -150,7 +151,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   };
 
   // 스크롤 제일아래로 이동
-  const handleClick = () => {
+  const handleBottomMove = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   };
 
@@ -347,7 +348,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             ) : (
             <p>관련 게시물이 없습니다.</p>
             )}
-            <a href="#" onClick={handleClick}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
+            <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
         </div>
       </div>
       <footer className={styles.footer}>

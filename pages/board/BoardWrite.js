@@ -149,6 +149,11 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     });
   };
 
+  // 스크롤 제일아래로 이동
+  const handleClick = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
   // 처음 렌더링 시 Search01 함수 호출
   useEffect(() => {
     const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
@@ -328,6 +333,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         {/* 관련게시판 */}
         <div className={BoardWriteStyle.relation_form}>
             <h5>목차</h5>
+            <a href="#"><h5 className={CommonStyle.cursor}>스크롤 ▲</h5></a>
             {indexData.length > 0 ? (
             <ul>
             {indexData.map((data, index) => (
@@ -341,6 +347,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             ) : (
             <p>관련 게시물이 없습니다.</p>
             )}
+            <a href="#" onClick={handleClick}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
         </div>
       </div>
       <footer className={styles.footer}>

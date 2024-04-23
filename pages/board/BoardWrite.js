@@ -31,7 +31,7 @@ function addLineIndex(text) {
   if(text !== null && text !== undefined){
      const replacedValue = text.replace(/&lt;index([1-8])&gt;/g, (_, index) => `<span id="textContent${index}">`)
                               .replace(/&lt;\/index[1-8]&gt;/g, '</span>')
-                              .replace(/<img(.*?)\/?>/g, '<Image$1/>');
+                              .replace(/&lt;img(.*?)\/?&gt;/g, '<Image$1/>');
     return replacedValue;
   }
 }

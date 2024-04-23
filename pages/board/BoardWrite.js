@@ -10,7 +10,6 @@ import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import Link from 'next/link';
 import { save01, Search01, Search02, Search03, Search04, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
-import Image from 'next/image'
 
 
 
@@ -30,8 +29,7 @@ function addLineBreaks(text) {
 function addLineIndex(text) {
   if(text !== null && text !== undefined){
      const replacedValue = text.replace(/&lt;index([1-8])&gt;/g, (_, index) => `<span id="textContent${index}">`)
-                              .replace(/&lt;\/index[1-8]&gt;/g, '</span>')
-                              .replace(/&lt;img(.*?)\/?&gt;/g, '<Image$1/>');
+                              .replace(/&lt;\/index[1-8]&gt;/g, '</span>');
     return replacedValue;
   }
 }

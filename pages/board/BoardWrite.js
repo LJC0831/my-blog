@@ -10,6 +10,7 @@ import BoardWriteStyle from '../../styles/BoardWrite.module.css';
 import Link from 'next/link';
 import { save01, Search01, Search02, Search03, Search04, update01, upload01, fileStatUpdate, save02, ThumbnailUpload } from '../api/BoardWrite_api';
 import { useRouter } from 'next/router';
+import Image from 'next/image'
 
 
 

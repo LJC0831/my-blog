@@ -80,7 +80,7 @@
 
 <url>
 <!-- 13. next.js 에서 동적으로 SEO 처리하기  -->
-  <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=41&amp;content=next.js-%EC%97%90%EC%84%9C-%EB%8F%99%EC%A0%81%EC%9C%BC%EB%A1%9C-SEO-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0</loc>
+  <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=41&amp;content=next.js-%EC%97%90%EC%84%9C-%EB%8F%99%EC%A0%81%EA%B2%8C%EC%8B%9C%ED%8C%90-SEO-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-(getServerSideProps)</loc>
   <lastmod>2023-11-14T02:56:13+00:00</lastmod>
 </url>
 

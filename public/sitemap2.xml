@@ -56,7 +56,7 @@
 
 <url>
 <!-- 9. TypeError: Do not know how to serialize a BigInt 에러조치 --> 
-  <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=24&amp;content=2.-TypeError:-Do-not-know-how-to-serialize-a-BigInt-%EC%97%90%EB%9F%AC%EC%A1%B0%EC%B9%98</loc>
+  <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=24&amp;content=TypeError:-Do-not-know-how-to-serialize-a-BigInt-%EC%97%90%EB%9F%AC%EC%A1%B0%EC%B9%98</loc>
   <lastmod>2023-11-12T03:09:13+00:00</lastmod>
 </url>
 

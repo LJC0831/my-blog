@@ -36,18 +36,12 @@ function BoardList() {
             }
           });
         }, 100);
-        setLoading(false);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류가 발생했습니다.', error);
       }
     };
     fetchData();
   }, [board_type]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
 
   return (
     <div className={styles.container}>
@@ -65,6 +59,11 @@ function BoardList() {
         </Link>
         }
         <h2>{board_type} 작업 관련 게시판입니다.</h2>
+        {loading ? (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <img src="/image/loading.gif" alt="Loading" />
+          </div>
+        ) : (
         <Card>
           <ul className={BoardListStyle.post_list}>
             {posts.map((post) => (
@@ -96,6 +95,7 @@ function BoardList() {
             ))}
           </ul>
         </Card>
+        )}
         </div>
       </div>
       <footer className={styles.footer}>

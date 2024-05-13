@@ -2,9 +2,24 @@ import React, {useEffect, useState } from 'react';
 import NavigatorStyle from '../../styles/Navigator.module.css';
 import { Search01 } from '../api/Navigator_api';
 import Link from 'next/link';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faCode, faExclamationCircle, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 
 function Navigator() {
   const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
+
+  const getIcon = (boardIcon) => {
+    switch (boardIcon) {
+      case 'faUser':
+        return faUser; //내정보 아이콘
+      case 'faCode':
+        return faCode; //소스코드 아이콘
+      case 'faExclamationCircle':
+        return faExclamationCircle; //에러아이콘
+      case 'faEllipsisH':
+        return faEllipsisH; //에러아이콘
+    }
+  };
 
   useEffect(() => {
       Search01().then((data) => {
@@ -14,7 +29,8 @@ function Navigator() {
             board_type: data2.board_type,
             board_api: data2.board_api,
             order_no: data2.order_no,
-            board_nm: data2.board_nm
+            board_nm: data2.board_nm,
+            board_icon: data2.board_icon
           };
         });
         setBoardListData(data2);
@@ -33,6 +49,7 @@ function Navigator() {
         </li>
         {boardList.map((data, index) => (
             <li style={navItemStyle} key={index}>
+             <FontAwesomeIcon icon={getIcon(data.board_icon)} />&nbsp;&nbsp;
              <Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
             </li>
         ))}

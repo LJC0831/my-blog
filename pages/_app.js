@@ -4,6 +4,10 @@ import "nprogress/nprogress.css";
 import '../styles/globals.css'
 import Head from 'next/head'
 import FullScreenLoading from "../pages/loading.js";
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
+
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);

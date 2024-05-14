@@ -16,8 +16,27 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   
-  
   useEffect(() => {
+    // 카카오애드핏 스크립트 및 광고 요소 추가
+    const addKakaoAdfit = () => {
+      let ins = document.createElement('ins');
+      let scr = document.createElement('script');
+    
+      ins.className = 'kakao_ad_area';
+      ins.style.display = 'none';
+      scr.async = true;
+      scr.type = 'text/javascript';
+      scr.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+      ins.setAttribute('data-ad-width', '160');
+      ins.setAttribute('data-ad-height', '600');
+      ins.setAttribute('data-ad-unit', 'DAN-2hGEktHnZg2ofBMF');
+    
+      document.querySelector('.adfit').appendChild(ins);
+      document.querySelector('.adfit').appendChild(scr);
+    };
+
+    addKakaoAdfit(); // 함수 실행
+    
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -47,7 +66,7 @@ export default function Home() {
       <Header />
       <div style={mainContent}>
       <Navigator />
-
+      <div className="adfit"/>
       <main className={styles.main}>
         <br></br><br></br>
         <div><h3>많이 찾는 게시글</h3></div>

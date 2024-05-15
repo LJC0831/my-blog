@@ -32,9 +32,11 @@ function Navigator() {
           scr.async = true;
           scr.type = 'text/javascript';
           scr.src = '//t1.daumcdn.net/kas/static/ba.min.js';
-          ins.setAttribute('data-ad-width', '160');
-          ins.setAttribute('data-ad-height', '600');
-          ins.setAttribute('data-ad-unit', 'DAN-2hGEktHnZg2ofBMF');
+          if (window.innerWidth > 768) {
+            ins.setAttribute('data-ad-width', '160');
+            ins.setAttribute('data-ad-height', '600');
+            ins.setAttribute('data-ad-unit', 'DAN-2hGEktHnZg2ofBMF');
+          }
         
           document.querySelector('.adfit').appendChild(ins);
           document.querySelector('.adfit').appendChild(scr);

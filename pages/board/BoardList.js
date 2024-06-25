@@ -82,12 +82,6 @@ function BoardList() {
                     }
                     subheader={post.ins_ymdhms}
                   />
-                  <CardMedia
-                    component="img"
-                    height="150"
-                    image={post.thumbnail_url}
-                    alt="Post Thumbnail"
-                  />
                   <div className={BoardListStyle.post_content}>{post.privew_content}</div>
                 </Link>
             </li>

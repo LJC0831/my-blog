@@ -3,6 +3,7 @@
 .post_container {
     display: flex;
     flex-wrap: wrap;
+    overflow: hidden;
     gap: 20px; /* 각 카드 사이의 간격 조절을 위한 값 */
     justify-content: center; /* 카드를 수평 중앙 정렬 */
   }
@@ -18,7 +19,11 @@
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
-    
+  }
+
+  .boardType {
+    display: flex;
+    justify-content: center; /* 카드를 수평 중앙 정렬 */
   }
   
   @media (max-width: 992px) {

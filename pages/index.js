@@ -36,6 +36,17 @@ export default function Home() {
     fetchData();
   }, []);
 
+    const groupedPosts = posts.reduce((groups, post) => {
+    const { board_type } = post;
+    if (!groups[board_type]) {
+      groups[board_type] = [];
+    }
+    groups[board_type].push(post);
+    return groups;
+  }, {});
+
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -54,13 +65,16 @@ export default function Home() {
             <img src="/image/loading.gif" alt="Loading" />
           </div>
         ) : (
+          Object.keys(groupedPosts).map((boardType) => (
+          <div key={boardType}>
+            <div className={BoardListStyle.boardType}><h4>{boardType}</h4></div>
           <div className={BoardListStyle.post_container}>
-          {posts.map((post) => (
-              <Card key={post.id} sx={{ maxWidth: 345 }} className={BoardListStyle.post_item}>
+          {groupedPosts[boardType].map((post) => (
+              <Card key={post.id} sx={{ maxWidth: 300 }} className={BoardListStyle.post_item}>
                 <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
                   <CardHeader
                     avatar={
-                      <Avatar sx={{ bgcolor: red[500], width: '100%' }} aria-label="recipe">
+                      <Avatar sx={{ bgcolor: red[500], width: '100%', fontSize:'0.875rem' }} aria-label="recipe">
                         {post.board_type}
                       </Avatar>
                     }
@@ -81,7 +95,9 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        )}
+              </div>
+            ))
+          )}
       </main>
       </div>
 

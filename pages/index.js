@@ -37,11 +37,11 @@ export default function Home() {
   }, []);
 
     const groupedPosts = posts.reduce((groups, post) => {
-    const { board_type } = post;
-    if (!groups[board_type]) {
-      groups[board_type] = [];
+    const { board_nm } = post;
+    if (!groups[board_nm]) {
+      groups[board_nm] = [];
     }
-    groups[board_type].push(post);
+    groups[board_nm].push(post);
     return groups;
   }, {});
 

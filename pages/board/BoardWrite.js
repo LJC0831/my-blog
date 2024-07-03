@@ -236,6 +236,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <textarea
               className={BoardWriteStyle.board_textarea}
               value={title}
+              placeholder='제목을 입력해주세요.'
               onChange={(e) => setSubject(e.target.value)}
             />
           ) : (
@@ -253,6 +254,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <p className='.vw60'>
               <textarea 
               className={BoardWriteStyle.board_textarea}
+              placeholder='description 을 입력해주세요.'
               value={privew} 
               onChange={(e) => setPrivew(e.target.value)}
             />

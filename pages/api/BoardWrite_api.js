@@ -14,6 +14,7 @@ export async function save01(title, content, privew, board_type) {
       });
       if (response.ok) {
         // 성공적으로 저장됨
+        alert('내용이 성공적으로 저장되었습니다.');
         console.log('내용이 성공적으로 저장되었습니다.');
       } else {
         // 저장 실패
@@ -60,6 +61,7 @@ export async function save02(id, commentData, ins_user_id) {
       });
       if (response.ok) {
         // 성공적으로 저장됨
+        alert('내용이 성공적으로 저장되었습니다.');
         console.log('내용이 성공적으로 저장되었습니다.');
       } else {
         // 저장 실패
@@ -213,6 +215,7 @@ export async function ThumbnailUpload(formData) {
     if (response.ok) {
       // 성공적으로 저장됨
       console.log('내용이 성공적으로 저장되었습니다.');
+      alert('업로드 되었습니다.');
     } else {
       // 저장 실패
       console.error('ThumbnailUpload 내용 저장에 실패했습니다.');

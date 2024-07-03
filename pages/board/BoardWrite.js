@@ -107,7 +107,11 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             setIsLoading(false);
           } else {
             const html = await upload01(addLineIndex(introText), id,''); //html, board_type, board_id
-            await save01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
+            if(html === undefined){
+              await save01(title, html, privew, id); //작은따옴표의 경우 '\ 로 변경
+            } else {
+              await save01(title, html.replace(/'/g, "\\'"), privew, id); //작은따옴표의 경우 '\ 로 변경
+            }
             await saveAfter();
             setIsLoading(false);
           }

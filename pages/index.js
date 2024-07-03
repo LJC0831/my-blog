@@ -10,7 +10,6 @@ import Link from 'next/link';
 import { Card, Avatar, CardHeader, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -66,7 +65,7 @@ export default function Home() {
                       </Avatar>
                     }
                     title={
-                      <Typography variant="h6" sx={{ fontWeight: 'bold', fontFamily: "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif" }}>
+                      <Typography variant="h7" sx={{ fontWeight: 'bold', fontFamily: "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif" }}>
                         {post.title}
                       </Typography>
                     }
@@ -78,11 +77,6 @@ export default function Home() {
                     image={post.thumbnail_url}
                     alt="Post Thumbnail"
                   />
-                  <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                      {post.privew_content}
-                    </Typography>
-                  </CardContent>
                 </Link>
               </Card>
             ))}

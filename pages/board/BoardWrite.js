@@ -241,7 +241,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             />
           ) : (
             <div className={CommonStyle.board_subject}>
-              <h1>{addLineBreaks(title)}</h1>
+              <h1>{addLineBreaks(title)}</h1><hr></hr>
             </div>
           )}
           {isEditing && (

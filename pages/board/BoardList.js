@@ -19,13 +19,8 @@ function BoardList() {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [isLoginYn, setIsLogin] = useState(false);
-  const [isDarkMode, setIsDark] = useState(false);//다크모드여부
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDark(true);
-    }
     const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
     setIsLogin(loginYn === 'true');
     // 여기에서 게시글 데이터를 가져오는 API 호출 또는 데이터 로딩 로직을 작성
@@ -69,7 +64,7 @@ function BoardList() {
           </div>
         ) : (
         <Card>
-          <ul className={isDarkMode ? BoardListStyle.dark_mode : BoardListStyle.post_list}>
+          <ul>
             {posts.map((post) => (
               <li key={post.id} className={BoardListStyle.post_item}>
                 <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>

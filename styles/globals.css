@@ -14,8 +14,24 @@ body.dark-mode {
   scroll-behavior: smooth;
   margin: 0;
   color: #ffffff;
-   background-color: rgba(31, 41, 55); 
+  background-color: rgba(31, 41, 55); 
 }
+body ul {
+  margin-top: -15px;
+  list-style: none;
+  padding: 0;
+  border: none;
+}
+
+body.dark-mode ul {
+  margin-top: -15px;
+  list-style: none;
+  padding: 0;
+  border: none;
+  color: #ffffff;
+  background-color: rgba(31, 41, 55); 
+}
+
 
 a {
   color: inherit;

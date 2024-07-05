@@ -342,7 +342,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <h5>목차</h5>
             <a href="#"><h5 className={CommonStyle.cursor}>스크롤 ▲</h5></a>
             {indexData.length > 0 ? (
-            <ul>
+            <ul style={{marginLeft:40}}>
             {indexData.map((data, index) => (
                 <li className={BoardWriteStyle.relation_li} key={index}>
                   <a href={"#textContent" + data.rownum}>

@@ -18,13 +18,14 @@ body.dark-mode {
 }
 body ul {
   margin-top: -15px;
+  margin-bottom: 0px;
   list-style: none;
   padding: 0;
   border: none;
 }
 
 body.dark-mode ul {
-  margin-top: -15px;
+  margin-bottom: 0px;
   list-style: none;
   padding: 0;
   border: none;

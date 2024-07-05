@@ -109,6 +109,17 @@ function Header() {
     });
 }, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
+  useEffect(() => {
+    // 다크 모드 상태에 따라 body 클래스 변경
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
   const headerClassName = isMenuOpen ? headerStyles.menu_open : headerStyles.header;
 
 

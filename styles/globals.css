@@ -24,7 +24,7 @@ body ul {
   border: none;
 }
 
-body.dark-mode ul {
+body.dark-mode ul{
   margin-bottom: 0px;
   list-style: none;
   padding: 0;
@@ -32,7 +32,6 @@ body.dark-mode ul {
   color: #ffffff;
   background-color: rgba(31, 41, 55); 
 }
-
 
 a {
   color: inherit;

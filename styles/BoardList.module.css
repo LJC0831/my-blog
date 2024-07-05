@@ -17,3 +17,22 @@
   .position_right{
     float : right;
   }
+  .hr_container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .hr_text {
+    flex:1;
+    margin: 0 10px;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .hr_line {
+  flex:0.5;
+  height: 1px;
+  background-color: #000;
+}

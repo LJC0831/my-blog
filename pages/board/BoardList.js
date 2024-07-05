@@ -57,7 +57,15 @@ function BoardList() {
           <button className={CommonStyle.new_post_button}>새글추가 +</button>
         </Link>
         }
-        <h2>{board_type} 작업 관련 게시판입니다.</h2>
+        <div className={BoardListStyle.hr_container }>
+          <div className={BoardListStyle.hr_line}></div>
+          {loading ? (
+            <div className={BoardListStyle.hr_text}><h2>{board_type}</h2></div>
+          ): (
+            <div className={BoardListStyle.hr_text}><h2>{posts[0].board_nm} 게시판</h2></div>
+          )}
+          <div className={BoardListStyle.hr_line}></div>
+        </div>
         {loading ? (
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <img src="/image/loading.gif" alt="Loading" />

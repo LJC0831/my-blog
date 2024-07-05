@@ -5,6 +5,16 @@ body {
   padding: 0;
   scroll-behavior: smooth;
   margin: 0;
+  color: #333;
+  /* background-color: rgba(31, 41, 55); */
+}
+
+body.dark-mode {
+  padding: 0;
+  scroll-behavior: smooth;
+  margin: 0;
+  color: #ffffff;
+   background-color: rgba(31, 41, 55); 
 }
 
 a {

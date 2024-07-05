@@ -66,9 +66,6 @@ function Navigator() {
     <section className={NavigatorStyle.sidebar}>
     <nav className={NavigatorStyle.left_nav}>
       <ul style={navListStyle}>
-        <li>
-          <img width="200" height="200" src="https://develop-blog.pe.kr/profile.webp" alt="프로필 사진" className={NavigatorStyle.profile_img} />
-        </li>
         {boardList.map((data, index) => (
             <li style={navItemStyle} key={index}>
              <FontAwesomeIcon icon={getIcon(data.board_icon)} />&nbsp;&nbsp;

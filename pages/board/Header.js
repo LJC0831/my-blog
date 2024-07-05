@@ -3,7 +3,7 @@ import headerStyles from'../../styles/header.module.css';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; // 돋보기 아이콘 추가
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { login01, Search01 } from '../api/Header_api';
 import Link from 'next/link';
 
@@ -11,6 +11,7 @@ function Header() {
   const [isModalOpen, setModalOpen] = useState(false); //로그인팝업
   const [password, setPassword] = useState(''); //패스워드
   const [isLoginYn, setIsLogin] = useState(false);//로그인여부
+  const [isDarkMode, setIsDark] = useState(false);//다크모드여부
   const [isMenuOpen, setMenuOpen] = useState(false); //햄버거클릭여부
   const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
   const [keyword, setKeyword] = useState(''); //검색키워드
@@ -67,6 +68,17 @@ function Header() {
     setMenuOpen(!isMenuOpen);
   };
 
+  const toggleDarkMode = () => {
+    if (!isDarkMode) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+    setIsDark(!isDarkMode);
+  };
+
   const handleLogin = () => {
     login01(password).then((data) => {
       if (data.length > 0) {
@@ -80,6 +92,10 @@ function Header() {
   };
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setIsDark(true);
+    }
     Search01().then((data) => {
       const data2 = data.map((data2) => {
         return {
@@ -110,6 +126,13 @@ function Header() {
         <div className={headerStyles.search}>
           <input type="text" placeholder='검색어 입력' className={headerStyles.input} value={keyword} onChange={handleKeywordChange} onKeyPress={handleEnterKeyPress}></input>
           <FontAwesomeIcon icon={faSearch}  className={headerStyles.img} onClick={KeywordSearch}/>
+        </div>
+        <div>
+          {isDarkMode ? (
+              <FontAwesomeIcon icon={faMoon} onClick={toggleDarkMode} className={headerStyles.darkMode}  />
+            ) : (
+              <FontAwesomeIcon icon={faSun} onClick={toggleDarkMode} className={headerStyles.darkMode}  />
+            )}
         </div>
         <div>
           {isLoginYn ? (

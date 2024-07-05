@@ -11,7 +11,6 @@ import { Search01 } from '../api/BoardList_api';
 import Link from 'next/link';
 import { Card, Avatar, CardHeader, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
-import CardMedia from '@mui/material/CardMedia';
 
 
 function BoardList() {
@@ -20,8 +19,13 @@ function BoardList() {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [isLoginYn, setIsLogin] = useState(false);
+  const [isDarkMode, setIsDark] = useState(false);//다크모드여부
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setIsDark(true);
+    }
     const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
     setIsLogin(loginYn === 'true');
     // 여기에서 게시글 데이터를 가져오는 API 호출 또는 데이터 로딩 로직을 작성
@@ -65,7 +69,7 @@ function BoardList() {
           </div>
         ) : (
         <Card>
-          <ul className={BoardListStyle.post_list}>
+          <ul className={isDarkMode ? BoardListStyle.dark_mode : BoardListStyle.post_list}>
             {posts.map((post) => (
               <li key={post.id} className={BoardListStyle.post_item}>
                 <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
@@ -76,11 +80,10 @@ function BoardList() {
                       </Avatar>
                     }
                     title={
-                      <Typography variant="h6" sx={{ fontWeight: 'bold' , fontFamily: "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif"}}> {/* Title 스타일링 */}
+                      <Typography variant="h7" sx={{ fontWeight: 'bold' , fontFamily: "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif"}}> {/* Title 스타일링 */}
                         {post.title}
                       </Typography>
                     }
-                    subheader={post.ins_ymdhms}
                   />
                   <div className={BoardListStyle.post_content}>{post.privew_content}</div>
                 </Link>

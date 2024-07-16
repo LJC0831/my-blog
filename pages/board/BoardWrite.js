@@ -287,8 +287,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           )}
            { isLoginYn && 
               isLoading ? (
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-                  <img src="/image/loading.gif" alt="Loading" />
+                <div className={CommonStyle.loading_overlay}>
+                  <img src="/image/loading.gif" alt="Loading" className={CommonStyle.loading_spinner}/>
                 </div>
               ) : (
                 isLoginYn && 

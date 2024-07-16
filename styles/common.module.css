@@ -23,6 +23,22 @@
   .cursor{
     cursor: pointer;
   }
+  .loading_spinner {
+    width: 50px; /* 로딩 이미지 크기 */
+    height: 50px;
+  }
+  .loading_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경을 어둡게 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 다른 요소들보다 위로 올려 표시 */
+  }
 
   /* 화면 크기가 768px 이하일 때 스타일 변경 */
 @media (max-width: 768px) {

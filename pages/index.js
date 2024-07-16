@@ -4,6 +4,7 @@ import Header from './board/Header'
 import Navigator from './board/Navigator'
 import { Search02 } from './api/BoardList_api';
 import BoardListStyle from '../styles/index.module.css';
+import CommonStyle from '../styles/common.module.css';
 import {React, useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -61,8 +62,8 @@ export default function Home() {
         <br></br><br></br>
         <div><h3>많이 찾는 게시글</h3></div>
         {loading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <img src="/image/loading.gif" alt="Loading" />
+          <div className={CommonStyle.loading_overlay}>
+            <img src="/image/loading.gif" alt="Loading" className={CommonStyle.loading_spinner}/>
           </div>
         ) : (
           Object.keys(groupedPosts).map((boardType) => (

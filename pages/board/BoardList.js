@@ -4,6 +4,7 @@ import {React, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import Header from './Header';
+import Footer from './Footer';
 import Navigator from './Navigator';
 import CommonStyle from '../../styles/common.module.css';
 import BoardListStyle from '../../styles/BoardList.module.css';
@@ -98,17 +99,7 @@ function BoardList() {
         )}
         </div>
       </div>
-      <footer className={styles.footer}>
-          <p>
-            <a href="https://github.com/LJC0831/my-blog"
-                target="_blank"
-                rel="noopener noreferrer">
-              <span>저자 : LJC</span><br/>
-              <span>이메일 : leejc831@naver.com</span><br/>
-              <span>Copyright 2024. cocoder. All Rights Reserved.</span>
-            </a>
-          </p>
-      </footer>
+      <Footer/>
     </div>
   );
 }

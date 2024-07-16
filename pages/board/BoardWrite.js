@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import Header from './Header';
+import Footer from './Footer';
 import Navigator from './Navigator';
 import dynamic from 'next/dynamic';
 import CommonStyle from '../../styles/common.module.css';
@@ -357,17 +358,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
         </div>
       </div>
-      <footer className={styles.footer}>
-          <p>
-            <a href="https://github.com/LJC0831/my-blog"
-                target="_blank"
-                rel="noopener noreferrer">
-              <span>저자 : LJC</span><br/>
-              <span>이메일 : leejc831@naver.com</span><br/>
-              <span>Copyright 2024. cocoder. All Rights Reserved.</span>
-            </a>
-          </p>
-      </footer>
+      <Footer/>
     </div>
   );
 }

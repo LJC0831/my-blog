@@ -213,6 +213,33 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       }, 300);
     } 
     handleImageClick(); 
+    // 카카오애드핏 스크립트 및 광고 요소 추가
+    const addKakaoAdfit = () => {
+      let ins = document.createElement('ins');
+      let scr = document.createElement('script');
+    
+      ins.className = 'kakao_ad_area';
+      ins.style.display = 'block'; // visible block
+      ins.style.position = 'fixed'; // fix to bottom
+      ins.style.bottom = '0'; // align to bottom
+      ins.style.right = '0';
+      ins.style.width = '100%'; // full width
+      ins.style.height = '90px'; // height 90px
+      ins.style.zIndex = '1000'; // ensure it's above other elements
+      scr.async = true;
+      scr.type = 'text/javascript';
+      scr.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+      if (window.innerWidth > 768) {
+        ins.setAttribute('data-ad-width', '250');
+        ins.setAttribute('data-ad-height', '250');
+        ins.setAttribute('data-ad-unit', 'DAN-qcLIpyQFWRPNnOvu');
+      }
+    
+      document.querySelector('.adfit').appendChild(ins);
+      document.querySelector('.adfit').appendChild(scr);
+    };
+
+    addKakaoAdfit(); // 함수 실행
   }, [id]); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
 
@@ -356,6 +383,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <p>관련 게시물이 없습니다.</p>
             )}
             <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
+            <div className="adfit"/>
         </div>
       </div>
       <Footer/>

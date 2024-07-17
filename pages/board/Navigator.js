@@ -35,7 +35,7 @@ function Navigator() {
           if (window.innerWidth > 768) {
             ins.setAttribute('data-ad-width', '160');
             ins.setAttribute('data-ad-height', '600');
-            ins.setAttribute('data-ad-unit', 'DAN-2hGEktHnZg2ofBMF');
+            ins.setAttribute('data-ad-unit', 'DAN-c5iroQ7DQpJNiWWK');
           }
         
           document.querySelector('.adfit').appendChild(ins);

@@ -232,7 +232,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       if (window.innerWidth > 768) {
         ins.setAttribute('data-ad-width', '250');
         ins.setAttribute('data-ad-height', '250');
-        ins.setAttribute('data-ad-unit', 'DAN-qcLIpyQFWRPNnOvu');
+        ins.setAttribute('data-ad-unit', 'DAN-lb8dg1wjZrXafQJz');
       }
     
       document.querySelector('.adfit').appendChild(ins);

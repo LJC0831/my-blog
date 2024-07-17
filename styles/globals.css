@@ -60,6 +60,9 @@ a {
   img {
     max-width: 95vw;
   }
+  div {
+    text-align: center;
+  }
 }
 
 

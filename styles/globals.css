@@ -57,11 +57,18 @@ a {
 }
 
 @media (max-width: 768px) {
+  * {
+    font-size: 14px;
+  }
   img {
     max-width: 95vw;
   }
   div {
     text-align: center;
+  }
+  p {
+    padding:10px;
+    text-align: left;
   }
 }
 

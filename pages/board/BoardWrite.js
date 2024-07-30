@@ -239,7 +239,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       document.querySelector('.adfit').appendChild(scr);
     };
 
-    addKakaoAdfit(); // 함수 실행
+    //addKakaoAdfit(); // 함수 실행
   }, [id]); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
 
@@ -384,6 +384,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             )}
             <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
             <div className="adfit"/>
+            <div>
+            <iframe src="https://ads-partners.coupang.com/widgets.html?id=796048&template=carousel&trackingCode=AF0780791&subId=&width=160&height=300&tsource=" width="160" height="300" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+            </div>
         </div>
       </div>
       <Footer/>

@@ -21,4 +21,7 @@
       padding: 5px; /* 패딩 설정 */
       width:25vw;
     }
+    .coopang{
+      display: none;
+    }
   }

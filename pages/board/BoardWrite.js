@@ -390,6 +390,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         </div>
       </div>
       <Footer/>
+      <div class="daum-wm-content">{seo_privew}</div>
     </div>
   );
 }

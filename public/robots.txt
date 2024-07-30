@@ -1,3 +1,4 @@
 User-agent: *
 Allow:/
 Sitemap: https://www.develop-blog.pe.kr/sitemap2.xml
+#DaumWebMasterTool:b2806b56992978a65eb1d23b11376ff429585e76ae33fad22c30d204d7596485:nJEOuHTmkLqF6HXup9hKqA==

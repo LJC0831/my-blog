@@ -385,7 +385,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
             <div className="adfit"/>
             <div>
-            <iframe src="https://ads-partners.coupang.com/widgets.html?id=796048&template=carousel&trackingCode=AF0780791&subId=&width=160&height=300&tsource=" width="160" height="300" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+            <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=160&height=500&tsource=" width="160" height="500" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
             </div>
         </div>
       </div>

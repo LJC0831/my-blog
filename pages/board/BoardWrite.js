@@ -390,8 +390,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         </div>
       </div>
       <Footer/>
-      <div class="daum-wm-content">{seo_privew}</div>
-    </div>
+      <div className="daum-wm-content" style={{position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(1px, 1px, 1px, 1px)', whiteSpace: 'nowrap'}}>{seo_privew}</div>
+      </div>
   );
 }
 

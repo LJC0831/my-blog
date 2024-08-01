@@ -65,7 +65,7 @@ function Navigator() {
   return (
     <section className={NavigatorStyle.sidebar}>
     <nav className={NavigatorStyle.left_nav}>
-      <ul style={navListStyle}>
+      <ul>
         {boardList.map((data, index) => (
             <li style={navItemStyle} key={index}>
              <FontAwesomeIcon icon={getIcon(data.board_icon)} />&nbsp;&nbsp;
@@ -83,12 +83,6 @@ function Navigator() {
   );
 };
 
-
-
-const navListStyle = {
-  listStyle: 'none',
-  padding: 0,
-};
 
 const navItemStyle = {
   margin: '0.5rem 0',

@@ -155,7 +155,7 @@ function Header() {
       </div>
 
       <div className={headerStyles.menu_list}>
-              <ul>
+              <ul className={headerStyles.menu_item}>
                 {boardList.map((data, index) => (
                     <li style={navItemStyle} key={index}>
                     <Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
@@ -183,6 +183,7 @@ const navItemStyle = {
   cursor: 'pointer',
   borderRadius: '5px',
   transition: 'background 0.3s ease',
+  color: 'var(--nav-item-color, #070707)',
 };
 
 

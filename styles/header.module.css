@@ -120,6 +120,13 @@ cursor: pointer;
   .menu_list {
     display: none;
   }
+  .menu_item{
+    background-image: url("../public/image/main.webp");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #070707;
+  }
   .menu_open .menu_list {
     display: block; /* 메뉴가 열린 상태일 때 메뉴 리스트를 보여줍니다. */
     top: 0; /* 화면 위쪽에 고정시킴 */

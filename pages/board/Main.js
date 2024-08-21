@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Script from 'next/script';
 import {React, useEffect } from 'react';
 
 function Main() {
@@ -205,15 +204,6 @@ function Main() {
 					</div>
 
 			</div>
-
-			{/* External Scripts */}
-            <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
-            <Script src="/assets/js/jquery.scrollex.min.js" strategy="afterInteractive" />
-            <Script src="/assets/js/jquery.scrolly.min.js" strategy="afterInteractive" />
-            <Script src="/assets/js/browser.min.js" strategy="afterInteractive" />
-            <Script src="/assets/js/breakpoints.min.js" strategy="afterInteractive" />
-            <Script src="/assets/js/util.js" strategy="afterInteractive" />
-            <Script src="/assets/js/main.js" strategy="afterInteractive" />
     </div>
   );
 }

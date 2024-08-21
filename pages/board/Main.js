@@ -207,13 +207,13 @@ function Main() {
 			</div>
 
 			{/* External Scripts */}
-            <Script src="/assets/js/jquery.min.js"></Script>
-            <Script src="/assets/js/jquery.scrollex.min.js"></Script>
-            <Script src="/assets/js/jquery.scrolly.min.js"></Script>
-            <Script src="/assets/js/browser.min.js"></Script>
-            <Script src="/assets/js/breakpoints.min.js"></Script>
-            <Script src="/assets/js/util.js"></Script>
-            <Script src="/assets/js/main.js"></Script>
+            <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
+            <Script src="/assets/js/jquery.scrollex.min.js" strategy="afterInteractive" />
+            <Script src="/assets/js/jquery.scrolly.min.js" strategy="afterInteractive" />
+            <Script src="/assets/js/browser.min.js" strategy="afterInteractive" />
+            <Script src="/assets/js/breakpoints.min.js" strategy="afterInteractive" />
+            <Script src="/assets/js/util.js" strategy="afterInteractive" />
+            <Script src="/assets/js/main.js" strategy="afterInteractive" />
     </div>
   );
 }

@@ -40,7 +40,7 @@ function Main() {
                             <li><a href="elements.html">ETC</a></li>
 						</ul>
 						<ul className="icons">
-							<li><a href="#" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
+							<li><a href="https://github.com/LJC0831" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
@@ -55,7 +55,7 @@ function Main() {
 									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
 									amet nullam sed etiam veroeros.</p>
 								</header>
-								<a href="#" className="image main"><img src="images/pic01.jpg" alt="" /></a>
+								<a href="#" className="image main"><img src="/image/pic01.jpg" alt="" /></a>
 								<ul className="actions special">
 									<li><a href="#" className="button large">Full Story</a></li>
 								</ul>
@@ -68,7 +68,7 @@ function Main() {
 										<h2><a href="#">Sed magna<br />
 										ipsum faucibus</a></h2>
 									</header>
-									<a href="#" className="image fit"><img src="images/pic02.jpg" alt="" /></a>
+									<a href="#" className="image fit"><img src="/image/pic02.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul className="actions special">
 										<li><a href="#" className="button">Full Story</a></li>
@@ -80,7 +80,7 @@ function Main() {
 										<h2><a href="#">Primis eget<br />
 										imperdiet lorem</a></h2>
 									</header>
-									<a href="#" className="image fit"><img src="images/pic03.jpg" alt="" /></a>
+									<a href="#" className="image fit"><img src="/image/pic03.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul className="actions special">
 										<li><a href="#" className="button">Full Story</a></li>
@@ -92,7 +92,7 @@ function Main() {
 										<h2><a href="#">Ante mattis<br />
 										interdum dolor</a></h2>
 									</header>
-									<a href="#" className="image fit"><img src="images/pic04.jpg" alt="" /></a>
+									<a href="#" className="image fit"><img src="/image/pic04.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul className="actions special">
 										<li><a href="#" className="button">Full Story</a></li>
@@ -104,7 +104,7 @@ function Main() {
 										<h2><a href="#">Tempus sed<br />
 										nulla imperdiet</a></h2>
 									</header>
-									<a href="#" className="image fit"><img src="images/pic05.jpg" alt="" /></a>
+									<a href="#" className="image fit"><img src="/image/pic05.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul className="actions special">
 										<li><a href="#" className="button">Full Story</a></li>
@@ -116,7 +116,7 @@ function Main() {
 										<h2><a href="#">Odio magna<br />
 										sed consectetur</a></h2>
 									</header>
-									<a href="#" className="image fit"><img src="images/pic06.jpg" alt="" /></a>
+									<a href="#" className="image fit"><img src="/image/pic06.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul className="actions special">
 										<li><a href="#" className="button">Full Story</a></li>
@@ -128,7 +128,7 @@ function Main() {
 										<h2><a href="#">Augue lorem<br />
 										primis vestibulum</a></h2>
 									</header>
-									<a href="#" className="image fit"><img src="images/pic07.jpg" alt="" /></a>
+									<a href="#" className="image fit"><img src="/image/pic07.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul className="actions special">
 										<li><a href="#" className="button">Full Story</a></li>

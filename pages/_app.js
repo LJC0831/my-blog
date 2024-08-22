@@ -6,6 +6,7 @@ import Head from 'next/head'
 import FullScreenLoading from "../pages/loading.js";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Script from 'next/script';
 config.autoAddCss = false;
 
 
@@ -49,11 +50,15 @@ function MyApp({ Component, pageProps }) {
       {loading ? (
         <FullScreenLoading />
       ) : (
-        <Suspense fallback={<p>Loading...</p>}>
         <Component {...pageProps} />
-        </Suspense>
-        
       )}
+      <Script src="../assets/js/jquery.min.js" strategy="beforeInteractive" />
+      <Script src="../assets/js/jquery.scrollex.min.js" strategy="afterInteractive" />
+      <Script src="../assets/js/jquery.scrolly.min.js" strategy="afterInteractive" />
+      <Script src="../assets/js/browser.min.js" strategy="afterInteractive" />
+      <Script src="../assets/js/breakpoints.min.js" strategy="afterInteractive" />
+      <Script src="../assets/js/util.js" strategy="afterInteractive" />
+      <Script src="../assets/js/main.js" strategy="afterInteractive" />
     </>
   );
 }

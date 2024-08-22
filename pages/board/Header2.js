@@ -5,6 +5,10 @@ import Link from 'next/link';
 
 function Main() {
     const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
+	const toggleNavPanel = () => {
+		
+	  };
+
 	useEffect(() => {
         Search01().then((data) => {
 			try{
@@ -24,7 +28,6 @@ function Main() {
 		});
 		
 	}, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
-
 
   return (
     <div>
@@ -63,6 +66,8 @@ function Main() {
 							<li><a href="https://github.com/LJC0831" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
 						</ul>
 					</nav>
+
+					<a href="#navPanel" id="navPanelToggle" onClick={toggleNavPanel}>Menu</a>
 			</div>
     </div>
   );

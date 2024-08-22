@@ -90,7 +90,7 @@ function Intro() {
 								{isEditing ? (
 									<ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} style={{ width: '50vw' }} />
 								) : (
-									<span dangerouslySetInnerHTML={{ __html: introText }} />
+									<span dangerouslySetInnerHTML={{ __html: introText }} style={{fontFamily:'Pretendard'}}/>
 								)}
 								{ isLoginYn && 
 									<button onClick={handleEditButtonClick}>

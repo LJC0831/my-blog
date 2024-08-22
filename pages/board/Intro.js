@@ -2,11 +2,10 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import {React, useState, useEffect, Fragment } from 'react';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
-import Header from './Header';
-import Navigator from './Navigator';
 import dynamic from 'next/dynamic';
-import CommonStyle from '../../styles/common.module.css';
 import {  Search01, save01, upload01, fileStatUpdate } from '../api/Intro_api';
+import Header from './Header2';
+import Footer from './Footer2';
 
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {
@@ -75,53 +74,35 @@ function Intro() {
       <Head>
         <title>LJC Developer Blog 인트로입니다.</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
       </Head>
-      <Header />
-      <div style={mainContent}>
-        <Navigator />
-        <div className={CommonStyle.board_content}>
-          {isEditing ? (
-            <textarea
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-              style={{ width: '50vw' }}
-            />
-          ) : (
-            <div className={CommonStyle.board_subject}>
-              <h1>{addLineBreaks(subject)}</h1>
-            </div>
-          )}
-          {isEditing ? (
-            <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} style={{ width: '50vw' }} />
-          ) : (
-            <p
-              className="description"
-              dangerouslySetInnerHTML={{ __html: introText }} />
-          )}
-           { isLoginYn && 
-            <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>
-              {isEditing ? '저장' : '편집'}
-            </button>
-           }
-        </div>
-      </div>
-      <footer className={styles.footer}>
-          <p>
-            <a href="https://github.com/LJC0831/my-blog"
-                target="_blank"
-                rel="noopener noreferrer">
-              <span>저자 : LJC</span><br/>
-              <span>이메일 : leejc831@naver.com</span><br/>
-              <span>Copyright 2024. cocoder. All Rights Reserved.</span>
-            </a>
-          </p>
-      </footer>
+      <div id="wrapper" className="fade-in">
+					<Header/>
+					<div id="main">
+							<article className="post featured">
+								<header className="major">
+									<span className="date">Oct 01, 2023</span>
+									<h2>{addLineBreaks(subject)}</h2>
+									
+								</header>
+								{isEditing ? (
+									<ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} style={{ width: '50vw' }} />
+								) : (
+									<span dangerouslySetInnerHTML={{ __html: introText }} />
+								)}
+								{ isLoginYn && 
+									<button onClick={handleEditButtonClick}>
+									{isEditing ? '저장' : '편집'}
+									</button>
+								}
+							</article>
+					</div>
+					<Footer/>
+			  </div>
     </div>
   );
 }
-
-const mainContent = {
-  display: 'flex'
-};
 
 export default Intro;

@@ -1,10 +1,68 @@
 import Head from 'next/head'
-import {React, useEffect } from 'react';
+import {React, useEffect, useState, Fragment } from 'react';
+import {  Search01, save01, upload01, fileStatUpdate } from '../api/Intro_api';
+import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
+import dynamic from 'next/dynamic';
+import Header from './Header2';
+import Footer from './Footer2';
 
+// 줄바꿈 문자를 <br> 태그로 변환하는 함수
+function addLineBreaks(text) {
+	const withBreaks = text.split('\n').map((line, index) => (
+	  <Fragment key={index}>
+		{line}
+		<br />
+	  </Fragment>
+	));
+	return withBreaks;
+  }
+  
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 function Main() {
-  // 처음 렌더링 시 Search01 함수 호출
-  useEffect(() => {
-  }, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
+
+	const initialHTML = ''; // 초기 HTML
+	const subjectHTML = ''; // 초기 HTML
+	const [isEditing, setIsEditing] = useState(false); // 에디터의 가시성 상태를 저장
+	const [introText, setIntroText] = useState(initialHTML); // 에디터의 내용을 저장
+	const [subject, setSubject] = useState(subjectHTML);
+	const [isLoginYn, setIsLogin] = useState(false);
+	//에디터 옵션
+	const toolbarOptions = [
+		[{ header: [1, 2, 3, 4, 5, 6, false] }],
+		["bold", "italic", "underline", "strike"],
+		["blockquote"],
+		[{ list: "ordered" }, { list: "bullet" }],
+		[{ color: [] }, { background: [] }],
+		[{ align: [] }],
+	];
+	const modules = {
+		toolbar: {
+		container: toolbarOptions,
+		},
+	};
+	const handleIntroTextChange = (value) => {
+		setIntroText(value);
+	  };
+	// 저장처리
+	const handleEditButtonClick = async () => {
+		setIsEditing(!isEditing); // 편집 버튼 클릭 시 가시성 상태를 토글
+		if (isEditing) {
+		  await fileStatUpdate();
+		  const html = await upload01(introText, 'intro',''); //html, board_type, board_id
+		  save01(subject, html);
+		}
+	  };
+	useEffect(() => {
+		const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
+    	setIsLogin(loginYn === 'true');
+
+		setTimeout(() => {
+			Search01().then((data) => {
+			  setSubject(data[0].subject);
+			  setIntroText(data[0].content);
+			});
+		  }, 300);
+	}, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
 
   return (
@@ -17,44 +75,24 @@ function Main() {
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
       </Head>
 			<div id="wrapper" className="fade-in">
-
-					<div id="intro">
-						<h1>LJC Developer Blog</h1>
-						<p>This blog is a personal website created with Next.js + node.js. The design is referenced from <a href="https://html5up.net">HTML5 UP</a><br />
-						and is hosted on <a href="https://vercel.com">vercel</a>.<br/> See<a href="https://html5up.net/license"> license</a></p>
-						<ul className="actions">
-							<li><a href="#header" className="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
-
-					<header id="header">
-						<a href="Intro?board_type=Intro" className="logo">INTRO</a>
-					</header>
-
-					<nav id="nav">
-						<ul className="links">
-							<li className="active"><a href="index.html">Frontend</a></li>
-							<li><a href="generic.html">backend</a></li>
-							<li><a href="elements.html">ERROR resolution</a></li>
-                            <li><a href="elements.html">algorithm</a></li>
-                            <li><a href="elements.html">ETC</a></li>
-						</ul>
-						<ul className="icons">
-							<li><a href="https://github.com/LJC0831" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-
+					<Header/>
 					<div id="main">
-
 							<article className="post featured">
 								<header className="major">
-									<span className="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
+									<span className="date">Oct 01, 2023</span>
+									<h2>{addLineBreaks(subject)}</h2>
+									
 								</header>
+								{isEditing ? (
+									<ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} style={{ width: '50vw' }} />
+								) : (
+									<span dangerouslySetInnerHTML={{ __html: introText }} />
+								)}
+								{ isLoginYn && 
+									<button onClick={handleEditButtonClick}>
+									{isEditing ? '저장' : '편집'}
+									</button>
+								}
 								<a href="#" className="image main"><img src="/image/pic01.jpg" alt="" /></a>
 								<ul className="actions special">
 									<li><a href="#" className="button large">Full Story</a></li>
@@ -152,57 +190,7 @@ function Main() {
 
 					</div>
 
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div className="fields">
-									<div className="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div className="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div className="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul className="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section className="split contact">
-							<section className="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul className="icons alt">
-									<li><a href="#" className="icon brands alt fa-twitter"><span className="label">Twitter</span></a></li>
-									<li><a href="#" className="icon brands alt fa-facebook-f"><span className="label">Facebook</span></a></li>
-									<li><a href="#" className="icon brands alt fa-instagram"><span className="label">Instagram</span></a></li>
-									<li><a href="#" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
+					<Footer/>
 			</div>
     </div>
   );

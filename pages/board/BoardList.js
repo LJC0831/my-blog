@@ -5,6 +5,7 @@ import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵
 import Header from './Header2';
 import Footer from './Footer2';
 import { Search01 } from '../api/BoardList_api';
+import CommonStyle from '../../styles/common.module.css';
 import Link from 'next/link';
 
 function BoardList() {
@@ -52,30 +53,35 @@ function BoardList() {
           </Link>
         </div>
       }
-      <section className="posts">
-        {posts.map((post) => (
-              <article key={post.id}>
-                <header>
-                  <span className="date">{post.ins_ymdhms}</span>
-                  <h2>{post.title}</h2>
-                </header>
-                <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
-                  <span className="image fit"><img src={post.thumbnail_url} alt="" /></span>
-                    <p>{post.privew_content}</p>
-                  <ul className="actions special">
-                    <li><span className="button">Full Story</span></li>
-                  </ul>
-                </Link>
-              </article>
-          ))}
-          </section>
+      {loading ? (
+                <div className={CommonStyle.loading_overlay}>
+                  <img src="/image/loading.gif" alt="Loading" className={CommonStyle.loading_spinner}/>
+                </div>
+              ) : (
+                <section className="posts">
+                  {posts.map((post) => (
+                        <article key={post.id}>
+                          <header>
+                            <span className="date">{post.ins_ymdhms}</span>
+                            <h2>{post.title}</h2>
+                          </header>
+                          <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
+                            <span className="image fit"><img src={post.thumbnail_url} alt="" /></span>
+                              <p>{post.privew_content}</p>
+                            <ul className="actions special">
+                              <li><span className="button">Full Story</span></li>
+                            </ul>
+                          </Link>
+                        </article>
+                    ))}
+                  </section>
+              )
+      }
+      
           <Footer/>
       </div>
     </div>
   );
 }
 
-const mainContent = {
-  display: 'flex'
-};
 export default BoardList;

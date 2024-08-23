@@ -75,9 +75,6 @@ export default function Home() {
       <Head>
         <title>LJC Developer Blog 인트로입니다.</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="/assets/css/main.css" />
-        <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
       </Head>
       <div id="wrapper" className="fade-in">
 					<Header/>

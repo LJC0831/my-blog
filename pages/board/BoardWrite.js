@@ -137,7 +137,9 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       }
     }
     setcommentText('');
-    window.location.reload();
+    setcommentName('');
+    alert('소중한 댓글 감사합니다.');
+    await Search02(id);
   }; 
 
   //이미지 팝업
@@ -396,7 +398,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
                 <div class="col-12">
                   <ul class="actions">
-                    <li><input type="submit" value="Send Message" class="primary" onClick={handleCommenButtonClick}/></li>
+                    <li><button onClick={handleCommenButtonClick}>send Message</button></li>
                     <li><input type="reset" value="Reset" /></li>
                   </ul>
                 </div>

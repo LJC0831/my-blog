@@ -4,7 +4,6 @@ import styles from '../../styles/Home.module.css'
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import Header from './Header';
 import Footer from './Footer';
-import Navigator from './Navigator';
 import dynamic from 'next/dynamic';
 import CommonStyle from '../../styles/common.module.css';
 import BoardWriteStyle from '../../styles/BoardWrite.module.css';
@@ -55,6 +54,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const [isLoading, setIsLoading] = useState(false); //로딩
   const [selectedImage, setSelectedImage] = useState(''); // 선택된 이미지 URL
   const [showImagePopup, setShowImagePopup] = useState(false); // 이미지 팝업 노출 여부
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4; //페이징할 컨텐츠 개수
   
   
 
@@ -177,7 +178,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
               id: data2.id,
               title: data2.title,
               board_Type: data2.board_type,
-              date: data2.ins_ymdhms
+              date: data2.ins_ymdhms,
+              thumbnail_url: data2.thumbnail_url
             };
           });
           
@@ -214,33 +216,39 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     } 
     handleImageClick(); 
     // 카카오애드핏 스크립트 및 광고 요소 추가
-    const addKakaoAdfit = () => {
-      let ins = document.createElement('ins');
-      let scr = document.createElement('script');
+    // const addKakaoAdfit = () => {
+    //   let ins = document.createElement('ins');
+    //   let scr = document.createElement('script');
     
-      ins.className = 'kakao_ad_area';
-      ins.style.display = 'block'; // visible block
-      ins.style.position = 'fixed'; // fix to bottom
-      ins.style.bottom = '0'; // align to bottom
-      ins.style.right = '0';
-      ins.style.width = '100%'; // full width
-      ins.style.height = '90px'; // height 90px
-      ins.style.zIndex = '1000'; // ensure it's above other elements
-      scr.async = true;
-      scr.type = 'text/javascript';
-      scr.src = '//t1.daumcdn.net/kas/static/ba.min.js';
-      if (window.innerWidth > 768) {
-        ins.setAttribute('data-ad-width', '250');
-        ins.setAttribute('data-ad-height', '250');
-        ins.setAttribute('data-ad-unit', 'DAN-lb8dg1wjZrXafQJz');
-      }
+    //   ins.className = 'kakao_ad_area';
+    //   ins.style.display = 'block'; // visible block
+    //   ins.style.position = 'fixed'; // fix to bottom
+    //   ins.style.bottom = '0'; // align to bottom
+    //   ins.style.right = '0';
+    //   ins.style.width = '100%'; // full width
+    //   ins.style.height = '90px'; // height 90px
+    //   ins.style.zIndex = '1000'; // ensure it's above other elements
+    //   scr.async = true;
+    //   scr.type = 'text/javascript';
+    //   scr.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+    //   if (window.innerWidth > 768) {
+    //     ins.setAttribute('data-ad-width', '250');
+    //     ins.setAttribute('data-ad-height', '250');
+    //     ins.setAttribute('data-ad-unit', 'DAN-lb8dg1wjZrXafQJz');
+    //   }
     
-      document.querySelector('.adfit').appendChild(ins);
-      document.querySelector('.adfit').appendChild(scr);
-    };
+    //   document.querySelector('.adfit').appendChild(ins);
+    //   document.querySelector('.adfit').appendChild(scr);
+    // };
 
     //addKakaoAdfit(); // 함수 실행
   }, [id]); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
+
+  //페이징 처리
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = relationData.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
   return (
@@ -256,148 +264,217 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         <meta property="og:image" content={seo_Thumbnail}></meta>
         
       </Head>
-      <Header />
-      <div style={mainContent}>
-        <Navigator />
-        <div className={CommonStyle.board_content}>
-          {isEditing ? (
-            <textarea
-              className={BoardWriteStyle.board_textarea}
-              value={title}
-              placeholder='제목을 입력해주세요.'
-              onChange={(e) => setSubject(e.target.value)}
-            />
-          ) : (
-            <div className={CommonStyle.board_subject}>
-              <h1>{addLineBreaks(title)}</h1><hr></hr>
-            </div>
-          )}
-          {isEditing && (
-            <p className='.vw60'>
-              <input type='file' name='images' onChange={onSelectFile} accept='.png, .jpg,image/*'/>
-            </p>
-             ) 
-          }
-          {isEditing && (
-            <p className='.vw60'>
-              <textarea 
-              className={BoardWriteStyle.board_textarea}
-              placeholder='description 을 입력해주세요.'
-              value={privew} 
-              onChange={(e) => setPrivew(e.target.value)}
-            />
-            </p>
-             ) 
-          }
-          {/* 팝업 */}
-          {showImagePopup && (
-              <div className={BoardWriteStyle.image_popup}>
-                <img src={selectedImage} alt="Popup" onClick={closeImagePopup} />
-                <button className={CommonStyle.new_post_button} onClick={closeImagePopup}>Close</button>
-              </div>
-          )}
-          {isEditing ? (
-            <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} className={BoardWriteStyle.board_textarea} />
-          ) : (
-            <p
-              className={BoardWriteStyle.board_content}
-              dangerouslySetInnerHTML={{ __html: introText }}
-                ref={(el) => {
-                  if (el) {
-                    el.addEventListener('click', (event) => {
-                      if (event.target.tagName === 'IMG') {
-                        openImagePopup(event.target.src);
-                      }
-                    });
-                  }
-                }}
+      <div id="wrapper" className="fade-in">
+        <Header />
+        <div id="main">
+         <article className="post featured">
+          <header className="major">
+            {isEditing ? (
+              <textarea
+                className={BoardWriteStyle.board_textarea}
+                value={title}
+                placeholder='제목을 입력해주세요.'
+                onChange={(e) => setSubject(e.target.value)}
               />
-          )}
-           { isLoginYn && 
-              isLoading ? (
-                <div className={CommonStyle.loading_overlay}>
-                  <img src="/image/loading.gif" alt="Loading" className={CommonStyle.loading_spinner}/>
-                </div>
-              ) : (
-                isLoginYn && 
-                <button className={CommonStyle.new_post_button} onClick={handleEditButtonClick}>
-                  {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
-                </button>
-                
-              )
-           }
-            {
-              <div className={BoardWriteStyle.comment_section} >
-                <h4>카테고리의 다른 글</h4>
-                {relationData.length > 0 ? (
-                  <ul style={{ border: '1px solid #ccc', padding: '10px', listStyleType: 'none' }}>
-                  {relationData.map((data, index) => (
-                      <li key={index} style={{marginBottom:'10px'}}>
-                        <Link href={`/board/BoardWrite?id=${data.id}&content=${data.title.replace(/\s+/g, '-')}`}>
-                            <span className={BoardWriteStyle.index_txt}>{data.title}</span>
-                            <span className={BoardWriteStyle.comment_time} style={{color: 'gray'}}>{data.date}</span>
-                        </Link>
-                      </li>
-                  ))}
-                  </ul>
-                  ) : (
-                  <p>관련 게시물이 없습니다.</p>
-                  )}
-              </div>
-            }
-           { !isNaN(id) &&
-            <div className={BoardWriteStyle.comment_section} >
-                <h2>댓글</h2>
-                <div className={BoardWriteStyle.comment_list}>
-                {commentData.map((comment, index) => (
-                    <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span> 
-                      <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
-                      <span className={BoardWriteStyle.comment_time}>{comment.date}</span>
-                    </p>
-                ))}
-                </div>
-
-                <div className={BoardWriteStyle.comment_form}>
-                    <textarea value={commentText} onChange={handleCommentTextChange} className={BoardWriteStyle.comment_textarea} placeholder="댓글을 작성하세요"/>
-                    <button className={CommonStyle.new_post_button} onClick={handleCommenButtonClick}>댓글 작성</button>
-                </div>
-            </div>
-            }
-
-        </div>
-        {/* 관련게시판 */}
-        <div className={BoardWriteStyle.relation_form}>
-            <h5>목차</h5>
-            <a href="#"><h5 className={CommonStyle.cursor}>스크롤 ▲</h5></a>
-            {indexData.length > 0 ? (
-            <ul style={{marginLeft:40}}>
-            {indexData.map((data, index) => (
-                <li className={BoardWriteStyle.relation_li} key={index}>
-                  <a href={"#textContent" + data.rownum}>
-                      {data.content}
-                  </a>
-                </li>
-            ))}
-            </ul>
             ) : (
-            <p>관련 게시물이 없습니다.</p>
+              <div>
+                <h1>{addLineBreaks(title)}</h1><hr></hr>
+              </div>
             )}
-            <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
-            <div className="adfit"/>
-            <div>
-            <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=160&height=500&tsource=" width="160" height="500" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
-            </div>
+            {isEditing && (
+              <p className='.vw60'>
+                <input type='file' name='images' onChange={onSelectFile} accept='.png, .jpg,image/*'/>
+              </p>
+              ) 
+            }
+          </header>
+            {isEditing && (
+              <p className='.vw60'>
+                <textarea 
+                className={BoardWriteStyle.board_textarea}
+                placeholder='description 을 입력해주세요.'
+                value={privew} 
+                onChange={(e) => setPrivew(e.target.value)}
+              />
+              </p>
+              ) 
+            }
+            {/* 팝업 */}
+            {showImagePopup && (
+                <div className={BoardWriteStyle.image_popup}>
+                  <img src={selectedImage} alt="Popup" onClick={closeImagePopup} />
+                  <button className={CommonStyle.new_post_button} onClick={closeImagePopup}>Close</button>
+                </div>
+            )}
+            {isEditing ? (
+              <ReactQuill value={introText} onChange={handleIntroTextChange} modules={modules} className={BoardWriteStyle.board_textarea} />
+            ) : (
+              <p
+                style={{fontFamily:'Pretendard'}}
+                dangerouslySetInnerHTML={{ __html: introText }}
+                  ref={(el) => {
+                    if (el) {
+                      el.addEventListener('click', (event) => {
+                        if (event.target.tagName === 'IMG') {
+                          openImagePopup(event.target.src);
+                        }
+                      });
+                    }
+                  }}
+                />
+            )}
+            { isLoginYn && 
+                isLoading ? (
+                  <div className={CommonStyle.loading_overlay}>
+                    <img src="/image/loading.gif" alt="Loading" className={CommonStyle.loading_spinner}/>
+                  </div>
+                ) : (
+                  isLoginYn && 
+                  <button onClick={handleEditButtonClick}>
+                    {isEditing ? (!isNaN(id) ? '수정' : '저장') : '편집'}
+                  </button>
+                  
+                )
+            }
+            {/* { !isNaN(id) &&
+              <div className={BoardWriteStyle.comment_section} >
+                  <h2>댓글</h2>
+                  <div className={BoardWriteStyle.comment_list}>
+                  {commentData.map((comment, index) => (
+                      <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span> 
+                        <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
+                        <span className={BoardWriteStyle.comment_time}>{comment.date}</span>
+                      </p>
+                  ))}
+                  </div>
+
+                  <div className={BoardWriteStyle.comment_form}>
+                      <textarea value={commentText} onChange={handleCommentTextChange} className={BoardWriteStyle.comment_textarea} placeholder="댓글을 작성하세요"/>
+                      <button className={CommonStyle.new_post_button} onClick={handleCommenButtonClick}>댓글 작성</button>
+                  </div>
+              </div>
+              } */}
+
+          {/* 목차 */}
+          <div className={BoardWriteStyle.relation_form}>
+              <h5>목차</h5>
+              <a href="#"><h5 className={CommonStyle.cursor}>스크롤 ▲</h5></a>
+              {indexData.length > 0 ? (
+              <ul style={{marginLeft:40}}>
+              {indexData.map((data, index) => (
+                  <li className={BoardWriteStyle.relation_li} key={index}>
+                    <a href={"#textContent" + data.rownum}>
+                        {data.content}
+                    </a>
+                  </li>
+              ))}
+              </ul>
+              ) : (
+              <p>관련 게시물이 없습니다.</p>
+              )}
+              <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
+              <div className="adfit"/>
+              <div>
+              <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=160&height=500&tsource=" width="160" height="500" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+              </div>
+          </div>
+          </article>
+          
+          {/* 관련게시판 */}
+        {
+          <footer id="footer">
+            <section>
+                <form method="post" action="#">
+                    <div className="fields">
+                        <div className="field">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="email">Email</label>
+                            <input type="text" name="email" id="email" />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="message">Message</label>
+                            <textarea name="message" id="message" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <ul className="actions">
+                        <li><input type="submit" value="Send Message" /></li>
+                    </ul>
+                </form>
+            </section>
+            <section className="split contact">
+                <section className="alt">
+                    <h3>Address</h3>
+                    <p>1234 Somewhere Road #87257<br />
+                    Nashville, TN 00000-0000</p>
+                </section>
+                <section>
+                    <h3>Phone</h3>
+                    <p><a href="#">(000) 000-0000</a></p>
+                </section>
+                <section>
+                    <h3>Email</h3>
+                    <p><a href="#">info@untitled.tld</a></p>
+                </section>
+                <section>
+                    <h3>Social</h3>
+                    <ul className="icons alt">
+                        <li><a href="#" className="icon brands alt fa-twitter"><span className="label">Twitter</span></a></li>
+                        <li><a href="#" className="icon brands alt fa-facebook-f"><span className="label">Facebook</span></a></li>
+                        <li><a href="#" className="icon brands alt fa-instagram"><span className="label">Instagram</span></a></li>
+                        <li><a href="#" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+              </section>
+         </footer>
+        }
+        {
+          <section className="posts">
+            {currentPosts.map((post) => (
+                  <article key={post.id}>
+                    <header>
+                      <span className="date">{post.date}</span>
+                      <h2>{post.title}</h2>
+                    </header>
+                    <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
+                      <span className="image fit"><img src={post.thumbnail_url} alt="" /></span>
+                        <p>{post.privew_content}</p>
+                      <ul className="actions special">
+                        <li><span className="button">Full Story</span></li>
+                      </ul>
+                    </Link>
+                  </article>
+              ))}
+          </section>
+        }
+         <footer>
+              <div className="pagination">
+                <a className={`previous ${currentPage === 1 ? 'disabled' : ''}`}
+                  onClick={() => currentPage > 1 && paginate(currentPage - 1)}>
+                  Prev
+                </a>
+                {[...Array(Math.ceil(relationData.length / postsPerPage)).keys()].map((number) => (
+                  <a key={number + 1} className={`page ${currentPage === number + 1 ? 'active' : ''}`}
+                    onClick={() => paginate(number + 1)}>
+                    {number + 1}
+                  </a>
+                ))}
+                <a className={`next ${currentPage === Math.ceil(relationData.length / postsPerPage) ? 'disabled' : ''}`}
+                  onClick={() => currentPage < Math.ceil(relationData.length / postsPerPage) && paginate(currentPage + 1)}>
+                  Next
+                </a>
+              </div>
+          </footer>
         </div>
-      </div>
-      <Footer/>
-      <div className="daum-wm-content" style={{position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(1px, 1px, 1px, 1px)', whiteSpace: 'nowrap'}}>{seo_privew}</div>
+
+        <Footer/>
+        <div className="daum-wm-content" style={{position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(1px, 1px, 1px, 1px)', whiteSpace: 'nowrap'}}>{seo_privew}</div>
+        </div>
       </div>
   );
 }
-
-const mainContent = {
-  display: 'flex'
-};
 
 export async function getServerSideProps(context) {
   const { id } = context.query;

@@ -4,8 +4,8 @@ import {React, useState, useEffect, Fragment } from 'react';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
 import dynamic from 'next/dynamic';
 import {  Search01, save01, upload01, fileStatUpdate } from '../api/Intro_api';
-import Header from './Header2';
-import Footer from './Footer2';
+import Header from './Header';
+import Footer from './Footer';
 
 // 줄바꿈 문자를 <br> 태그로 변환하는 함수
 function addLineBreaks(text) {

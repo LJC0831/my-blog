@@ -2,8 +2,8 @@ import Head from 'next/head'
 import {React, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
-import Header from './Header2';
-import Footer from './Footer2';
+import Header from './Header';
+import Footer from './Footer';
 import { Search01 } from '../api/BoardList_api';
 import CommonStyle from '../../styles/common.module.css';
 import Link from 'next/link';

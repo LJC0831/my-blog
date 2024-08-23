@@ -1,18 +1,14 @@
-import styles from '../../styles/Home.module.css';
-
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <p>
-        <a href="https://github.com/LJC0831/my-blog"
-            target="_blank"
-            rel="noopener noreferrer">
-          <span>저자 : LJC</span><br/>
-          <span>이메일 : leejc831@naver.com</span><br/>
-          <span>Copyright 2024. cocoder. All Rights Reserved.</span>
-        </a>
-      </p>
-    </footer>
+    <div>
+          <div id="copyright">
+              <ul>
+                  <li><span>만든이 : LEE JAE CHUN</span></li>
+                  <li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+              </ul>
+          </div>
+    </div>
+    
   );
 };
 

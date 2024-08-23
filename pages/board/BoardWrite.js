@@ -268,6 +268,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       </Head>
       <div id="wrapper" className="fade-in">
         <Header />
+    
         <div id="main">
          <article className="post featured">
           <header className="major">
@@ -280,6 +281,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
               />
             ) : (
               <div>
+                <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=800&height=200&tsource=" width="800" height="200" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
                 <h1>{addLineBreaks(title)}</h1><hr></hr>
               </div>
             )}
@@ -340,7 +342,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             }
 
           {/* 목차 */}
-          {/* <div className={BoardWriteStyle.relation_form}>
+          <div className={BoardWriteStyle.relation_form}>
               <h5>목차</h5>
               <a href="#"><h5 className={CommonStyle.cursor}>스크롤 ▲</h5></a>
               {indexData.length > 0 ? (
@@ -361,7 +363,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
               <div>
               <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=160&height=500&tsource=" width="160" height="500" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
               </div>
-          </div> */}
+          </div>
           </article>
           {/* 댓글작성 */}
         { !isNaN(id) &&

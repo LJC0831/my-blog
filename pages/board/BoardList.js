@@ -14,6 +14,8 @@ function BoardList() {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [isLoginYn, setIsLogin] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 8; //페이징할 컨텐츠 개수
 
   useEffect(() => {
     const loginYn = localStorage.getItem(process.env.NEXT_PUBLIC_IS_LOGGED_IN);
@@ -37,6 +39,12 @@ function BoardList() {
     fetchData();
   }, [board_type]);
 
+  //페이징 처리
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <Head>
@@ -59,7 +67,7 @@ function BoardList() {
                 </div>
               ) : (
                 <section className="posts">
-                  {posts.map((post) => (
+                  {currentPosts.map((post) => (
                         <article key={post.id}>
                           <header>
                             <span className="date">{post.ins_ymdhms}</span>
@@ -77,7 +85,25 @@ function BoardList() {
                   </section>
               )
       }
-      
+          <footer>
+              <div className="pagination">
+                <a href="#main" className={`previous ${currentPage === 1 ? 'disabled' : ''}`}
+                  onClick={() => currentPage > 1 && paginate(currentPage - 1)}>
+                  Prev
+                </a>
+                {[...Array(Math.ceil(posts.length / postsPerPage)).keys()].map((number) => (
+                  <a href="#main" key={number + 1} className={`page ${currentPage === number + 1 ? 'active' : ''}`}
+                    onClick={() => paginate(number + 1)}>
+                    {number + 1}
+                  </a>
+                ))}
+                <a href="#main" className={`next ${currentPage === Math.ceil(posts.length / postsPerPage) ? 'disabled' : ''}`}
+                  onClick={() => currentPage < Math.ceil(posts.length / postsPerPage) && paginate(currentPage + 1)}>
+                  Next
+                </a>
+              </div>
+            </footer>
+
           <Footer/>
       </div>
     </div>

@@ -2,13 +2,20 @@ import Head from 'next/head'
 import {React, useEffect, useState} from 'react';
 import { Search01 } from '../api/Header_api';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function Main() {
     const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
 	const [isPanelOpen, setIsPanelOpen] = useState(false); // 패널 열림 상태
+	const [selectedIndex, setSelectedIndex] = useState(null); // 선택된 li 인덱스
+	const router = useRouter();
+
 	const toggleNavPanel = () => {
 		setIsPanelOpen(!isPanelOpen); // 패널 열림/닫힘 상태 토글
 	  };
+	const handleItemClick = (index) => {
+		setSelectedIndex(index); // 선택된 li 인덱스를 업데이트
+	};
 
 	useEffect(() => {
         Search01().then((data) => {
@@ -30,6 +37,15 @@ function Main() {
 		
 	}, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 한 번만 실행
 
+	useEffect(() => {
+		// 현재 URL에 맞게 active 상태 초기화
+		boardList.forEach((data, index) => {
+		  if (router.asPath.includes(data.board_api)) {
+			setSelectedIndex(index);
+		  }
+		});
+	  }, [router.asPath, boardList]);
+
   return (
     <div>
       <Head>
@@ -48,9 +64,8 @@ function Main() {
 
 					<nav id="nav">
 						<ul className="links">
-							<li className="active"><a href="index.html">INTRO</a></li>
 							{boardList.map((data, index) => (
-								<li key={index}>
+								 <li key={index} className={selectedIndex === index ? 'active' : ''} onClick={() => handleItemClick(index)}>
 									<Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
 								</li>
 							))}

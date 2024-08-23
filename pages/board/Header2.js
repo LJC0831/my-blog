@@ -6,7 +6,6 @@ import Link from 'next/link';
 function Main() {
     const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
 	const toggleNavPanel = () => {
-		
 	  };
 
 	useEffect(() => {
@@ -53,18 +52,13 @@ function Main() {
 								<Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
 								</li>
 							))}
-							{/* <li className="active"><a href="index.html">Frontend</a></li>
-							<li><a href="generic.html">backend</a></li>
-							<li><a href="elements.html">ERROR resolution</a></li>
-                            <li><a href="elements.html">algorithm</a></li>
-                            <li><a href="elements.html">ETC</a></li> */}
 						</ul>
 						<ul className="icons">
 							<li><a href="https://github.com/LJC0831" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
-					<a href="#navPanel" id="navPanelToggle" onClick={toggleNavPanel}>Menu</a>
+					<a id="navPanelToggle" onClick={toggleNavPanel}>Menu</a>
 			</div>
     </div>
   );

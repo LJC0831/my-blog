@@ -4506,24 +4506,6 @@ input, select, textarea {
 		z-index: 10001;
 	}
 
-		#navPanelToggle:before {
-			-moz-osx-font-smoothing: grayscale;
-			-webkit-font-smoothing: antialiased;
-			display: inline-block;
-			font-style: normal;
-			font-variant: normal;
-			text-rendering: auto;
-			line-height: 1;
-			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
-			font-weight: 900;
-		}
-
-		#navPanelToggle:before {
-			content: '\f0c9';
-			margin-right: 0.5rem;
-		}
-
 		#navPanelToggle.alt {
 			background-color: rgba(255, 255, 255, 0.875);
 			box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);

@@ -1,18 +1,11 @@
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
 import {React, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import 'react-quill/dist/quill.snow.css'; // 에디터의 스타일을 불러옵니다.
-import Header from './Header';
-import Footer from './Footer';
-import Navigator from './Navigator';
-import CommonStyle from '../../styles/common.module.css';
-import BoardListStyle from '../../styles/BoardList.module.css';
+import Header from './Header2';
+import Footer from './Footer2';
 import { Search01 } from '../api/BoardList_api';
 import Link from 'next/link';
-import { Card, Avatar, CardHeader, Typography } from '@mui/material';
-import { red } from '@mui/material/colors';
-
 
 function BoardList() {
   const router = useRouter();
@@ -44,62 +37,40 @@ function BoardList() {
   }, [board_type]);
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>게시글 목록</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div style={mainContent}>
-        <Navigator />
-        <div className={CommonStyle.board_content}>
-        { isLoginYn && 
+      <div id="main">
+        
+      { isLoginYn && 
+        <div>
           <Link href={`/board/BoardWrite?id=${board_type}`}>
-          <button className={CommonStyle.new_post_button}>새글추가 +</button>
-        </Link>
-        }
-        <div className={BoardListStyle.hr_container }>
-          <div className={BoardListStyle.hr_line}></div>
-          {loading ? (
-            <div className={BoardListStyle.hr_text}><h2>{board_type}</h2></div>
-          ): (
-            <div className={BoardListStyle.hr_text}><h2>{posts[0].board_nm} 게시판</h2></div>
-          )}
-          <div className={BoardListStyle.hr_line}></div>
+            <button>새글추가</button>
+          </Link>
         </div>
-        {loading ? (
-          <div className={CommonStyle.loading_overlay}>
-            <img src="/image/loading.gif" alt="Loading" className={CommonStyle.loading_spinner}/>
-          </div>
-        ) : (
-        <Card>
-          <ul>
-            {posts.map((post) => (
-              <li key={post.id} className={BoardListStyle.post_item}>
+      }
+      <section className="posts">
+        {posts.map((post) => (
+              <article key={post.id}>
+                <header>
+                  <span className="date">{post.ins_ymdhms}</span>
+                  <h2>{post.title}</h2>
+                </header>
                 <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
-                  <CardHeader
-                    avatar={
-                      <Avatar sx={{ bgcolor: red[500], width: '100%'}} aria-label="recipe">
-                        {board_type}
-                      </Avatar>
-                    }
-                    title={
-                      <Typography variant="h7" sx={{ fontWeight: 'bold' , fontFamily: "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif"}}> {/* Title 스타일링 */}
-                        {post.title}
-                      </Typography>
-                    }
-                  />
-                  <div className={BoardListStyle.post_content}>{post.privew_content}</div>
+                  <span className="image fit"><img src={post.thumbnail_url} alt="" /></span>
+                    <p>{post.privew_content}</p>
+                  <ul className="actions special">
+                    <li><span className="button">Full Story</span></li>
+                  </ul>
                 </Link>
-            </li>
-            
-            ))}
-          </ul>
-        </Card>
-        )}
-        </div>
+              </article>
+          ))}
+          </section>
+          <Footer/>
       </div>
-      <Footer/>
     </div>
   );
 }

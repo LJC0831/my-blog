@@ -40,7 +40,7 @@ function Main() {
 	useEffect(() => {
 		// 현재 URL에 맞게 active 상태 초기화
 		boardList.forEach((data, index) => {
-		  if (router.asPath.includes(data.board_api)) {
+		  if (router.asPath.includes(data.board_type)) {
 			setSelectedIndex(index);
 		  }
 		});

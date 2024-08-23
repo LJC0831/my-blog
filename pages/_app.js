@@ -46,8 +46,6 @@ function MyApp({ Component, pageProps }) {
       <Head>
         {/* 초기 title */}
         <title>LJC 개발 블로그</title>
-        <link rel="stylesheet" href="/assets/css/main.css" />
-		    <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
       </Head>
       {loading ? (

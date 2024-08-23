@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import {React, useEffect, useState} from 'react';
 import { Search01 } from '../api/Header_api';
 import Link from 'next/link';
@@ -30,6 +31,10 @@ function Main() {
 
   return (
     <div>
+      <Head>
+	  <link rel="stylesheet" href="/assets/css/main.css" />
+	  <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+      </Head>
 			<div>
 					<div id="intro">
 						<h1>LJC Developer Blog</h1>

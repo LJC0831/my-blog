@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {React, useEffect, useState} from 'react';
 import { Search01 } from '../api/Header_api';
 import Link from 'next/link';
@@ -31,13 +30,6 @@ function Main() {
 
   return (
     <div>
-      <Head>
-        <title>LJC Developer Blog 인트로입니다.</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-      </Head>
 			<div>
 					<div id="intro">
 						<h1>LJC Developer Blog</h1>

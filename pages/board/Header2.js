@@ -2,10 +2,13 @@ import Head from 'next/head'
 import {React, useEffect, useState} from 'react';
 import { Search01 } from '../api/Header_api';
 import Link from 'next/link';
+import headerStyles from'../../styles/header.module.css';
 
 function Main() {
     const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
+	const [isPanelOpen, setIsPanelOpen] = useState(false); // 패널 열림 상태
 	const toggleNavPanel = () => {
+		setIsPanelOpen(!isPanelOpen); // 패널 열림/닫힘 상태 토글
 	  };
 
 	useEffect(() => {
@@ -49,7 +52,7 @@ function Main() {
 							<li className="active"><a href="index.html">INTRO</a></li>
 							{boardList.map((data, index) => (
 								<li key={index}>
-								<Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
+									<Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
 								</li>
 							))}
 						</ul>
@@ -59,7 +62,19 @@ function Main() {
 					</nav>
 
 					<a id="navPanelToggle" onClick={toggleNavPanel}>Menu</a>
-			</div>
+					{/* 모바일 화면에서 패널 열림 상태에 따른 목록 표시 */}
+					{isPanelOpen && (
+						<div id="mobilePanel">
+							<ul className="mobile-board-list">
+							{boardList.map((data, index) => (
+								<li key={index}>
+									<Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
+								</li>
+							))}
+							</ul>
+						</div>
+						)}
+					</div>
     </div>
   );
 }

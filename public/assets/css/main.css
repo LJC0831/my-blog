@@ -4484,6 +4484,32 @@ input, select, textarea {
 		}
 
 /* Nav Panel */
+	#mobilePanel {
+		display: none;
+		background-color: #333;
+		padding: 20px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1000;
+	}
+	.mobile-board-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.mobile-board-list li {
+		padding: 10px;
+		color: #fff;
+		border-bottom: 1px solid #444;
+		font-family: Pretendard;
+	}
+	@media (max-width: 768px) {
+		#mobilePanel {
+		display: block;
+		}
+	}
 
 	#navPanelToggle {
 		text-decoration: none;
@@ -4505,6 +4531,7 @@ input, select, textarea {
 		text-transform: uppercase;
 		z-index: 10001;
 	}
+
 
 		#navPanelToggle.alt {
 			background-color: rgba(255, 255, 255, 0.875);

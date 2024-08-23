@@ -46,6 +46,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   const [privew, setPrivew] = useState('');
   const [isLoginYn, setIsLogin] = useState(false);
   const [introText, setIntroText] = useState(initialHTML); // 에디터의 내용을 저장
+  const [commentName, setcommentName] = useState(initComment); // 댓글닉네임
   const [commentText, setcommentText] = useState(initComment); // 댓글입력
   const [commentData, setCommentData] = useState([]); // 댓글 데이터를 배열로 관리
   const [relationData, setRelationData] = useState([]); // 관련게시판 배열
@@ -129,7 +130,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         return;
       }
     } else {
-      const result = await save02(id, commentText, '손님');
+      const result = await save02(id, commentText, commentName);
       if(!result){
         alert('작성가능한 댓글이 초과하였습니다. 추후 작업예정');
         return;
@@ -356,7 +357,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
               } */}
 
           {/* 목차 */}
-          <div className={BoardWriteStyle.relation_form}>
+          {/* <div className={BoardWriteStyle.relation_form}>
               <h5>목차</h5>
               <a href="#"><h5 className={CommonStyle.cursor}>스크롤 ▲</h5></a>
               {indexData.length > 0 ? (
@@ -377,59 +378,56 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
               <div>
               <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=160&height=500&tsource=" width="160" height="500" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
               </div>
-          </div>
+          </div> */}
           </article>
+          {/* 댓글작성 */}
+        {
+          <div>
+            <h2>Form</h2>
+            <form method="post" action="#">
+              <div class="row gtr-uniform">
+                <div class="col-6 col-12-xsmall">
+                  <input type="text" name="demo-name" id="demo-name" placeholder="Name"  onChange={(e) => setcommentName(e.target.value)}/>
+                </div>
+                
+                <div class="col-12">
+                  <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6" onChange={handleCommentTextChange}></textarea>
+                </div>
+
+                <div class="col-12">
+                  <ul class="actions">
+                    <li><input type="submit" value="Send Message" class="primary" onClick={handleCommenButtonClick}/></li>
+                    <li><input type="reset" value="Reset" /></li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+            <hr/>
+            <h3>Comment</h3>
+            <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>comment</th>
+                  <th>date</th>
+                </tr>
+              </thead>
+              <tbody>
+              {commentData.map((comment, index) => (
+                <tr key={index}>
+                  <td style={{fontFamily:'Pretendard'}}>{comment.user}</td>
+                  <td style={{fontFamily:'Pretendard'}}>{comment.content}</td>
+                  <td style={{fontFamily:'Pretendard'}}>{comment.date}</td>
+                </tr>
+              ))}
+              </tbody>
+              </table>
+              </div>
+            </div>
+        }
           
           {/* 관련게시판 */}
-        {
-          <footer id="footer">
-            <section>
-                <form method="post" action="#">
-                    <div className="fields">
-                        <div className="field">
-                            <label htmlFor="name">Name</label>
-                            <input type="text" name="name" id="name" />
-                        </div>
-                        <div className="field">
-                            <label htmlFor="email">Email</label>
-                            <input type="text" name="email" id="email" />
-                        </div>
-                        <div className="field">
-                            <label htmlFor="message">Message</label>
-                            <textarea name="message" id="message" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <ul className="actions">
-                        <li><input type="submit" value="Send Message" /></li>
-                    </ul>
-                </form>
-            </section>
-            <section className="split contact">
-                <section className="alt">
-                    <h3>Address</h3>
-                    <p>1234 Somewhere Road #87257<br />
-                    Nashville, TN 00000-0000</p>
-                </section>
-                <section>
-                    <h3>Phone</h3>
-                    <p><a href="#">(000) 000-0000</a></p>
-                </section>
-                <section>
-                    <h3>Email</h3>
-                    <p><a href="#">info@untitled.tld</a></p>
-                </section>
-                <section>
-                    <h3>Social</h3>
-                    <ul className="icons alt">
-                        <li><a href="#" className="icon brands alt fa-twitter"><span className="label">Twitter</span></a></li>
-                        <li><a href="#" className="icon brands alt fa-facebook-f"><span className="label">Facebook</span></a></li>
-                        <li><a href="#" className="icon brands alt fa-instagram"><span className="label">Instagram</span></a></li>
-                        <li><a href="#" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
-                    </ul>
-                </section>
-              </section>
-         </footer>
-        }
         {
           <section className="posts">
             {currentPosts.map((post) => (

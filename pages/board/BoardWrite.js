@@ -139,7 +139,6 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
     setcommentText('');
     setcommentName('');
     alert('소중한 댓글 감사합니다.');
-    await Search02(id);
   }; 
 
   //이미지 팝업
@@ -339,24 +338,6 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                   
                 )
             }
-            {/* { !isNaN(id) &&
-              <div className={BoardWriteStyle.comment_section} >
-                  <h2>댓글</h2>
-                  <div className={BoardWriteStyle.comment_list}>
-                  {commentData.map((comment, index) => (
-                      <p className={CommonStyle.vw60} key={index}><span className={BoardWriteStyle.comment_user}>{comment.user}</span> 
-                        <span className={BoardWriteStyle.comment_txt}>{comment.content}</span>
-                        <span className={BoardWriteStyle.comment_time}>{comment.date}</span>
-                      </p>
-                  ))}
-                  </div>
-
-                  <div className={BoardWriteStyle.comment_form}>
-                      <textarea value={commentText} onChange={handleCommentTextChange} className={BoardWriteStyle.comment_textarea} placeholder="댓글을 작성하세요"/>
-                      <button className={CommonStyle.new_post_button} onClick={handleCommenButtonClick}>댓글 작성</button>
-                  </div>
-              </div>
-              } */}
 
           {/* 목차 */}
           {/* <div className={BoardWriteStyle.relation_form}>
@@ -383,7 +364,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           </div> */}
           </article>
           {/* 댓글작성 */}
-        {
+        { !isNaN(id) &&
           <div>
             <h2>Form</h2>
             <form method="post" action="#">

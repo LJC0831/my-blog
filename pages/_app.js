@@ -48,6 +48,8 @@ function MyApp({ Component, pageProps }) {
         <title>LJC 개발 블로그</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
       </Head>
       {loading ? (
         <FullScreenLoading />

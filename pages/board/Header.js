@@ -48,47 +48,41 @@ function Main() {
 
   return (
     <div>
-      <Head>
-	  <link rel="stylesheet" href="/assets/css/main.css" />
-	  <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-      </Head>
-			<div>
-					<div id="intro">
-						<h1>LJC Developer Blog</h1>
-						<p>This blog is a personal website created with Next.js + node.js. The design is referenced from <a href="https://html5up.net">HTML5 UP</a></p>
-						<ul className="actions">
-							<li><a href="#nav" className="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+        <div id="intro">
+          <h1>LJC Developer Blog</h1>
+          <p>This blog is a personal website created with Next.js + node.js. The design is referenced from <a href="https://html5up.net">HTML5 UP</a></p>
+          <ul className="actions">
+            <li><a href="#nav" className="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+          </ul>
+        </div>
 
-					<nav id="nav">
-						<ul className="links">
-							{boardList.map((data, index) => (
-								 <li key={index} className={selectedIndex === index ? 'active' : ''} onClick={() => handleItemClick(index)}>
-									<Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
-								</li>
-							))}
-						</ul>
-						<ul className="icons">
-							<li><a href="https://github.com/LJC0831" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+        <nav id="nav">
+          <ul className="links">
+            {boardList.map((data, index) => (
+                <li key={index} className={selectedIndex === index ? 'active' : ''} onClick={() => handleItemClick(index)}>
+                <Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
+              </li>
+            ))}
+          </ul>
+          <ul className="icons">
+            <li><a href="https://github.com/LJC0831" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
+          </ul>
+        </nav>
 
-					<a id="navPanelToggle" onClick={toggleNavPanel}>Menu</a>
-					{/* 모바일 화면에서 패널 열림 상태에 따른 목록 표시 */}
-					{isPanelOpen && (
-						<div id="mobilePanel">
-							<ul className="mobile-board-list">
-							{boardList.map((data, index) => (
-								<li key={index}>
-									<Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
-								</li>
-							))}
-							</ul>
-						</div>
-						)}
-					</div>
-    </div>
+        <a id="navPanelToggle" onClick={toggleNavPanel}>Menu</a>
+        {/* 모바일 화면에서 패널 열림 상태에 따른 목록 표시 */}
+        {isPanelOpen && (
+          <div id="mobilePanel">
+            <ul className="mobile-board-list">
+            {boardList.map((data, index) => (
+              <li key={index}>
+                <Link href={`${data.board_api}?board_type=${data.board_type}`}>{data.board_nm}</Link>
+              </li>
+            ))}
+            </ul>
+          </div>
+          )}
+        </div>
   );
 }
 

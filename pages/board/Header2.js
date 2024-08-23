@@ -2,7 +2,6 @@ import Head from 'next/head'
 import {React, useEffect, useState} from 'react';
 import { Search01 } from '../api/Header_api';
 import Link from 'next/link';
-import headerStyles from'../../styles/header.module.css';
 
 function Main() {
     const [boardList, setBoardListData] = useState([]); // 관련게시판 배열

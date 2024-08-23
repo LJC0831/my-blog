@@ -73,9 +73,14 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>LJC Developer Blog 인트로입니다.</title>
+        <title>LJC Developer Blog</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+        <meta name="description" content="Next.js로 제작한 개인 블로그입니다." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Next.js로 제작한 개인 블로그입니다." />
+        <meta property="og:image" content="/profile.webp" />
+        <meta property="og:description" content="2024.10.13 ㅡ 재춘♡상희 결혼식" />
+    </Head>
       <div id="wrapper" className="fade-in">
 					<Header/>
 					<div id="main">

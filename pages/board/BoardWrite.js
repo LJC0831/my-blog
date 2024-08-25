@@ -270,7 +270,30 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
       </Head>
       <div id="wrapper" className="fade-in">
         <Header />
-    
+        
+          {/* 목차 */}
+          <div className={BoardWriteStyle.relation_form}>
+              <h5 style={{color:'white'}}>목차</h5>
+              <a href="#main"><h4 className={CommonStyle.cursor} style={{color:'white', fontSize:'16px'}}>스크롤 ▲</h4></a>
+              {indexData.length > 0 ? (
+              <ul style={{marginLeft:40}}>
+              {indexData.map((data, index) => (
+                  <li className={BoardWriteStyle.relation_li} key={index}>
+                    <a href={"#textContent" + data.rownum}>
+                        {data.content}
+                    </a>
+                  </li>
+              ))}
+              </ul>
+              ) : (
+              <p>관련 게시물이 없습니다.</p>
+              )}
+              <a href="#Footer" onClick={handleBottomMove}><h5 className={CommonStyle.cursor} style={{color:'white', fontSize:'16px'}}>스크롤 ▼</h5></a>
+              <div className="adfit"/>
+              <div>
+              </div>
+          </div>
+          {/* main */}
         <div id="main">
          <article className="post featured">
           <header className="major">
@@ -344,30 +367,6 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
                   
                 )
             }
-
-          {/* 목차 */}
-          <div className={BoardWriteStyle.relation_form}>
-              <h5>목차</h5>
-              <a href="#"><h5 className={CommonStyle.cursor}>스크롤 ▲</h5></a>
-              {indexData.length > 0 ? (
-              <ul style={{marginLeft:40}}>
-              {indexData.map((data, index) => (
-                  <li className={BoardWriteStyle.relation_li} key={index}>
-                    <a href={"#textContent" + data.rownum}>
-                        {data.content}
-                    </a>
-                  </li>
-              ))}
-              </ul>
-              ) : (
-              <p>관련 게시물이 없습니다.</p>
-              )}
-              <a href="#" onClick={handleBottomMove}><h5 className={CommonStyle.cursor}>스크롤 ▼</h5></a>
-              <div className="adfit"/>
-              <div>
-              <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=160&height=500&tsource=" width="160" height="500" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
-              </div>
-          </div>
           </article>
           {/* 댓글작성 */}
         { !isNaN(id) &&

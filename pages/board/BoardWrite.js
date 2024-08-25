@@ -44,6 +44,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
 
   const [title, setSubject] = useState('');
   const [privew, setPrivew] = useState('');
+  const [ins_ymdhms, setDate] = useState('');
   const [isLoginYn, setIsLogin] = useState(false);
   const [introText, setIntroText] = useState(initialHTML); // 에디터의 내용을 저장
   const [commentName, setcommentName] = useState(initComment); // 댓글닉네임
@@ -172,6 +173,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             setSubject(data[0].title);
             setIntroText(data[0].content);
             setPrivew(data[0].privew_content);
+            setDate(data[0].ins_ymdhms);
         });
         Search03(id).then((data) => {
           // 관련게시판
@@ -272,6 +274,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         <div id="main">
          <article className="post featured">
           <header className="major">
+            <span className="date">{ins_ymdhms}</span>
             {isEditing ? (
               <textarea
                 className={BoardWriteStyle.board_textarea}
@@ -282,6 +285,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
             ) : (
               <div>
                 <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=800&height=200&tsource=" width="800" height="200" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+
                 <h1>{addLineBreaks(title)}</h1><hr></hr>
               </div>
             )}

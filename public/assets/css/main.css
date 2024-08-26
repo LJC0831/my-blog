@@ -4505,9 +4505,9 @@ input, select, textarea {
 		border-bottom: 1px solid #444;
 		font-family: Pretendard;
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 980px) {
 		#mobilePanel {
-		display: block;
+			display: block;
 		}
 	}
 

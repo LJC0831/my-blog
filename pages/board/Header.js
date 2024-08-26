@@ -1,11 +1,10 @@
-import Head from 'next/head'
 import {React, useEffect, useState} from 'react';
 import { Search01 } from '../api/Header_api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 function Main() {
-    const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
+  const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
 	const [isPanelOpen, setIsPanelOpen] = useState(false); // 패널 열림 상태
 	const [selectedIndex, setSelectedIndex] = useState(null); // 선택된 li 인덱스
 	const router = useRouter();
@@ -51,9 +50,6 @@ function Main() {
         <div id="intro">
           <h1>LJC Developer Blog</h1>
           <p>This blog is a personal website created with Next.js + node.js. The design is referenced from <a href="https://html5up.net">HTML5 UP</a></p>
-          <ul className="actions">
-            <li><a href="#nav" className="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-          </ul>
         </div>
 
         <nav id="nav">

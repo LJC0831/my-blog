@@ -78,8 +78,8 @@ export default function Home() {
         <meta name="description" content="Next.js로 제작한 개인 블로그입니다." />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Next.js로 제작한 개인 블로그입니다." />
-        <meta property="og:image" content="/profile.webp" />
-        <meta property="og:description" content="2024.10.13 ㅡ 재춘♡상희 결혼식" />
+        <meta property="og:image" content="/Thum.JPG" />
+        <meta property="og:description" content="Next.js로 제작한 개인 블로그입니다. By LJC" />
     </Head>
       <div id="wrapper" className="fade-in">
 					<Header/>

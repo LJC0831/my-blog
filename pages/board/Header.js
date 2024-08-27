@@ -7,6 +7,7 @@ function Main() {
   const [boardList, setBoardListData] = useState([]); // 관련게시판 배열
 	const [isPanelOpen, setIsPanelOpen] = useState(false); // 패널 열림 상태
 	const [selectedIndex, setSelectedIndex] = useState(null); // 선택된 li 인덱스
+  const [searchKeyword, setSearchKeyword] = useState('');//검색
 	const router = useRouter();
 
 	const toggleNavPanel = () => {
@@ -15,6 +16,14 @@ function Main() {
 	const handleItemClick = (index) => {
 		setSelectedIndex(index); // 선택된 li 인덱스를 업데이트
 	};
+  const handleSearchKeyword = () =>{
+    router.push(`/board/searchList?keyword=${searchKeyword}`);
+  };
+  const handleEnterKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      router.push(`/board/searchList?keyword=${searchKeyword}`);
+    }
+  };
 
 	useEffect(() => {
         Search01().then((data) => {
@@ -50,6 +59,10 @@ function Main() {
         <div id="intro">
           <h1>LJC Developer Blog</h1>
           <p>This blog is a personal website created with Next.js + node.js. The design is referenced from <a href="https://html5up.net">HTML5 UP</a></p>
+          <div className="searchKeyword">
+            <input type="text" style={{height:"7vh"}} placeholder="Search..." value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)} onKeyPress={handleEnterKeyPress}/>
+            <button onClick={handleSearchKeyword} style={{height:"7vh"}}>검색</button>
+          </div>
         </div>
 
         <nav id="nav">

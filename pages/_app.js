@@ -39,6 +39,26 @@ function MyApp({ Component, pageProps }) {
     setTimeout(() => {
       setLoading(false);
     }, 500);
+
+    // 최대 허용 페이지 로드 횟수 및 시간 설정 (예: 200초 동안 200번)
+    const MAX_PAGE_LOADS = 200;
+    const TIME_LIMIT = 200000; // 200초
+
+    // 현재 페이지 로드 시간 기록
+    let pageLoads = JSON.parse(localStorage.getItem('pageLoads')) || [];
+    const currentTime = new Date().getTime();
+    pageLoads.push(currentTime);
+
+    // 페이지 로드 기록을 시간 제한에 따라 필터링
+    pageLoads = pageLoads.filter(timestamp => currentTime - timestamp < TIME_LIMIT);
+
+    // 로컬 스토리지에 업데이트
+    localStorage.setItem('pageLoads', JSON.stringify(pageLoads));
+
+    // 비정상적인 패턴 감지
+    if (pageLoads.length > MAX_PAGE_LOADS) {
+      window.location.href = "/error"; // 예시: 경고 페이지로 리디렉션
+    }
   }, []);
  
   return (

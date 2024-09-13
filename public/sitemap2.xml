@@ -43,108 +43,108 @@
 </url>
 
 <url>
-<!-- 8. 시분초 형식으로 조회하는방법 --> 
+<!-- 7. 시분초 형식으로 조회하는방법 --> 
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=6&amp;content=1.-%EC%8B%9C%EB%B6%84%EC%B4%88-%ED%98%95%EC%8B%9D%EC%9C%BC%EB%A1%9C-%EC%A1%B0%ED%9A%8C%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95</loc>
   <lastmod>2023-11-12T03:09:13+00:00</lastmod>
 </url>
 
 <url>
-<!-- 9. TypeError: Do not know how to serialize a BigInt 에러조치 --> 
+<!-- 8. TypeError: Do not know how to serialize a BigInt 에러조치 --> 
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=24&amp;content=TypeError:-Do-not-know-how-to-serialize-a-BigInt-%EC%97%90%EB%9F%AC%EC%A1%B0%EC%B9%98</loc>
   <lastmod>2023-11-12T03:09:13+00:00</lastmod>
 </url>
 
 <url>
-<!-- 10.구글 웹사이트에 내가만든 웹 사이트 등록하기 --> 
+<!-- 9.구글 웹사이트에 내가만든 웹 사이트 등록하기 --> 
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=25&amp;content=%EA%B5%AC%EA%B8%80-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%97%90-%EB%82%B4%EA%B0%80%EB%A7%8C%EB%93%A0-%EC%9B%B9-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0</loc>
   <lastmod>2023-11-12T03:09:13+00:00</lastmod>
 </url>
 
 <url>
-<!-- 11.웹사이트 등록 후 robots, sitemap 추가 --> 
+<!-- 10.웹사이트 등록 후 robots, sitemap 추가 --> 
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=30&amp;content=%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%93%B1%EB%A1%9D-%ED%9B%84-robots,-sitemap-%EC%B6%94%EA%B0%80</loc>
   <lastmod>2023-11-12T03:09:13+00:00</lastmod>
 </url>
 
 <url>
-<!-- 12.intro --> 
+<!-- 11.intro --> 
   <loc>https://www.develop-blog.pe.kr/board/Intro?board_type=Intro</loc>
   <lastmod>2023-11-13T07:36:12+00:00</lastmod>
 </url>
 
 <url>
-<!-- 13. next.js 에서 동적으로 SEO 처리하기  -->
+<!-- 12. next.js 에서 동적으로 SEO 처리하기  -->
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=41&amp;content=next.js-%EC%97%90%EC%84%9C-%EB%8F%99%EC%A0%81%EA%B2%8C%EC%8B%9C%ED%8C%90-SEO-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-(getServerSideProps)</loc>
   <lastmod>2023-11-14T02:56:13+00:00</lastmod>
 </url>
 
 <url>
-<!-- 14.  React에 MUI (Material-UI) 사용하여 리액트 화면 디자인 하기 -->
+<!-- 13.  React에 MUI (Material-UI) 사용하여 리액트 화면 디자인 하기 -->
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=43&amp;content=React%EC%97%90-MUI-(Material-UI)-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%99%94%EB%A9%B4-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%95%98%EA%B8%B0</loc>
   <lastmod>2023-11-16T07:28:04+00:00</lastmod>
 </url>
 
 <url>
-<!-- 15. 오라클Oracle Merge문 사용법-->
+<!-- 14. 오라클Oracle Merge문 사용법-->
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=42&amp;content=%EC%98%A4%EB%9D%BC%ED%81%B4Oracle-Merge%EB%AC%B8-%EC%82%AC%EC%9A%A9%EB%B2%95</loc>
   <lastmod>2023-11-16T09:45:47+00:00</lastmod>
 </url>
 
 
-<!-- 16. MariaDB 설치 및 접속 방법 -->
+<!-- 15. MariaDB 설치 및 접속 방법 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=45&amp;content=MariaDB-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%A0%91%EC%86%8D-%EB%B0%A9%EB%B2%95</loc>
 <lastmod>2024-04-17T23:59:31+00:00</lastmod>
 </url>
 
 <url>
-<!-- 17. React 이미지 파일 업로드 기능 추가-->
+<!-- 16. React 이미지 파일 업로드 기능 추가-->
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=46&amp;content=React-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80</loc>
   <lastmod>2023-11-22T07:15:36+00:00</lastmod>
 </url>
 
 <url>
-<!-- 18. node.js 서버에서 DataBase 연동 (MariaDB)-->
+<!-- 17. node.js 서버에서 DataBase 연동 (MariaDB)-->
   <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=44&amp;content=node.js-%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-DataBase-%EC%97%B0%EB%8F%99-(MariaDB)</loc>
   <lastmod>2023-11-24T04:22:45+00:00</lastmod>
 </url>
 
-<!-- 19. Netlify(네트리파이)에 내가만든 웹 사이트 next.js 등록하기-->
+<!-- 18. Netlify(네트리파이)에 내가만든 웹 사이트 next.js 등록하기-->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=47&amp;content=Netlify(%EB%84%A4%ED%8A%B8%EB%A6%AC%ED%8C%8C%EC%9D%B4)%EC%97%90-%EB%82%B4%EA%B0%80%EB%A7%8C%EB%93%A0-%EC%9B%B9-%EC%82%AC%EC%9D%B4%ED%8A%B8-next.js-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0</loc>
 <lastmod>2024-04-18T00:00:56+00:00</lastmod>
 </url>
 
 <url>
-<!-- 20. 로컬스토리지 데이터로 저장하기-->
+<!-- 19. 로컬스토리지 데이터로 저장하기-->
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=48&amp;content=%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80(localStorage)-%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0</loc>
 <lastmod>2023-12-15T01:26:33+00:00</lastmod>
 </url>
 
-<!-- 21. Class파일 java버전 확인하는 방법-->
+<!-- 20. Class파일 java버전 확인하는 방법-->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=51&amp;content=Class%ED%8C%8C%EC%9D%BC-java%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95</loc>
 <lastmod>2024-01-15T00:39:55+00:00</lastmod>
 </url>
 
-<!-- 22. Could not convert socket to TLS 오류원인과 해결방법 -->
+<!-- 21. Could not convert socket to TLS 오류원인과 해결방법 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=52&amp;content=Could-not-convert-socket-to-TLS-%EC%98%A4%EB%A5%98%EC%9B%90%EC%9D%B8%EA%B3%BC-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95</loc>
 <lastmod>2024-01-15T00:41:14+00:00</lastmod>
 </url>
-<!-- 23. 파이썬으로 AI직원 만들기 -->
+<!-- 22. 파이썬으로 AI직원 만들기 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=49&amp;content=%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-AI%EC%A7%81%EC%9B%90-%EB%A7%8C%EB%93%A4%EA%B8%B0</loc>
 <lastmod>2024-01-15T00:42:13+00:00</lastmod>
 </url>
 
-<!-- 24. The import java.sql.Connection cannot be resolved 오류 해결 -->
+<!-- 23. The import java.sql.Connection cannot be resolved 오류 해결 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=55&amp;content=The-import-java.sql.Connection-cannot-be-resolved-%EC%98%A4%EB%A5%98-%ED%95%B4%EA%B2%B0</loc>
 <lastmod>2024-03-29T16:16:08+00:00</lastmod>
 </url>
 
-<!-- 25. Vue.js 환경에서 JWT토큰으로 로그인 기능 구현하기 -->
+<!-- 24. Vue.js 환경에서 JWT토큰으로 로그인 기능 구현하기 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=54&amp;content=Vue.js-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-JWT%ED%86%A0%ED%81%B0%EC%9C%BC%EB%A1%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0</loc>
 <lastmod>2024-04-01T06:13:57+00:00</lastmod>
@@ -312,63 +312,69 @@
 <lastmod>2024-07-18T13:57:13+00:00</lastmod>
 </url>
 
-<!-- 51. nodemailer 로 Gmail SMTP 인증번호 보내기 -->
+<!-- 52. nodemailer 로 Gmail SMTP 인증번호 보내기 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=94&amp;content=%EC%9D%B4%EB%AF%B8%EC%A7%80-WEBP-%ED%99%95%EC%9E%A5%EC%9E%90%EB%A1%9C-%EB%B3%80%ED%99%98</loc>
 <lastmod>2024-07-21T12:24:22+00:00</lastmod>
 </url>
 
-<!-- 52. 개발하면서 유용한 프로그램 및 툴 소개 -->
+<!-- 53. 개발하면서 유용한 프로그램 및 툴 소개 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=95&amp;content=%EA%B0%9C%EB%B0%9C%ED%95%98%EB%A9%B4%EC%84%9C-%EC%9C%A0%EC%9A%A9%ED%95%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%B0%8F-%ED%88%B4-%EC%86%8C%EA%B0%9C</loc>
 <lastmod>2024-07-24T08:01:44+00:00</lastmod>
 </url>
 
-<!-- 53. Daum 다음 웹 사이트에 검색등록 하는 방법 -->
+<!-- 54. Daum 다음 웹 사이트에 검색등록 하는 방법 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=96&amp;content=Daum-%EB%8B%A4%EC%9D%8C-%EC%9B%B9-%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%97%90-%EA%B2%80%EC%83%89%EB%93%B1%EB%A1%9D-%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95</loc>
 <lastmod>2024-07-28T13:50:38+00:00</lastmod>
 </url>
 
-<!-- 54. Daum 검색 등록 보류의 원인 및 해결 과정 -->
+<!-- 55. Daum 검색 등록 보류의 원인 및 해결 과정 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=97&amp;content=Daum-%EA%B2%80%EC%83%89-%EB%93%B1%EB%A1%9D-%EB%B3%B4%EB%A5%98%EC%9D%98-%EC%9B%90%EC%9D%B8-%EB%B0%8F-%ED%95%B4%EA%B2%B0-%EA%B3%BC%EC%A0%95-</loc>
 <lastmod>2024-07-30T08:30:05+00:00</lastmod>
 </url>
 
-<!-- 55. Firebase Cloud Messaging (FCM)으로 웹 푸시 알림 구현하기 -->
+<!-- 56. Firebase Cloud Messaging (FCM)으로 웹 푸시 알림 구현하기 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=101&amp;content=Firebase-Cloud-Messaging-(FCM)%EC%9C%BC%EB%A1%9C-%EC%9B%B9-%ED%91%B8%EC%8B%9C-%EC%95%8C%EB%A6%BC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0</loc>
 <lastmod>2024-08-31T04:57:28+00:00</lastmod>
 </url>
 
-<!-- 56. Firebase Cloud Messaging (FCM)으로 웹 푸시 알림 구현하기2 -->
+<!-- 57. Firebase Cloud Messaging (FCM)으로 웹 푸시 알림 구현하기2 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=102&amp;content=Firebase-Cloud-Messaging-(FCM)%EC%9C%BC%EB%A1%9C-%EC%9B%B9-%ED%91%B8%EC%8B%9C-%EC%95%8C%EB%A6%BC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0(2%ED%8E%B8)</loc>
 <lastmod>2024-08-31T04:58:52+00:00</lastmod>
 </url>
 
-<!-- 57. Node.js 과도한 트래픽 방지하는 방법 -->
+<!-- 58. Node.js 과도한 트래픽 방지하는 방법 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=103&amp;content=Node.js-%EA%B3%BC%EB%8F%84%ED%95%9C-%ED%8A%B8%EB%9E%98%ED%94%BD-%EB%B0%A9%EC%A7%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95</loc>
 <lastmod>2024-08-31T04:59:53+00:00</lastmod>
 </url>
 
-<!-- 58. Maven vs Gradle 자바 빌드 시스템의 비교 및 선택 가이드 -->
+<!-- 59. Maven vs Gradle 자바 빌드 시스템의 비교 및 선택 가이드 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=104&amp;content=Maven-vs-Gradle-%EC%9E%90%EB%B0%94-%EB%B9%8C%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98-%EB%B9%84%EA%B5%90-%EB%B0%8F-%EC%84%A0%ED%83%9D-%EA%B0%80%EC%9D%B4%EB%93%9C</loc>
 <lastmod>2024-09-13T00:27:00+00:00</lastmod>
 </url>
 
-<!-- 59. [힙(Heap)]프로그래머스 더맵게 코딩테스트(JAVA) -->
+<!-- 60. [힙(Heap)]프로그래머스 더맵게 코딩테스트(JAVA) -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=105&amp;content=[%ED%9E%99(Heap)]%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%8D%94%EB%A7%B5%EA%B2%8C-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8(JAVA)</loc>
 <lastmod>2024-09-13T00:28:11+00:00</lastmod>
 </url>
 
-<!-- 60. SSL 인증서 선택 시 고려해야 할 사항 -->
+<!-- 61. SSL 인증서 선택 시 고려해야 할 사항 -->
 <url>
 <loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=106&amp;content=SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%84%A0%ED%83%9D-%EC%8B%9C-%EA%B3%A0%EB%A0%A4%ED%95%B4%EC%95%BC-%ED%95%A0-%EC%82%AC%ED%95%AD</loc>
 <lastmod>2024-09-13T04:48:16+00:00</lastmod>
+</url>
+
+<!-- 62. Subresource Integrity(SRI) 취약점 조치방법 -->
+<url>
+<loc>https://www.develop-blog.pe.kr/board/BoardWrite?id=107&amp;content=Subresource-Integrity(SRI)-%EC%B7%A8%EC%95%BD%EC%A0%90-%EC%A1%B0%EC%B9%98%EB%B0%A9%EB%B2%95</loc>
+<lastmod>2024-09-13T05:18:25+00:00</lastmod>
 </url>
 </urlset>

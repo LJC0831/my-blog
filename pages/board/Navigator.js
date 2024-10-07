@@ -76,9 +76,6 @@ function Navigator() {
       
     </nav>
     <div className="adfit"/>
-    <div className={NavigatorStyle.coopang}>
-      <iframe src="https://ads-partners.coupang.com/widgets.html?id=796048&template=carousel&trackingCode=AF0780791&subId=&width=160&height=300&tsource=" width="160" height="300" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
-    </div>
     </section>
   );
 };

@@ -307,8 +307,6 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
               />
             ) : (
               <div>
-                <iframe src="https://ads-partners.coupang.com/widgets.html?id=796054&template=carousel&trackingCode=AF0780791&subId=&width=800&height=200&tsource=" width="800" height="200" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
-
                 <h1>{addLineBreaks(title)}</h1><hr></hr>
               </div>
             )}

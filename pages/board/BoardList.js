@@ -50,6 +50,8 @@ function BoardList() {
       <Head>
         <title>게시글 목록</title>
         <link rel="icon" href="/favicon.ico" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
+        crossorigin="anonymous"></script>
       </Head>
       <Header />
       <div id="main">

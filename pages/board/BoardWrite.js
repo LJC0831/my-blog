@@ -266,7 +266,8 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         <meta property="og:title" content={seo_title}/>
         <meta property="og:description" content={seo_privew}/>
         <meta property="og:image" content={seo_Thumbnail}></meta>
-        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
+        crossorigin="anonymous"></script>
       </Head>
       <div id="wrapper" className="fade-in">
         <Header />

@@ -80,6 +80,8 @@ export default function Home() {
         <meta property="og:title" content="Next.js로 제작한 개인 블로그입니다." />
         <meta property="og:image" content="/Thum.JPG" />
         <meta property="og:description" content="Next.js로 제작한 개인 블로그입니다. By LJC" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
+        crossorigin="anonymous"></script>
     </Head>
       <div id="wrapper" className="fade-in">
 					<Header/>

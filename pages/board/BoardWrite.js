@@ -266,8 +266,27 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         <meta property="og:title" content={seo_title}/>
         <meta property="og:description" content={seo_privew}/>
         <meta property="og:image" content={seo_Thumbnail}></meta>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
-        crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380" crossorigin="anonymous"></script>
+        {/* 광고회복 */}
+        <script async src="https://fundingchoicesmessages.google.com/i/pub-4150138337602380?ers=1"></script>
+        <script>
+        {`(function() {
+          function signalGooglefcPresent() {
+            if (!window.frames['googlefcPresent']) {
+              if (document.body) {
+                const iframe = document.createElement('iframe');
+                iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px; display: none;';
+                iframe.name = 'googlefcPresent';
+                document.body.appendChild(iframe);
+              } else {
+                setTimeout(signalGooglefcPresent, 0);
+              }
+            }
+          }
+          signalGooglefcPresent();
+        })();`}
+      </script>
+
       </Head>
       <div id="wrapper" className="fade-in">
         <Header />

@@ -65,6 +65,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         {/* 초기 title */}
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="script-src 'self' https://fundingchoicesmessages.google.com https://*.googlesyndication.com;"
+        />
         <title>LJC 개발 블로그</title>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
         crossorigin="anonymous"></script>

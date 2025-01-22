@@ -12,6 +12,8 @@ config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
+  const nonceValue = 'randomNonce123456'; 
+
   const start = () => {
     //NProgress.start();
     setLoading(true);
@@ -67,7 +69,7 @@ function MyApp({ Component, pageProps }) {
         {/* 초기 title */}
         <meta
           http-equiv="Content-Security-Policy"
-          content="script-src 'self' https://fundingchoicesmessages.google.com https://*.googlesyndication.com;"
+          content={`script-src 'self' https://fundingchoicesmessages.google.com https://*.googlesyndication.com 'nonce-${nonceValue}';`}
         />
         <title>LJC 개발 블로그</title>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
@@ -75,9 +77,11 @@ function MyApp({ Component, pageProps }) {
         {/* Funding Choices 메시지 스크립트 */}
         <script
           async
-          src="https://fundingchoicesmessages.google.com/i/pub-4150138337602380?ers=1"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
+          crossorigin="anonymous"
         ></script>
         <script
+          nonce={nonceValue}
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

@@ -435,20 +435,20 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         }
          <footer>
               <div className="pagination">
-                <a className={`previous ${currentPage === 1 ? 'disabled' : ''}`}
+                <button className={`previous ${currentPage === 1 ? 'disabled' : ''}`}
                   onClick={() => currentPage > 1 && paginate(currentPage - 1)}>
                   Prev
-                </a>
+                </button>
                 {[...Array(Math.ceil(relationData.length / postsPerPage)).keys()].map((number) => (
-                  <a key={number + 1} className={`page ${currentPage === number + 1 ? 'active' : ''}`}
+                  <button key={number + 1} className={`page ${currentPage === number + 1 ? 'active' : ''}`}
                     onClick={() => paginate(number + 1)}>
                     {number + 1}
-                  </a>
+                  </button>
                 ))}
-                <a className={`next ${currentPage === Math.ceil(relationData.length / postsPerPage) ? 'disabled' : ''}`}
+                <button className={`next ${currentPage === Math.ceil(relationData.length / postsPerPage) ? 'disabled' : ''}`}
                   onClick={() => currentPage < Math.ceil(relationData.length / postsPerPage) && paginate(currentPage + 1)}>
                   Next
-                </a>
+                </button>
               </div>
           </footer>
         </div>

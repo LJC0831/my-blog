@@ -266,6 +266,7 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         <meta property="og:title" content={seo_title}/>
         <meta property="og:description" content={seo_privew}/>
         <meta property="og:image" content={seo_Thumbnail}></meta>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://*.googlesyndication.com https://*.google.com;"/>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380" crossorigin="anonymous"></script>
         {/* 광고회복 */}
         <script async src="https://fundingchoicesmessages.google.com/i/pub-4150138337602380?ers=1"></script>

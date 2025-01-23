@@ -37,6 +37,7 @@ function addLineIndex(text) {
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
+  const nonceValue = 'randomNonce123456'; 
   const router = useRouter();
   const { id } = router.query; //게시글번호
   const initialHTML = ''; // 초기 HTML
@@ -258,6 +259,10 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
   return (
     <div className={styles.container}>
       <Head>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content={`script-src 'self' https://fundingchoicesmessages.google.com https://*.googlesyndication.com 'nonce-${nonceValue}';`}
+        />
         <title>{seo_title}</title>
         <meta name="description" content={seo_privew} />
         <link rel="icon" href="/favicon.ico" />
@@ -267,6 +272,34 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
         <meta property="og:description" content={seo_privew}/>
         <meta property="og:image" content={seo_Thumbnail}></meta>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380" crossorigin="anonymous"></script>
+        {/* Funding Choices 메시지 스크립트 */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150138337602380"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          nonce={nonceValue}
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function signalGooglefcPresent() {
+                  if (!window.frames['googlefcPresent']) {
+                    if (document.body) {
+                      const iframe = document.createElement('iframe');
+                      iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px; display: none;';
+                      iframe.name = 'googlefcPresent';
+                      document.body.appendChild(iframe);
+                    } else {
+                      setTimeout(signalGooglefcPresent, 0);
+                    }
+                  }
+                }
+                signalGooglefcPresent();
+              })();
+            `,
+          }}
+        ></script>
       </Head>
       <div id="wrapper" className="fade-in">
         <Header />

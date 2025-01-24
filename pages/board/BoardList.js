@@ -106,8 +106,8 @@ function BoardList() {
               </div>
             </footer>
 
-          <Footer/>
       </div>
+      <Footer/>
     </div>
   );
 }

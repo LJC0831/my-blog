@@ -3404,6 +3404,11 @@ input, select, textarea {
 			margin-top: -0.25rem;
 			text-align: center;
 		}
+		#intro .blog-header{
+			font-weight: 800;
+			font-size: 3.5rem;
+			font-family: "Source Sans Pro", Helvetica, sans-serif;
+		}
 
 		#intro + #header {
 			margin-top: -20rem;
@@ -3488,6 +3493,11 @@ input, select, textarea {
 				#intro p {
 					font-size: 1rem;
 					margin-top: 0rem;
+				}
+				#intro .blog-header{
+					font-size: 3.25rem;
+					font-family: "Source Sans Pro", Helvetica, sans-serif;
+					margin-bottom: 1rem;
 				}
 
 				#intro .actions {

@@ -57,7 +57,7 @@ function Main() {
   return (
     <div>
         <div id="intro">
-          <h1>LJC Developer Blog</h1>
+          <span className="blog-header">LJC Developer Blog</span>
           <p>This blog is a personal website created with Next.js + node.js. The design is referenced from <a href="https://html5up.net">HTML5 UP</a></p>
           <div className="searchKeyword">
             <input type="text" style={{height:"7vh"}} placeholder="Search..." value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)} onKeyPress={handleEnterKeyPress}/>

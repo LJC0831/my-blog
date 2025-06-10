@@ -71,16 +71,17 @@ function BoardList() {
                 <section className="posts">
                   {currentPosts.map((post) => (
                         <article key={post.id}>
-                          <header>
-                            <span className="date">{post.ins_ymdhms}</span>
-                            <h2>{post.title}</h2>
-                          </header>
                           <Link href={`/board/BoardWrite?id=${post.id}&content=${post.title.replace(/\s+/g, '-')}`}>
-                            <span className="image fit"><img src={post.thumbnail_url} alt="" /></span>
-                              <p>{post.privew_content}</p>
-                            <ul className="actions special">
-                              <li><span className="button">Full Story</span></li>
-                            </ul>
+                            <header>
+                              <span className="date">{post.ins_ymdhms}</span>
+                              <h2>{post.title}</h2>
+                            </header>
+                            
+                              <span className="image fit"><img src={post.thumbnail_url} alt="" /></span>
+                                <p>{post.privew_content}</p>
+                              <ul className="actions special">
+                                <li><span className="button">Full Story</span></li>
+                              </ul>
                           </Link>
                         </article>
                     ))}

@@ -402,15 +402,15 @@ function BoardWrite({seo_title, seo_privew, seo_Thumbnail}) {
           {/* 댓글작성 */}
         { !isNaN(id) &&
           <div>
-            <h2>Form</h2>
+            <h3>댓글</h3>
             <form method="post" action="#">
               <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall">
-                  <input type="text" name="demo-name" id="demo-name" placeholder="Name"  onChange={(e) => setcommentName(e.target.value)}/>
+                <div class="col-3">
+                  <input type="text" name="demo-name" id="demo-name" placeholder="닉네임"  onChange={(e) => setcommentName(e.target.value)}/>
                 </div>
                 
-                <div class="col-12">
-                  <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6" onChange={handleCommentTextChange}></textarea>
+                <div class="col-8">
+                  <textarea name="demo-message" id="demo-message" placeholder="내용을 입력하세요." rows="2" onChange={handleCommentTextChange}></textarea>
                 </div>
 
                 <div class="col-12">
